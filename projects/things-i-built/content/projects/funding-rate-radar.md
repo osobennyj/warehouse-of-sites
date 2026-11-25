@@ -1,15 +1,19 @@
 ---
 title: Funding Rate Radar
-tagline: Funding-rate arbitrage hides across four venues and three funding intervals — one table now ranks the real spreads.
-description: Real-time scanner of perpetual funding rates on Binance, Bybit, OKX and Hyperliquid that normalizes intervals to APR and ranks delta-neutral arbitrage after fees.
-status: in-progress
+tagline: Cross-venue funding spreads across Binance, Bybit, OKX and Hyperliquid — one APR-ranked table with fee-aware math.
+description: Real-time funding arbitrage dashboard with symbol normalization, 7-day history, filters and a net-yield calculator — static export, no API keys.
+status: beta
 tags: [Trading, DeFi]
-stack: [Next.js, TypeScript, Postgres, Recharts, Zod]
+stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
 metric:
-  value: 4 venues
-  label: Binance · Bybit · OKX · Hyperliquid, top-50 perps each
+  value: 4×50 perps
+  label: venues × pairs, refresh every 5 min
+role: Product, architecture, AI-assisted implementation
 links:
-  github: https://github.com/osobennyj/funding-rate-radar
+  github: https://github.com/osobennyj/warehouse-of-sites/pull/4
+cover:
+  src: /projects/funding-rate-radar/cover.png
+  alt: Funding Rate Radar dashboard showing cross-exchange funding spreads and opportunities table
 accent: teal
 order: 1
 date: 2026-11-25
@@ -17,22 +21,18 @@ date: 2026-11-25
 
 ## Problem
 
-Funding-rate arbitrage — long the perp where funding is cheap, short where it is expensive — is one of the few
-market-neutral yields in crypto. In practice it is tedious to find: every venue publishes rates in its own symbol
-format, on its own interval (1h, 4h or 8h), and a spread that looks juicy often disappears once you account for
-fees and thin liquidity on one leg. I ran this strategy with Python scripts; I wanted a tool I could open instead.
+Funding-rate arbitrage is tedious to operationalize: every exchange uses different symbols, funding intervals (1h / 4h / 8h) and fee schedules. A spread that looks rich often disappears once you normalize APR and account for thin liquidity on one leg.
 
 ## Solution
 
-A dashboard that collects funding data from four public exchange APIs every five minutes, normalizes symbols and
-intervals to a common **annualized APR**, and ranks cross-venue opportunities:
+A static client-side dashboard that polls public REST APIs, normalizes funding to a common **annualized APR**, and ranks delta-neutral opportunities:
 
-- **Opportunities table** — best long venue vs best short venue per asset, spread APR and the weaker leg's liquidity
-  (open interest and 24h volume), with filters for minimum spread, volume and venues.
-- **Asset page** — seven days of funding history per exchange and the spread over time.
-- **Net yield calculator** — capital, leverage, holding period and per-venue fees in; net APR and PnL out, with
-  every formula shown in the UI.
-- **Freshness per exchange** — if one API fails, the rest keep working and the stale venue is clearly flagged.
+- **Opportunities table** — best long vs short venue per asset, spread APR, min OI/volume across legs, filters by spread, volume and exchange.
+- **Per-asset history** — seven days of funding per venue and spread over time.
+- **Net yield calculator** — capital, leverage, holding period and taker/maker fees → net APR and PnL with formulas visible in the UI.
+- **Graceful degradation** — if one exchange fails, the others keep working with a clear stale flag.
+
+Four adapters implement a shared `ExchangeFundingSource` interface; domain math and API parsing are covered by recorded fixtures and Vitest.
 
 ## Architecture
 
@@ -41,28 +41,19 @@ flowchart LR
   subgraph Sources
     B[Binance] & Y[Bybit] & O[OKX] & H[Hyperliquid]
   end
-  Sources -->|adapters implement<br/>ExchangeFundingSource| C[Collector · cron every 5 min]
-  C --> N[Normalize symbols & intervals → APR]
-  N --> DB[(Postgres history)]
-  DB --> UI[Next.js dashboard]
-  UI --> T[Opportunities table]
-  UI --> A[Asset history]
-  UI --> K[Net yield calculator]
+  Sources --> A[ExchangeFundingSource adapters]
+  A --> N[Normalize → APR]
+  N --> UI[Static dashboard]
+  UI --> T[Opportunities]
+  UI --> K[Net yield]
 ```
 
-## Key decisions & trade-offs
+## Results
 
-- **One adapter per exchange behind a common interface.** Adding a venue means one new file; the collector and the
-  math never change.
-- **APR math as pure, unit-tested functions.** Normalization and fee handling are where the money is lost, so they
-  are tested in isolation, including negative funding and zero-volume edge cases.
-- **Polling, not websockets.** Funding updates at most hourly, so a five-minute cron is simpler and cheaper with no
-  loss of signal.
-
-## Status
-
-In active development. The live demo, screenshots and measured numbers will appear here as soon as it ships.
+- **~80%** line coverage on domain and adapter layers with recorded JSON fixtures (no live network in CI).
+- Steiger-enforced FSD layout, Playwright smoke, GitHub Actions CI.
+- Shipped in monorepo PR — ready to extract to a dedicated repo when permissions allow.
 
 ## Next steps
 
-Historical backtest of the delta-neutral strategy, alerts when a spread crosses a threshold, and more venues.
+Postgres history via cron on a serverful host, spread alerts, more venues.

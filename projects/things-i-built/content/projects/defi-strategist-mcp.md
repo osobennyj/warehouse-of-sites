@@ -1,15 +1,19 @@
 ---
 title: DeFi Strategist MCP
-tagline: AI agents get raw DeFi data, not judgement — this MCP server gives them a researcher's analytics for Pendle, loops and yields.
-description: MCP server for Claude, Cursor and ChatGPT with derived DeFi analytics — risk-adjusted yields, Pendle PT/YT, looping simulation, funding carry — plus a browser playground.
-status: in-progress
+tagline: MCP tools that encode a DeFi researcher’s analytics — yields, Pendle, looping, funding carry — not another raw-data proxy.
+description: TypeScript MCP server for Claude/Cursor plus a browser playground on the same core — Zod schemas, methodology resources, npm-ready release workflow.
+status: beta
 tags: [AI, DeFi]
 stack: [TypeScript, MCP SDK, Zod, React, Vitest]
 metric:
-  value: 5 MCP tools
-  label: yields, Pendle, looping, funding carry, strategy compare
+  value: 5 tools
+  label: find_yields · Pendle · loop · carry · compare
+role: Product, architecture, AI-assisted implementation
 links:
-  github: https://github.com/osobennyj/defi-strategist-mcp
+  github: https://github.com/osobennyj/warehouse-of-sites/pull/1
+cover:
+  src: /projects/defi-strategist-mcp/cover.png
+  alt: DeFi Strategist MCP playground showing tool forms and scenario results
 accent: amber
 order: 3
 date: 2026-11-25
@@ -17,56 +21,38 @@ date: 2026-11-25
 
 ## Problem
 
-Asking an AI agent "is this PT cheap?" or "what happens to my 3x stETH loop if ETH drops 20%?" usually produces
-confident nonsense. Raw-data MCP servers already exist for prices and TVL, but the hard part is the **methodology**:
-implied vs underlying APY, health factors, reward-vs-base yield quality. That knowledge lives in a researcher's head —
-I wanted to package mine as tools an agent can call.
+Raw-data MCP servers already exist for prices and TVL. The hard part is methodology — implied vs underlying APY, health factors, reward-vs-base yield quality — knowledge that lives in a researcher’s head.
 
 ## Solution
 
-An MCP server that plugs into Claude Desktop, Cursor, ChatGPT or VS Code and exposes derived analytics:
+**MCP tools** (Zod input/output, LLM-oriented descriptions):
 
-| Tool                    | What the agent gets                                                                  |
-| ----------------------- | ------------------------------------------------------------------------------------ |
-| `find_yields`           | DefiLlama pools ranked by a transparent risk-adjusted score with its breakdown       |
-| `analyze_pendle_market` | Implied vs underlying APY, PT fixed yield, YT breakeven and a cheap/fair/rich verdict |
-| `simulate_loop`         | Leverage, net APY, health factor and the price drop to liquidation                   |
-| `funding_carry`         | Hyperliquid funding, annualized, and delta-neutral carry after fees                  |
-| `compare_strategies`    | Side-by-side net APY, risk score and key risks of 2–5 strategies                     |
+| Tool | Output |
+|------|--------|
+| `find_yields` | DefiLlama pools ranked by transparent risk-adjusted score |
+| `analyze_pendle_market` | PT/YT verdict with formulas |
+| `simulate_loop` | Leverage, HF, liquidation price, net APY |
+| `funding_carry` | Hyperliquid funding annualized + fee-aware carry |
+| `compare_strategies` | Side-by-side net APY, risk score, key risks |
 
-Methodology is exposed as MCP resources, so the agent can read _how_ a number was computed. The same core powers a
-static web playground — every tool runs in the browser, no keys needed.
+Resources `methodology://scoring` and `methodology://formulas`, prompt templates for due diligence and stablecoin ladders.
+
+**Monorepo:** `packages/core` (pure domain → adapters → use cases), `packages/mcp-server`, `apps/playground`. MCP SDK v2 in-memory integration tests + Playwright smoke.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  subgraph core [packages/core]
-    D[Domain math · pure functions]
-    A[Use cases · one per tool]
-    S[Sources: DefiLlama · Pendle · Hyperliquid · snapshot]
-  end
-  A --> D
-  A --> S
-  M[packages/mcp-server · stdio & HTTP] --> A
-  P[apps/playground · GitHub Pages] --> A
-  C[Claude / Cursor / ChatGPT] <-->|MCP| M
+  C[packages/core] --> M[mcp-server]
+  C --> P[playground]
+  M --> A[Claude / Cursor / ChatGPT]
 ```
 
-## Key decisions & trade-offs
+## Results
 
-- **Derived analytics, not another data proxy.** The value is the encoded expertise, which is hard to copy without
-  domain knowledge.
-- **Pure core, thin presentation.** Formulas have hand-checked unit tests (negative funding, borrow APY above supply
-  APY, LTV at the liquidation threshold); MCP registration is a thin adapter, so adding a tool touches one use case
-  and one registration file.
-- **Keyless, read-only.** Only public APIs, no wallets and no transactions — safe to install in 30 seconds.
-
-## Status
-
-In active development. The npm package, playground link and recorded agent conversations will be added on release.
+- CI: typecheck, unit + MCP integration, daily snapshot workflow stub, npm release workflow with `NPM_TOKEN`.
+- Strong signal for analyst + AI-native builder roles: domain expertise packaged as installable tools.
 
 ## Next steps
 
-More protocols (Aave, Morpho, Ethena), a stablecoin yield-ladder prompt and an evaluation suite that checks every
-number in the agent's answer against tool output.
+Publish to npm + MCP Registry after merge; optional extract to `osobennyj/defi-strategist-mcp`.

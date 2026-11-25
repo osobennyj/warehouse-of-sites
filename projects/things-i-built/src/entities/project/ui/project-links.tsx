@@ -10,9 +10,15 @@ interface ProjectLinksProps {
   className?: string;
 }
 
+function isPullRequestUrl(href: string): boolean {
+  return /github\.com\/[^/]+\/[^/]+\/pull\/\d+/.test(href);
+}
+
 export function ProjectLinks({ project, size = "sm", className }: ProjectLinksProps) {
   const { live, github } = project.links;
   if (!live && !github) return null;
+
+  const repoLabel = github && isPullRequestUrl(github) ? "Pull request" : "GitHub";
 
   return (
     <div className={className ?? "flex flex-wrap gap-2"}>
@@ -25,10 +31,10 @@ export function ProjectLinks({ project, size = "sm", className }: ProjectLinksPr
         <ButtonLink
           href={github}
           size={size}
-          variant="secondary"
-          aria-label={`${project.title}: source code on GitHub (opens in a new tab)`}
+          variant={live ? "secondary" : "primary"}
+          aria-label={`${project.title}: ${repoLabel.toLowerCase()} (opens in a new tab)`}
         >
-          <GitHubIcon className="size-4" /> GitHub
+          <GitHubIcon className="size-4" /> {repoLabel}
         </ButtonLink>
       )}
     </div>
