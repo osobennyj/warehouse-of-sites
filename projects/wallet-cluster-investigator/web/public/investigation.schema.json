@@ -1,0 +1,277 @@
+{
+  "$defs": {
+    "ClusterRecord": {
+      "properties": {
+        "cluster_id": {
+          "title": "Cluster Id",
+          "type": "string"
+        },
+        "members": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Members",
+          "type": "array"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceRecord"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "cluster_id",
+        "members",
+        "score"
+      ],
+      "title": "ClusterRecord",
+      "type": "object"
+    },
+    "EvidenceRecord": {
+      "properties": {
+        "rule": {
+          "title": "Rule",
+          "type": "string"
+        },
+        "addresses": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Addresses",
+          "type": "array"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "tx_hashes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tx Hashes",
+          "type": "array"
+        },
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule",
+        "addresses",
+        "confidence"
+      ],
+      "title": "EvidenceRecord",
+      "type": "object"
+    },
+    "InvestigationEdge": {
+      "properties": {
+        "from_address": {
+          "title": "From Address",
+          "type": "string"
+        },
+        "to_address": {
+          "title": "To Address",
+          "type": "string"
+        },
+        "token_symbol": {
+          "title": "Token Symbol",
+          "type": "string"
+        },
+        "token_address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Token Address"
+        },
+        "total_value": {
+          "title": "Total Value",
+          "type": "string"
+        },
+        "transfer_count": {
+          "title": "Transfer Count",
+          "type": "integer"
+        },
+        "first_timestamp": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Timestamp"
+        },
+        "last_timestamp": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Timestamp"
+        }
+      },
+      "required": [
+        "from_address",
+        "to_address",
+        "token_symbol",
+        "total_value",
+        "transfer_count"
+      ],
+      "title": "InvestigationEdge",
+      "type": "object"
+    },
+    "InvestigationMetadata": {
+      "properties": {
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "chain": {
+          "title": "Chain",
+          "type": "string"
+        },
+        "seed_address": {
+          "title": "Seed Address",
+          "type": "string"
+        },
+        "data_source": {
+          "title": "Data Source",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": true,
+          "title": "Parameters",
+          "type": "object"
+        },
+        "heuristic_weights": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Heuristic Weights",
+          "type": "object"
+        }
+      },
+      "required": [
+        "chain",
+        "seed_address",
+        "data_source",
+        "generated_at"
+      ],
+      "title": "InvestigationMetadata",
+      "type": "object"
+    },
+    "InvestigationNode": {
+      "properties": {
+        "address": {
+          "title": "Address",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "first_seen": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Seen"
+        },
+        "tx_count": {
+          "default": 0,
+          "title": "Tx Count",
+          "type": "integer"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Categories",
+          "type": "array"
+        }
+      },
+      "required": [
+        "address"
+      ],
+      "title": "InvestigationNode",
+      "type": "object"
+    }
+  },
+  "description": "Versioned investigation document (v1).",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/InvestigationMetadata"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/InvestigationNode"
+      },
+      "title": "Nodes",
+      "type": "array"
+    },
+    "edges": {
+      "items": {
+        "$ref": "#/$defs/InvestigationEdge"
+      },
+      "title": "Edges",
+      "type": "array"
+    },
+    "clusters": {
+      "items": {
+        "$ref": "#/$defs/ClusterRecord"
+      },
+      "title": "Clusters",
+      "type": "array"
+    }
+  },
+  "required": [
+    "metadata",
+    "nodes",
+    "edges",
+    "clusters"
+  ],
+  "title": "Investigation",
+  "type": "object"
+}

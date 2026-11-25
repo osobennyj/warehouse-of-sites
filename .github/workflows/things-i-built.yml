@@ -2,16 +2,25 @@ name: Things I Built
 
 # Redeploy after GitHub Pages enablement
 on:
-  workflow_dispatch:
   push:
     branches: [master, cursor/things-i-built-portfolio-73a4]
     paths:
       - "projects/things-i-built/**"
+      - "projects/funding-rate-radar/**"
+      - "projects/wallet-cluster-investigator/**"
+      - "projects/ai-token-due-diligence/**"
+      - "projects/defi-strategist-mcp/**"
       - ".github/workflows/things-i-built.yml"
+      - ".github/scripts/assemble-pages.sh"
   pull_request:
     paths:
       - "projects/things-i-built/**"
+      - "projects/funding-rate-radar/**"
+      - "projects/wallet-cluster-investigator/**"
+      - "projects/ai-token-due-diligence/**"
+      - "projects/defi-strategist-mcp/**"
       - ".github/workflows/things-i-built.yml"
+      - ".github/scripts/assemble-pages.sh"
 
 permissions:
   contents: read
@@ -91,6 +100,9 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
           NEXT_PUBLIC_SITE_URL: https://osobennyj.github.io/warehouse-of-sites
+      - name: Build and merge hosted MVPs
+        working-directory: ${{ github.workspace }}
+        run: bash .github/scripts/assemble-pages.sh
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Stablecoin ladder for $250k",
+    "toolChain": "find_yields → methodology://scoring → compare_strategies",
+    "excerpt": "Agent: Called find_yields with stablecoinOnly and min TVL $5M. Top score: Aave USDC (score 72/100) — mostly base yield, low sigma. Suggested 60% core / 30% Pendle PT leg / 10% cautious loop only after simulate_loop HF check."
+  },
+  {
+    "title": "Is wstETH PT rich?",
+    "toolChain": "analyze_pendle_market(wstETH)",
+    "excerpt": "Implied APY 2.48% vs underlying ~2.63% → PT verdict FAIR (spread −0.15pp). Notes liquidity depth. Recommended sizing vs spot hold, not aggressive YT punt without points view."
+  },
+  {
+    "title": "3x stETH loop sanity check",
+    "toolChain": "simulate_loop → shock −20%",
+    "excerpt": "Loop model: ~2.7x leverage, net APY ~4.1%, HF 1.34. Warning shown if HF < 1.2 — none at base case. At −20% spot HF 1.06 — flagged as fragile; user told to de-risk or widen collateral mix."
+  }
+]

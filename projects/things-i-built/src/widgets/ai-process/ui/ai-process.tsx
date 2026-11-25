@@ -31,7 +31,7 @@ const steps = [
     Icon: FlaskConical,
     owner: "Me + Agent",
     title: "Tests",
-    text: "Unit tests for domain math, recorded API fixtures, an e2e smoke test — all gated in CI.",
+    text: "Unit tests for domain math, recorded API fixtures, and an e2e smoke test, all gated in CI.",
   },
   {
     Icon: Rocket,
@@ -46,8 +46,8 @@ export function AiProcess() {
     <Section
       id="how-i-build"
       eyebrow="How I build with AI"
-      title="I own the decisions. The agent types fast."
-      description="Being explicit about it is the point: domain knowledge, specs and review are where the value is — and those are mine."
+      title="I make the calls. The agent helps me ship faster."
+      description="I try to be clear about this: the useful part is knowing the domain, writing a tight spec, and reviewing every change. That work is on me."
       className="border-y border-border/60 bg-card/20"
     >
       <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

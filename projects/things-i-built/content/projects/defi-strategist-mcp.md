@@ -1,7 +1,7 @@
 ---
 title: DeFi Strategist MCP
-tagline: MCP tools that encode a DeFi researcher’s analytics — yields, Pendle, looping, funding carry — not another raw-data proxy.
-description: TypeScript MCP server for Claude/Cursor plus a browser playground on the same core — Zod schemas, methodology resources, npm-ready release workflow.
+tagline: MCP tools that encode a DeFi researcher's analytics (yields, Pendle, looping, funding carry), not another raw-data proxy.
+description: TypeScript MCP server for Claude/Cursor plus a browser playground on the same core. Zod schemas, methodology resources, npm-ready release workflow.
 status: live
 tags: [AI, DeFi]
 stack: [TypeScript, MCP SDK, Zod, React, Vitest]
@@ -10,6 +10,7 @@ metric:
   label: find_yields · Pendle · loop · carry · compare
 role: Product, architecture, AI-assisted implementation
 links:
+  live: https://osobennyj.github.io/warehouse-of-sites/demos/defi-strategist-mcp/
   github: https://github.com/osobennyj/warehouse-of-sites/pull/1
 cover:
   src: /projects/defi-strategist-mcp/cover.png
@@ -21,7 +22,7 @@ date: 2026-11-25
 
 ## Problem
 
-Raw-data MCP servers already exist for prices and TVL. The hard part is methodology — implied vs underlying APY, health factors, reward-vs-base yield quality — knowledge that lives in a researcher’s head.
+Raw-data MCP servers already exist for prices and TVL. The hard part is methodology: implied vs underlying APY, health factors, reward-vs-base yield quality, knowledge that lives in a researcher's head.
 
 ## Solution
 
@@ -33,7 +34,7 @@ Raw-data MCP servers already exist for prices and TVL. The hard part is methodol
 | `analyze_pendle_market` | PT/YT verdict with formulas |
 | `simulate_loop` | Leverage, HF, liquidation price, net APY |
 | `funding_carry` | Hyperliquid funding annualized + fee-aware carry |
-| `compare_strategies` | Side-by-side net APY, risk score, key risks |
+| `compare_strategies` | Side-by-side net APR, risk score, key risks |
 
 Resources `methodology://scoring` and `methodology://formulas`, prompt templates for due diligence and stablecoin ladders.
 
@@ -55,4 +56,4 @@ flowchart LR
 
 ## Next steps
 
-Publish to npm + MCP Registry after merge; optional extract to `osobennyj/defi-strategist-mcp`.
+More chains on Pendle, richer carry fees, publish to npm registry after owner adds `NPM_TOKEN`.

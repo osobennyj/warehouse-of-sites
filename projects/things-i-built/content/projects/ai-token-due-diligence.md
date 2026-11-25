@@ -1,7 +1,7 @@
 ---
 title: AI Token Due Diligence Agent
 tagline: Five data tools → scored, source-linked token memo with a numeric hallucination guard.
-description: Static Next.js agent that gathers market, protocol, unlock, holder and news data, then writes a structured report — mock LLM by default, real keys optional.
+description: Static Next.js agent that gathers market, protocol, unlock, holder and news data, then writes a structured report. Mock LLM by default, real keys optional.
 status: live
 tags: [AI, Research]
 stack: [Next.js, Vercel AI SDK, Zod, Tailwind, Vitest]
@@ -10,6 +10,7 @@ metric:
   label: ARB · ENA · AAVE · UNI · PENDLE
 role: Product, architecture, AI-assisted implementation
 links:
+  live: https://osobennyj.github.io/warehouse-of-sites/demos/ai-token-due-diligence/
   github: https://github.com/osobennyj/warehouse-of-sites/pull/3
 cover:
   src: /projects/ai-token-due-diligence/cover.png
@@ -25,10 +26,10 @@ Token diligence spans half a dozen tabs; naive LLM reports invent numbers. I wan
 
 ## Solution
 
-- **Parallel data tools** — CoinGecko, DefiLlama, vesting, holder concentration, news; Zod on inputs and outputs.
-- **Composable agent** — deterministic risk score, then Anthropic/OpenAI (or mock) for narrative only.
-- **Gallery** — five live-data sample reports (ARB, ENA, AAVE, UNI, PENDLE) with offline eval script that checks numeric fields match tool output.
-- **Static export** — works on GitHub Pages without API keys; plug in `ANTHROPIC_API_KEY` locally for real runs.
+- **Parallel data tools:** CoinGecko, DefiLlama, vesting, holder concentration, news; Zod on inputs and outputs.
+- **Composable agent:** deterministic risk score, then Anthropic/OpenAI (or mock) for narrative only.
+- **Gallery:** five live-data sample reports (ARB, ENA, AAVE, UNI, PENDLE) with offline eval script that checks numeric fields match tool output.
+- **Static export:** works on GitHub Pages without API keys; plug in `ANTHROPIC_API_KEY` locally for real runs.
 
 FSD layout, Vitest coverage, Playwright smoke, hallucination eval in CI.
 
@@ -44,7 +45,7 @@ flowchart LR
 
 ## Results
 
-- End-to-end LLM product signal: adapters, structured output, guardrails, eval — not a chat wrapper.
+- End-to-end LLM product signal: adapters, structured output, guardrails, eval, not a chat wrapper.
 - Crypto fit: unlock pressure, TVL/revenue, holder concentration in one flow.
 
 ## Next steps

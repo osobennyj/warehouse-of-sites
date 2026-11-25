@@ -19,7 +19,7 @@ export function ResearchListPage() {
       <PageIntro
         eyebrow="Research"
         title="Notes and dashboards"
-        description="Written frameworks and external dashboards I use in day-to-day token work."
+        description="Frameworks plus documented outcomes: tools from this site, Arkham community work, carry process notes, and pre-crypto engineering wins."
       />
       <Container className="pb-20">
         <ul className="grid gap-4">

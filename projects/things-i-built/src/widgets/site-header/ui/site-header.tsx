@@ -10,18 +10,10 @@ function Logo() {
   return (
     <Link
       href="/"
-      className="group flex items-center gap-2.5 rounded-md font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      className="group rounded-md font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
-      <span
-        aria-hidden
-        className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-teal-300 to-violet-400 font-mono text-sm font-bold text-zinc-950 transition-transform group-hover:rotate-[-6deg]"
-      >
-        BM
-      </span>
-      <span>
-        {siteConfig.shortName}
-        <span className="sr-only"> — {siteConfig.name}, home</span>
-      </span>
+      {siteConfig.shortName}
+      <span className="sr-only">, {siteConfig.name}, home</span>
     </Link>
   );
 }

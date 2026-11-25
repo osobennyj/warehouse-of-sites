@@ -1,6 +1,6 @@
 ---
 title: A five-question framework for token unlock risk
-summary: How I check whether an upcoming unlock actually matters — supply overhang, liquidity, who receives the tokens and what they are likely to do with them.
+summary: "How I check whether an upcoming unlock actually matters: supply overhang, liquidity, who receives the tokens and what they are likely to do with them."
 kind: note
 tags: [Tokenomics, Valuation]
 readingMinutes: 4
@@ -24,7 +24,7 @@ The ratio I care about most is **unlock pressure**:
 unlock pressure = USD value unlocked in the next 30 days / average daily spot volume
 ```
 
-Below ~1 day of volume, an unlock is usually noise. Several days of volume means sellers need patience — or a
+Below ~1 day of volume, an unlock is usually noise. Several days of volume means sellers need patience or a
 discount.
 
 ## 3. Who receives the tokens?
@@ -47,7 +47,7 @@ assumption is that unlocked tokens eventually look for an exit.
 
 None of these questions is decisive alone. A large unlock to long-term ecosystem funds with deep liquidity can be a
 non-event, while a modest unlock to seed investors in an illiquid token can define the chart for weeks. The goal is
-a short, transparent checklist — the same one I encode into my tools, so that every score can be traced back to an
+a short, transparent checklist, the same one I encode into my tools, so that every score can be traced back to an
 input.
 
 _Not financial advice._
