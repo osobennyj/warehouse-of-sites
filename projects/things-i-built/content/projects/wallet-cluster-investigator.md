@@ -2,7 +2,7 @@
 title: Wallet Cluster Investigator
 tagline: Seed EVM address → funding graph → explainable wallet clusters and a public investigation gallery.
 description: Python CLI plus a static React viewer that clusters wallets with four documented heuristics, Blockscout v2 data and committed public case studies.
-status: beta
+status: live
 tags: [Research]
 stack: [Python, networkx, React, Cytoscape.js, Blockscout]
 metric:

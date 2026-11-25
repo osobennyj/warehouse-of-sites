@@ -2,7 +2,7 @@
 title: Funding Rate Radar
 tagline: Cross-venue funding spreads across Binance, Bybit, OKX and Hyperliquid — one APR-ranked table with fee-aware math.
 description: Real-time funding arbitrage dashboard with symbol normalization, 7-day history, filters and a net-yield calculator — static export, no API keys.
-status: beta
+status: live
 tags: [Trading, DeFi]
 stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
 metric:

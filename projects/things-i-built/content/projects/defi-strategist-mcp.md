@@ -2,7 +2,7 @@
 title: DeFi Strategist MCP
 tagline: MCP tools that encode a DeFi researcher’s analytics — yields, Pendle, looping, funding carry — not another raw-data proxy.
 description: TypeScript MCP server for Claude/Cursor plus a browser playground on the same core — Zod schemas, methodology resources, npm-ready release workflow.
-status: beta
+status: live
 tags: [AI, DeFi]
 stack: [TypeScript, MCP SDK, Zod, React, Vitest]
 metric:
