@@ -1,4 +1,5 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { AnalyzeWalletView } from "@/views/analyze/AnalyzeWalletView";
 import { GalleryView } from "@/views/gallery/GalleryView";
 import { InvestigationView } from "@/views/investigation/InvestigationView";
 
@@ -8,6 +9,7 @@ export function App() {
       <div className="min-h-screen bg-surface text-slate-100">
         <Routes>
           <Route path="/" element={<GalleryView />} />
+          <Route path="/analyze" element={<AnalyzeWalletView />} />
           <Route path="/investigation/:slug" element={<InvestigationView />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

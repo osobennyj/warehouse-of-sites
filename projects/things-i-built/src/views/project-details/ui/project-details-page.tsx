@@ -50,11 +50,6 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
         <header className="max-w-3xl border-b border-border pb-10">
           <div className="flex flex-wrap items-center gap-2">
             <ProjectStatusBadge status={project.status} />
-            {project.tags.map((tag) => (
-              <span key={tag} className="font-mono text-xs tracking-wide text-muted uppercase">
-                #{tag}
-              </span>
-            ))}
           </div>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{project.title}</h1>
           <p className="mt-4 text-xl leading-relaxed text-muted">{project.tagline}</p>

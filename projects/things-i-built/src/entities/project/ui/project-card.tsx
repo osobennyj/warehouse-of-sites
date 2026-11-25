@@ -16,11 +16,6 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
       <div className="flex flex-1 flex-col gap-4 p-6">
         <div className="flex flex-wrap items-center gap-2">
           <ProjectStatusBadge status={project.status} />
-          {project.tags.map((tag) => (
-            <span key={tag} className="font-mono text-[0.7rem] tracking-wide text-muted uppercase">
-              #{tag}
-            </span>
-          ))}
         </div>
 
         <div>

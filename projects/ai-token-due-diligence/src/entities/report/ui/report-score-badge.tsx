@@ -13,7 +13,7 @@ export function ReportScoreBadge({ score }: { score: Score }) {
     <span
       className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium ring-1 ring-inset ${gradeTone[score.grade]}`}
     >
-      <span className="font-semibold">{score.grade}</span>
+      <span className="font-semibold">Checklist {score.grade}</span>
       <span className="text-zinc-300">{score.total}/100</span>
     </span>
   );
