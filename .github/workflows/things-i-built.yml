@@ -1,6 +1,8 @@
 name: Things I Built
 
+# Redeploy after GitHub Pages enablement
 on:
+  workflow_dispatch:
   push:
     branches: [master, cursor/things-i-built-portfolio-73a4]
     paths:
