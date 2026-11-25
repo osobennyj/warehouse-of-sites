@@ -1,0 +1,10 @@
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+collector/.cache/
+web/node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+*.pyc

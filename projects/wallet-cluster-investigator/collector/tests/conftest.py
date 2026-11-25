@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from wci.ingestion.domain import AddressInfo, Transfer
+from wci.ingestion.domain import Transfer
 
 FIXTURES = Path(__file__).resolve().parents[1] / "fixtures" / "blockscout"
 

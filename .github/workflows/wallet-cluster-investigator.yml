@@ -1,0 +1,105 @@
+name: Wallet Cluster Investigator
+
+on:
+  push:
+    branches: [master, "cursor/**"]
+    paths:
+      - "projects/wallet-cluster-investigator/**"
+      - ".github/workflows/wallet-cluster-investigator.yml"
+  pull_request:
+    paths:
+      - "projects/wallet-cluster-investigator/**"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "wci-pages"
+  cancel-in-progress: false
+
+jobs:
+  collector:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/wallet-cluster-investigator/collector
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install collector
+        run: pip install -e ".[dev]"
+      - name: Ruff
+        run: ruff check src tests
+      - name: Mypy
+        run: mypy --strict src/wci
+      - name: Pytest
+        run: pytest -q
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/wallet-cluster-investigator/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: projects/wallet-cluster-investigator/web/pnpm-lock.yaml
+      - name: Sync investigation JSON into public/
+        working-directory: projects/wallet-cluster-investigator
+        run: cp investigations/*.json web/public/investigations/
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm run build
+        env:
+          VITE_BASE_PATH: /warehouse-of-sites/
+      - name: Install Playwright
+        run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run test:e2e
+        env:
+          VITE_BASE_PATH: /
+
+  deploy-pages:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: [collector, web]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: projects/wallet-cluster-investigator/web/pnpm-lock.yaml
+      - name: Build static viewer
+        working-directory: projects/wallet-cluster-investigator
+        run: |
+          cp investigations/*.json web/public/investigations/
+          cd web
+          pnpm install --frozen-lockfile
+          VITE_BASE_PATH=/warehouse-of-sites/ pnpm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: projects/wallet-cluster-investigator/web/dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

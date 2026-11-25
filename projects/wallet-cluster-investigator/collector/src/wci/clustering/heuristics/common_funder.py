@@ -1,10 +1,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from decimal import Decimal
 
 from wci.clustering.domain import Evidence, HeuristicContext
-from wci.clustering.heuristics.protocol import Heuristic
 
 
 class CommonFunderHeuristic:

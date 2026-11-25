@@ -48,11 +48,7 @@ class SynchronizedActivityHeuristic:
                 continue
             addrs_sorted = sorted(addrs, key=lambda a: times[a])
             anchor = times[addrs_sorted[0]]
-            cluster_addrs = [
-                a
-                for a in addrs_sorted
-                if abs((times[a] - anchor).total_seconds()) <= window
-            ]
+            cluster_addrs = [a for a in addrs_sorted if abs((times[a] - anchor).total_seconds()) <= window]
             if len(cluster_addrs) < 2:
                 continue
             out.append(

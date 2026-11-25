@@ -6,8 +6,8 @@ from decimal import Decimal
 from wci.clustering.domain import HeuristicContext
 from wci.clustering.heuristics.cex_deposit_reuse import CexDepositReuseHeuristic
 from wci.clustering.heuristics.common_funder import CommonFunderHeuristic
-from wci.clustering.heuristics.synchronized_activity import SynchronizedActivityHeuristic
 from wci.clustering.heuristics.sweep_pattern import SweepPatternHeuristic
+from wci.clustering.heuristics.synchronized_activity import SynchronizedActivityHeuristic
 from wci.ingestion.domain import Transfer
 
 TS = datetime(2024, 6, 1, 12, 0, tzinfo=UTC)

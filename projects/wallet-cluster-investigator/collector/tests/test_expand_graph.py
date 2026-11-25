@@ -7,7 +7,6 @@ import pytest
 
 from wci.ingestion.domain import AddressInfo, GraphExpansionParams, Transfer
 from wci.ingestion.expand_graph import expand_graph
-from wci.ingestion.protocol import ChainDataSource
 
 SEED = "0xseed000000000000000000000000000000000001"
 CP = "0xseed000000000000000000000000000000000002"

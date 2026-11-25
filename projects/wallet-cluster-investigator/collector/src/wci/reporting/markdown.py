@@ -52,7 +52,7 @@ def render_markdown_report(inv: Investigation) -> str:
     lines.append("## Limitations")
     lines.append(
         "- Public indexer data only; incomplete history may miss links.\n"
-        "- Heuristic matches are probabilistic — shared infrastructure (CEX, bridges) causes false positives.\n"
+        "- Heuristic matches are probabilistic — CEX/bridge collisions cause false positives.\n"
         "- Attribution is analytical signal, not proof of ownership."
     )
     lines.append("")

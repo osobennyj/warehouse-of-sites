@@ -31,7 +31,9 @@ class SweepPatternHeuristic:
             out_total = outgoing[wallet]
             if out_total <= 0:
                 continue
-            for dest, amount in ((tr.to_address, tr.value) for tr in ctx.transfers if tr.from_address == wallet):
+            for dest, amount in (
+                (tr.to_address, tr.value) for tr in ctx.transfers if tr.from_address == wallet
+            ):
                 if dest in ctx.cex_hot_wallets or dest == wallet:
                     continue
                 share = amount / out_total

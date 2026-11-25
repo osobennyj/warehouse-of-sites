@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -67,6 +66,8 @@ async def run_investigation(
         max_nodes=max_nodes,
         min_value_wei=Decimal(str(min_value_eth)) * Decimal(10) ** 18,
         since=_parse_since(since),
+        max_counterparties_per_node=8,
+        stop_at_labeled=True,
     )
 
     try:

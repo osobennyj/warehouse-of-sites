@@ -78,7 +78,9 @@ async def expand_graph(
         result.addresses[address] = info
         g.add_node(address, info=info)
 
-        if _should_stop_expansion(address, info, stop_at_labeled=params.stop_at_labeled, is_labeled=labeled_fn):
+        if _should_stop_expansion(
+            address, info, stop_at_labeled=params.stop_at_labeled, is_labeled=labeled_fn
+        ):
             logger.info("bfs_stop_labeled", address=address, labels=info.labels)
             continue
 

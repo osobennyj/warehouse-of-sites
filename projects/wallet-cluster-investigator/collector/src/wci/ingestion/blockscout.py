@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 import httpx
 import structlog
@@ -35,10 +36,16 @@ def _parse_ts(raw: str | None) -> datetime | None:
         return None
 
 
-def _decimal_value(raw: str | int | float | None) -> Decimal:
+def _decimal_value(raw: str | int | float | dict[str, object] | None) -> Decimal:
     if raw is None:
         return Decimal(0)
-    return Decimal(str(raw))
+    if isinstance(raw, dict):
+        inner = raw.get("value") or raw.get("amount")
+        return _decimal_value(inner if isinstance(inner, (str, int, float)) else None)
+    try:
+        return Decimal(str(raw))
+    except Exception:
+        return Decimal(0)
 
 
 class BlockscoutAdapter(ChainDataSource):
@@ -66,7 +73,7 @@ class BlockscoutAdapter(ChainDataSource):
         if self._client is None:
             self._client = httpx.AsyncClient(
                 base_url=self.base_url,
-                timeout=httpx.Timeout(30.0),
+                timeout=httpx.Timeout(60.0),
                 headers={"accept": "application/json"},
             )
         return self._client
@@ -164,35 +171,62 @@ class BlockscoutAdapter(ChainDataSource):
             if not from_addr or not to_addr:
                 continue
             tx_hash = str((item.get("transaction") or {}).get("hash") or item.get("tx_hash") or "")
+            from_l = from_addr.lower()
+            to_l = to_addr.lower()
+            if addr not in (from_l, to_l):
+                continue
             out.append(
                 Transfer(
                     tx_hash=tx_hash,
-                    from_address=from_addr.lower(),
-                    to_address=to_addr.lower(),
+                    from_address=from_l,
+                    to_address=to_l,
                     value=_decimal_value(item.get("total") or item.get("value") or "0"),
                     token_symbol=str(token.get("symbol") or "ERC20"),
-                    token_address=str(token.get("address_hash") or token.get("address") or "").lower() or None,
+                    token_address=str(token.get("address_hash") or token.get("address") or "").lower()
+                    or None,
                     token_kind="erc20",
                     timestamp=_parse_ts(item.get("timestamp")) or datetime.min.replace(tzinfo=UTC),
                     block_number=item.get("block_number"),
                 )
             )
-            if addr not in (from_addr.lower(), to_addr.lower()):
-                continue
         return out
 
-    async def get_native_transfers(self, address: str, *, page: int = 1) -> list[Transfer]:
-        addr = address.lower()
-        path = f"/api/v2/addresses/{addr}/transactions?page={page}"
-        data = await self._fetch_json(path)
-        if not isinstance(data, dict):
-            return []
-        return self._map_native_items(addr, data)
+    async def _collect_transfer_pages(
+        self,
+        addr: str,
+        resource: str,
+        mapper: Any,
+        *,
+        max_pages: int = 1,
+    ) -> list[Transfer]:
+        base_path = f"/api/v2/addresses/{addr}/{resource}"
+        path = base_path
+        combined: list[Transfer] = []
+        for _ in range(max_pages):
+            data = await self._fetch_json(path)
+            if not isinstance(data, dict):
+                break
+            combined.extend(mapper(addr, data))
+            next_params = data.get("next_page_params")
+            if not next_params or not isinstance(next_params, dict):
+                break
+            path = f"{base_path}?{urlencode({k: str(v) for k, v in next_params.items()})}"
+        return combined
 
-    async def get_token_transfers(self, address: str, *, page: int = 1) -> list[Transfer]:
+    async def get_native_transfers(self, address: str, *, max_pages: int = 1) -> list[Transfer]:
         addr = address.lower()
-        path = f"/api/v2/addresses/{addr}/token-transfers?page={page}"
-        data = await self._fetch_json(path)
-        if not isinstance(data, dict):
-            return []
-        return self._map_token_items(addr, data)
+        return await self._collect_transfer_pages(
+            addr,
+            "transactions",
+            self._map_native_items,
+            max_pages=max_pages,
+        )
+
+    async def get_token_transfers(self, address: str, *, max_pages: int = 1) -> list[Transfer]:
+        addr = address.lower()
+        return await self._collect_transfer_pages(
+            addr,
+            "token-transfers",
+            self._map_token_items,
+            max_pages=max_pages,
+        )

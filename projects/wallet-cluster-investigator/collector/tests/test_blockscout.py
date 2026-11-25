@@ -28,11 +28,13 @@ async def test_blockscout_adapter_uses_cache_and_parses_transfers(tmp_path: Path
 
     respx.get(f"/api/v2/addresses/{SEED}").respond(200, json=_load("address_info.json"))
     respx.get(f"/api/v2/addresses/{CP}").respond(200, json=_load("counterparty.json"))
-    respx.get(f"/api/v2/addresses/{SEED}/transactions?page=1").respond(
-        200, json=_load("native_transactions_page1.json"),
+    respx.get(f"/api/v2/addresses/{SEED}/transactions").respond(
+        200,
+        json=_load("native_transactions_page1.json"),
     )
-    respx.get(f"/api/v2/addresses/{SEED}/token-transfers?page=1").respond(
-        200, json=_load("token_transfers_page1.json"),
+    respx.get(f"/api/v2/addresses/{SEED}/token-transfers").respond(
+        200,
+        json=_load("token_transfers_page1.json"),
     )
 
     info = await adapter.get_address_info(SEED)

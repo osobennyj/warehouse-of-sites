@@ -12,8 +12,8 @@ class ChainDataSource(Protocol):
     async def get_address_info(self, address: str) -> AddressInfo:
         """Fetch address metadata and optional name tags."""
 
-    async def get_native_transfers(self, address: str, *, page: int = 1) -> list[Transfer]:
+    async def get_native_transfers(self, address: str, *, max_pages: int = 1) -> list[Transfer]:
         """List native coin transfers involving `address`."""
 
-    async def get_token_transfers(self, address: str, *, page: int = 1) -> list[Transfer]:
+    async def get_token_transfers(self, address: str, *, max_pages: int = 1) -> list[Transfer]:
         """List ERC-20 token transfers involving `address`."""
