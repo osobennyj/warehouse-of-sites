@@ -6,7 +6,13 @@ import { exchangeLabel } from "@/entities/exchange";
 import type { FundingOpportunity } from "@/entities/funding-rate";
 import { formatCompactUsd } from "@/shared/lib/format";
 
-export function OpportunitiesTable({ rows }: { rows: FundingOpportunity[] }) {
+type OpportunitiesTableProps = {
+  rows: FundingOpportunity[];
+  selectedAsset?: string | null;
+  onSelectAsset?: (asset: string) => void;
+};
+
+export function OpportunitiesTable({ rows, selectedAsset, onSelectAsset }: OpportunitiesTableProps) {
   if (!rows.length) {
     return (
       <p className="rounded-xl border border-dashed border-slate-700 bg-slate-950 p-8 text-center text-sm text-slate-400">
@@ -30,7 +36,12 @@ export function OpportunitiesTable({ rows }: { rows: FundingOpportunity[] }) {
         </thead>
         <tbody className="divide-y divide-slate-900 bg-slate-950/50">
           {rows.map((row) => (
-            <tr key={row.asset} className="hover:bg-slate-900/50">
+            <tr
+              key={row.asset}
+              className={`hover:bg-slate-900/50 ${selectedAsset === row.asset ? "bg-emerald-950/30" : ""}`}
+              onClick={onSelectAsset ? () => onSelectAsset(row.asset) : undefined}
+              role={onSelectAsset ? "button" : undefined}
+            >
               <td className="px-4 py-3 font-semibold text-white">
                 <Link href={`/asset/${row.asset}/`} className="hover:text-emerald-300">
                   {row.asset}

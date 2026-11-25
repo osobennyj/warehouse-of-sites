@@ -23,7 +23,7 @@ test.describe("portfolio smoke", () => {
     await page.goto(`${basePath}/projects/funding-rate-radar/`);
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Funding Rate Radar");
     await expect(page.getByRole("heading", { name: "Problem" })).toBeVisible();
-    await expect(page.getByRole("link", { name: /Open MVP/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open demo/i })).toBeVisible();
   });
 
   test("CV is reachable", async ({ request }) => {

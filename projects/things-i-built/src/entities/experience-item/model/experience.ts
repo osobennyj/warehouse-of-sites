@@ -28,7 +28,7 @@ export const experience: readonly ExperienceItem[] = [
     organization: "Arkham",
     period: "2023 to now",
     summary:
-      "Led two CIS communities for an on-chain intelligence platform and closed the loop between users and the product team.",
+      "CIS community manager for an on-chain intelligence platform. Closed the loop between users and the product team.",
     highlights: [
       "Planned partnerships with the largest CIS crypto KOLs",
       "Relayed user feedback that shaped the CEX → DEX transition, VIP benefits and bug fixes",

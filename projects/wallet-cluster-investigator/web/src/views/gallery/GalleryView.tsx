@@ -8,9 +8,16 @@ export function GalleryView() {
       <header className="space-y-4">
         <h1 className="text-4xl font-semibold text-white">{siteConfig.title}</h1>
         <p className="max-w-2xl text-lg text-slate-300">{siteConfig.pitch}</p>
-        <p className="text-sm text-slate-500">
-          Attribution is probabilistic — public on-chain data only. Not an accusation.
+        <p className="rounded-lg border border-amber-900/50 bg-amber-950/30 p-4 text-sm text-amber-100/90">
+          Work in progress: no Arkham API connection. The viewer uses public Blockscout data and saved investigations.
+          Paste flow is experimental, not a production attribution product.
         </p>
+        <Link
+          to="/analyze"
+          className="inline-flex rounded-md bg-accent/20 px-4 py-2 text-sm font-medium text-accent hover:bg-accent/30"
+        >
+          Paste a wallet (public preview)
+        </Link>
       </header>
       <section className="grid gap-4 md:grid-cols-2">
         {INVESTIGATION_MANIFEST.map((item) => (

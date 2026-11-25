@@ -52,7 +52,7 @@ flowchart LR
 ## Results
 
 - CI: typecheck, unit + MCP integration, daily snapshot workflow stub, npm release workflow with `NPM_TOKEN`.
-- Strong signal for analyst + AI-native builder roles: domain expertise packaged as installable tools.
+- Strong signal for analyst and builder roles: domain expertise packaged as installable tools.
 
 ## Next steps
 

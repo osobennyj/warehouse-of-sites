@@ -20,6 +20,7 @@ export function App() {
     stablecoinOnly: true,
     minTvlUsd: 1_000_000,
     limit: 8,
+    capitalUsd: 10_000,
     asset: 'USDC',
     market: 'wstETH',
     supplyApyPct: 3.5,
@@ -96,8 +97,8 @@ export function App() {
             <p className="text-xs uppercase tracking-widest text-emerald-400">Portfolio demo</p>
             <h1 className="text-2xl font-semibold text-white">DeFi Strategist MCP</h1>
             <p className="max-w-2xl text-sm text-slate-400">
-              Derived DeFi analytics for agents — same core as the MCP server (yields, Pendle,
-              loops, funding). Not financial advice.
+              Playground on fixture/snapshot data. Live MCP + fresh DefiLlama runs need the server locally or in Claude.
+              Not financial advice.
             </p>
           </div>
           <nav className="flex gap-2 text-sm">
@@ -174,9 +175,13 @@ export function App() {
                 </div>
               )}
 
-              <pre className="overflow-x-auto rounded-lg border border-slate-800 bg-black/40 p-4 text-xs text-emerald-100">
-                {result ? JSON.stringify(result, null, 2) : '—'}
-              </pre>
+              <RecommendationSummary tool={tool} result={result} capitalUsd={params.capitalUsd} asset={params.asset} />
+              <details className="rounded-lg border border-slate-800 bg-black/20 p-3 text-xs text-slate-500">
+                <summary className="cursor-pointer text-slate-400">Raw tool output (debug)</summary>
+                <pre className="mt-2 overflow-x-auto text-emerald-100/80">
+                  {result ? JSON.stringify(result, null, 2) : 'empty'}
+                </pre>
+              </details>
             </section>
           </div>
         )}
@@ -189,10 +194,76 @@ function Box({ children, className }: { children: React.ReactNode; className?: s
   return <div className={className}>{children}</div>;
 }
 
+function RecommendationSummary({
+  tool,
+  result,
+  capitalUsd,
+  asset,
+}: {
+  tool: ToolId;
+  result: unknown;
+  capitalUsd: number;
+  asset: string;
+}) {
+  if (!result || typeof result !== 'object') {
+    return <p className="text-sm text-slate-500">Run a tool to see a plain-language recommendation.</p>;
+  }
+
+  if (tool === 'find_yields') {
+    const pools = (result as { pools?: { symbol: string; apy: number; riskAdjustedScore: number; tvlUsd: number }[] })
+      .pools;
+    const top = pools?.[0];
+    if (!top) {
+      return <p className="text-sm text-slate-400">No pools matched your filters in this snapshot.</p>;
+    }
+    const yearly = capitalUsd * (top.apy / 100);
+    return (
+      <article className="rounded-lg border border-emerald-900/50 bg-emerald-950/20 p-5 text-sm leading-relaxed text-slate-200">
+        <h2 className="text-lg font-medium text-emerald-300">Recommendation</h2>
+        <p className="mt-2">
+          For <strong className="text-white">${capitalUsd.toLocaleString()}</strong> in{' '}
+          <strong className="text-white">{asset}</strong> yield exposure, the highest risk-adjusted score in this
+          snapshot is <strong className="text-white">{top.symbol}</strong> (score {top.riskAdjustedScore}/100, APY{' '}
+          {top.apy.toFixed(2)}%, TVL about ${Math.round(top.tvlUsd).toLocaleString()} in fixture data).
+        </p>
+        <p className="mt-2 text-slate-400">
+          Illustrative interest at the stated APY: about ${yearly.toFixed(0)} per year before gas, IL, and protocol
+          risk. This is not a forecast.
+        </p>
+        <p className="mt-2 text-xs text-slate-500">
+          Live: install the MCP server for agents. Not live here: fresh pool pulls (this page may use snapshots).
+        </p>
+      </article>
+    );
+  }
+
+  if (tool === 'simulate_loop' && 'netApyPct' in (result as object)) {
+    const r = result as { netApyPct: number; healthFactor: number; loops: number };
+    const yearly = capitalUsd * (r.netApyPct / 100);
+    return (
+      <article className="rounded-lg border border-slate-800 bg-slate-900/80 p-5 text-sm text-slate-200">
+        <h2 className="text-lg font-medium text-white">Loop summary</h2>
+        <p className="mt-2">
+          At ${capitalUsd.toLocaleString()} with {r.loops} loops, model net APY {r.netApyPct.toFixed(2)}% and health
+          factor {r.healthFactor.toFixed(2)}. Illustrative yearly: about ${yearly.toFixed(0)} before liquidation risk.
+        </p>
+      </article>
+    );
+  }
+
+  return (
+    <p className="text-sm text-slate-400">
+      Open the debug panel for numbers. Prefer <strong className="text-slate-200">find_yields</strong> for a sized
+      stablecoin recommendation.
+    </p>
+  );
+}
+
 type FormParams = {
   stablecoinOnly: boolean;
   minTvlUsd: number;
   limit: number;
+  capitalUsd: number;
   asset: string;
   market: string;
   supplyApyPct: number;
@@ -252,6 +323,7 @@ function ToolForm({
       <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         {tool === 'find_yields' && (
           <>
+            {field('Your size (USD)', 'capitalUsd', 'number')}
             {field('Asset filter', 'asset')}
             {field('Min TVL USD', 'minTvlUsd', 'number')}
             {field('Limit', 'limit', 'number')}
