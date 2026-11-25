@@ -8,7 +8,8 @@ export async function GalleryView() {
       <div>
         <h1 className="text-3xl font-semibold text-zinc-50">Report gallery</h1>
         <p className="mt-2 text-zinc-400">
-          Pre-generated due-diligence memos using live market data and a mock LLM (no API key).
+          Checklist scores are formulaic from live market adapters. Prose is mock unless you run with an LLM API key
+          locally.
         </p>
       </div>
       <ReportGallery reports={reports} />

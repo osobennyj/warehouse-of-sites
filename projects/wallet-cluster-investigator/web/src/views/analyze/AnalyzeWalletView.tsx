@@ -87,7 +87,8 @@ export function AnalyzeWalletView() {
 
       {counterparties.length > 0 ? (
         <section className="space-y-4">
-          <h2 className="text-lg font-medium text-white">Trading-relevant hints (illustrative)</h2>
+          <h2 className="text-lg font-medium text-white">Trading-relevant hints (Blockscout evidence)</h2>
+          <EvidenceCards chain={chain} funders={funders} labeledCex={labeledCex} />
           <ul className="list-disc space-y-2 pl-5 text-sm text-slate-300">
             <li>
               <strong className="text-slate-100">Inbound funders:</strong> {funders.length} counterparties sent native
@@ -130,6 +131,80 @@ export function AnalyzeWalletView() {
           </div>
         </section>
       ) : null}
+    </div>
+  );
+}
+
+function blockscoutTxUrl(chain: string, txHash: string): string {
+  const origins: Record<string, string> = {
+    ethereum: "https://eth.blockscout.com",
+    base: "https://base.blockscout.com",
+    arbitrum: "https://arbitrum.blockscout.com",
+    optimism: "https://optimism.blockscout.com",
+  };
+  const origin = origins[chain] ?? origins.ethereum;
+  return `${origin}/tx/${txHash}`;
+}
+
+function EvidenceCards({
+  chain,
+  funders,
+  labeledCex,
+}: {
+  chain: string;
+  funders: LiveCounterparty[];
+  labeledCex: LiveCounterparty[];
+}) {
+  const topFunder = funders[0];
+  const topCex = labeledCex[0];
+
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      <article className="rounded-lg border border-surface-border bg-surface-raised p-4">
+        <h3 className="text-sm font-medium text-white">Where funds came from</h3>
+        {topFunder ? (
+          <>
+            <p className="mt-2 font-mono text-sm text-accent">{shortenAddress(topFunder.address)}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              Inbound native transfer in sample · value {topFunder.value} {topFunder.tokenSymbol}
+              {topFunder.label ? ` · label: ${topFunder.label}` : ""}
+            </p>
+            <a
+              href={blockscoutTxUrl(chain, topFunder.txHash)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 inline-block text-xs text-sky-400 hover:underline"
+            >
+              Tx evidence {shortenAddress(topFunder.txHash)}
+            </a>
+          </>
+        ) : (
+          <p className="mt-2 text-sm text-slate-500">No inbound native transfers in this Blockscout slice.</p>
+        )}
+      </article>
+      <article className="rounded-lg border border-surface-border bg-surface-raised p-4">
+        <h3 className="text-sm font-medium text-white">CEX / named touchpoint</h3>
+        {topCex ? (
+          <>
+            <p className="mt-2 font-mono text-sm text-accent">{shortenAddress(topCex.address)}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              API label: {topCex.label} · {topCex.direction} · not Arkham, may be incomplete
+            </p>
+            <a
+              href={blockscoutTxUrl(chain, topCex.txHash)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 inline-block text-xs text-sky-400 hover:underline"
+            >
+              Tx evidence {shortenAddress(topCex.txHash)}
+            </a>
+          </>
+        ) : (
+          <p className="mt-2 text-sm text-slate-500">
+            No exchange-like names in this response. Do not infer shared CEX deposits without full clustering.
+          </p>
+        )}
+      </article>
     </div>
   );
 }

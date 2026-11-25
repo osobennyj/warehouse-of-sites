@@ -154,17 +154,19 @@ export function App() {
             </aside>
 
             <section className="space-y-4">
-              <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
-                <ToolForm tool={tool} params={params} setParams={setParams} onRun={() => void run()} loading={loading} />
-              </div>
-
               {error && (
                 <p className="rounded border border-rose-900 bg-rose-950/40 p-3 text-sm text-rose-200">
                   {error}
                 </p>
               )}
 
-              {chartData.length > 0 && (
+              <RecommendationSummary tool={tool} result={result} capitalUsd={params.capitalUsd} asset={params.asset} />
+
+              <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
+                <ToolForm tool={tool} params={params} setParams={setParams} onRun={() => void run()} loading={loading} />
+              </div>
+
+              {chartData.length > 0 && tool !== 'find_yields' && (
                 <div className="h-56 rounded-lg border border-slate-800 bg-slate-900 p-4">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={chartData}>
@@ -177,7 +179,6 @@ export function App() {
                 </div>
               )}
 
-              <RecommendationSummary tool={tool} result={result} capitalUsd={params.capitalUsd} asset={params.asset} />
               <details className="rounded-lg border border-slate-800 bg-black/20 p-3 text-xs text-slate-500">
                 <summary className="cursor-pointer text-slate-400">Raw tool output (debug)</summary>
                 <pre className="mt-2 overflow-x-auto text-emerald-100/80">

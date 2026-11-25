@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { groupSnapshotsByAsset, rankOpportunities } from "@/entities/funding-rate";
+import { useMemo, useState } from "react";
+import { groupSnapshotsByAsset, rankOpportunities, rankOpportunitiesByNetUsd } from "@/entities/funding-rate";
 import { defaultFilters, filterOpportunities } from "@/features/filter-opportunities";
 import { SNAPSHOT_REFRESH_MS } from "@/shared/config";
-import { env } from "@/shared/config";
 import { ArbFocus } from "@/widgets/arb-focus";
 import { ExchangeStatusBar } from "@/widgets/funding-snapshots";
 import { OpportunitiesTable } from "@/widgets/opportunities-table";
@@ -16,27 +15,24 @@ export function DashboardView() {
   const [filters, setFilters] = useState(defaultFilters);
   const [selectedAsset, setSelectedAsset] = useState<string | null>(null);
 
-  const opportunities = filterOpportunities(
-    rankOpportunities(groupSnapshotsByAsset(data?.snapshots ?? [])),
-    filters,
-  );
+  const opportunities = useMemo(() => {
+    const spreadRanked = rankOpportunities(groupSnapshotsByAsset(data?.snapshots ?? []));
+    const filtered = filterOpportunities(spreadRanked, filters);
+    return rankOpportunitiesByNetUsd(filtered);
+  }, [data?.snapshots, filters]);
 
   const activeAsset = selectedAsset ?? opportunities[0]?.asset ?? null;
 
   return (
     <DashboardShell>
-      <section className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-white">Funding Rate Radar</h1>
-          <p className="mt-1 max-w-2xl text-sm text-slate-400">
-            Cross-exchange perpetual funding spreads across Binance, Bybit, OKX and Hyperliquid. Refreshes every{" "}
-            {SNAPSHOT_REFRESH_MS / 60_000} minutes. Client-side, no API keys.
-          </p>
-        </div>
-        <div className="text-right text-xs text-slate-500">
-          {isFetching ? "Refreshing…" : dataUpdatedAt ? `Updated ${new Date(dataUpdatedAt).toLocaleTimeString()}` : null}
-        </div>
-      </section>
+      <p className="text-sm text-slate-400">
+        Live funding spreads · Binance, Bybit, OKX, Hyperliquid · refresh every {SNAPSHOT_REFRESH_MS / 60_000} min ·
+        no API keys
+        <span className="text-slate-600">
+          {" "}
+          · {isFetching ? "Refreshing…" : dataUpdatedAt ? `Updated ${new Date(dataUpdatedAt).toLocaleTimeString()}` : null}
+        </span>
+      </p>
 
       {error ? (
         <p className="rounded-lg border border-rose-900 bg-rose-950/40 p-3 text-sm text-rose-200">
@@ -44,9 +40,9 @@ export function DashboardView() {
         </p>
       ) : null}
 
-      <ExchangeStatusBar statuses={data?.statuses ?? []} updatedAt={dataUpdatedAt} />
-
       <ArbFocus opportunities={opportunities} selectedAsset={activeAsset} onSelectAsset={setSelectedAsset} />
+
+      <ExchangeStatusBar statuses={data?.statuses ?? []} updatedAt={dataUpdatedAt} />
 
       <details className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
         <summary className="cursor-pointer text-sm font-medium text-slate-200">
@@ -73,5 +69,5 @@ function Disclaimer() {
 }
 
 function DashboardShell({ children }: { children: React.ReactNode }) {
-  return <div className="grid gap-6 py-6">{children}</div>;
+  return <div className="grid gap-6 py-4">{children}</div>;
 }

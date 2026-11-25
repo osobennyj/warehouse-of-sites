@@ -3,8 +3,7 @@
 import { useMemo, useState } from "react";
 import { calculateNetYield } from "@/features/calculate-net-yield";
 import { EXCHANGE_CATALOG, exchangeLabel } from "@/entities/exchange";
-import type { FundingOpportunity } from "@/entities/funding-rate";
-import { formatApr } from "@/entities/funding-rate";
+import { estimateNextWindowNetUsd, formatApr, type FundingOpportunity } from "@/entities/funding-rate";
 import { formatUsd } from "@/shared/lib/format";
 import { Card, CardDescription, CardTitle, Input } from "@/shared/ui";
 
@@ -48,13 +47,29 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
     return { ...calc, notionalUsd, longCap, shortCap };
   }, [longCapitalUsd, shortCapitalUsd, leverage, opportunity]);
 
+  const topNetUsd = opportunity
+    ? estimateNextWindowNetUsd(
+        opportunity,
+        Number(longCapitalUsd) || 0,
+        Number(shortCapitalUsd) || 0,
+        Math.max(1, Number(leverage) || 1),
+      )
+    : null;
+
   return (
     <Card className="border-emerald-900/60 bg-gradient-to-b from-emerald-950/40 to-slate-950/80">
-      <CardTitle>Funding arb, next payment</CardTitle>
+      <CardTitle>Size the arb · net after fees (next funding window)</CardTitle>
       <CardDescription className="mt-1">
-        Pick an asset, set size on each leg, see estimated PnL after taker fees for the next ~8h funding window.
-        Illustrative only, not financial advice.
+        Ranked by estimated net USD at default size. Set margin on each leg, then read net PnL for the next ~8h window
+        after taker fees on both legs. Not financial advice.
       </CardDescription>
+
+      {opportunity && topNetUsd !== null ? (
+        <p className="mt-4 rounded-lg border border-emerald-800/60 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-100">
+          Top pick right now: <strong className="text-white">{opportunity.asset}</strong> · estimated net{" "}
+          <strong className="font-mono text-lg text-emerald-300">{formatUsd(topNetUsd)}</strong> on your sizes below
+        </p>
+      ) : null}
 
       <div className="mt-4 flex flex-wrap gap-2">
         {opportunities.slice(0, 8).map((row) => (
