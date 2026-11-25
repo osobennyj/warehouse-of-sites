@@ -1,0 +1,30 @@
+name: DeFi Strategist npm release
+
+on:
+  push:
+    tags:
+      - 'defi-strategist-v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/defi-strategist-mcp
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+          cache-dependency-path: projects/defi-strategist-mcp/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile || pnpm install
+      - run: pnpm run build
+      - run: cp server.json packages/mcp-server/server.json
+      - run: pnpm publish --filter defi-strategist-mcp --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
