@@ -1,0 +1,36 @@
+name: AI Token Due Diligence Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "projects/ai-token-due-diligence/**"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/ai-token-due-diligence
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: projects/ai-token-due-diligence/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:static
+        env:
+          NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites/projects/ai-token-due-diligence
+          NEXT_PUBLIC_STATIC_DEMO: "true"
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: projects/ai-token-due-diligence/out
+          destination_dir: projects/ai-token-due-diligence
+          keep_files: true

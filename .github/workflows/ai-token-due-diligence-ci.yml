@@ -1,0 +1,41 @@
+name: AI Token Due Diligence CI
+
+on:
+  push:
+    paths:
+      - "projects/ai-token-due-diligence/**"
+      - ".github/workflows/ai-token-due-diligence-ci.yml"
+  pull_request:
+    paths:
+      - "projects/ai-token-due-diligence/**"
+      - ".github/workflows/ai-token-due-diligence-ci.yml"
+
+defaults:
+  run:
+    working-directory: projects/ai-token-due-diligence
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: projects/ai-token-due-diligence/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - run: pnpm eval:hallucination
+      - run: pnpm build:static
+        env:
+          NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites/projects/ai-token-due-diligence
+          NEXT_PUBLIC_STATIC_DEMO: "true"
+      - run: pnpm exec playwright install chromium --with-deps
+      - run: pnpm test:e2e
+        env:
+          CI: "true"
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000/warehouse-of-sites/projects/ai-token-due-diligence

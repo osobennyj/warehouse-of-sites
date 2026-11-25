@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "arbitrum-fixture",
+  "createdAt": "2026-11-25T10:00:00.000Z",
+  "query": "arbitrum",
+  "token": {
+    "id": "arbitrum",
+    "symbol": "ARB",
+    "name": "Arbitrum",
+    "imageUrl": null,
+    "homepage": "https://arbitrum.io/",
+    "categories": ["Layer 2 (L2)"],
+    "contracts": { "ethereum": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1" }
+  },
+  "facts": {
+    "market": {
+      "sourceId": "S1",
+      "priceUsd": 0.5,
+      "marketCapUsd": 500,
+      "fdvUsd": 1000,
+      "volume24hUsd": 50,
+      "marketCapRank": 50,
+      "circulatingSupply": 1000,
+      "totalSupply": 2000,
+      "maxSupply": 2000,
+      "athUsd": 2,
+      "athChangePct": -75,
+      "priceChange24hPct": -1,
+      "priceChange30dPct": -10,
+      "priceChange1yPct": -20,
+      "mcapToFdvPct": 50,
+      "volumeToMcapPct": 10
+    },
+    "protocol": null,
+    "unlocks": {
+      "sourceId": "S2",
+      "windows": [{ "days": 365, "tokens": 100, "usd": 50, "pctOfCirculating": 10 }],
+      "upcoming": [],
+      "remainingLockedTokens": 100,
+      "scheduleEndsOn": "2027-03-16",
+      "notes": "fixture"
+    },
+    "holders": null,
+    "news": []
+  },
+  "analysis": {
+    "summary": "Arbitrum market data is sourced from CoinGecko.",
+    "tokenomics": "Unlock model shows material float pressure ahead.",
+    "fundamentals": "No matching protocol revenue in fixture.",
+    "distribution": "Holder data not loaded in fixture.",
+    "catalysts": [],
+    "risks": [
+      {
+        "title": "Unlock overhang",
+        "detail": "Vesting schedule still releasing supply.",
+        "severity": "medium",
+        "sourceIds": ["S2"]
+      }
+    ],
+    "redFlags": [],
+    "verdict": "Moderate risk in fixture."
+  },
+  "score": {
+    "total": 55,
+    "grade": "C",
+    "coveragePct": 60,
+    "factors": []
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tool": "getMarketData",
+      "title": "CoinGecko",
+      "url": "https://www.coingecko.com/en/coins/arbitrum",
+      "fetchedAt": "2026-11-25T10:00:00.000Z"
+    },
+    {
+      "id": "S2",
+      "tool": "getTokenUnlocks",
+      "title": "Vesting",
+      "url": "https://docs.arbitrum.foundation/",
+      "fetchedAt": "2026-11-25T10:00:00.000Z"
+    }
+  ],
+  "meta": {
+    "provider": "mock",
+    "model": "mock-template",
+    "promptVersion": "analysis-v1",
+    "durationMs": 1,
+    "steps": 1,
+    "toolCalls": [],
+    "usage": { "inputTokens": 0, "outputTokens": 0 },
+    "estimatedCostUsd": 0,
+    "guard": { "passed": true, "unverifiedNumbers": [], "invalidCitations": [], "repairAttempts": 0 }
+  }
+}

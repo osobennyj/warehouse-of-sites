@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "arbitrum",
+  "createdAt": "2026-11-25T10:50:22.577Z",
+  "query": "arbitrum",
+  "token": {
+    "id": "arbitrum",
+    "symbol": "ARB",
+    "name": "Arbitrum",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/16547/large/arb.jpg?1721358242",
+    "homepage": "https://arbitrum.io/",
+    "categories": [
+      "Smart Contract Platform",
+      "Arbitrum Ecosystem",
+      "Ethereum Ecosystem",
+      "Arbitrum Nova Ecosystem",
+      "Layer 2 (L2)",
+      "eGirl Capital Portfolio"
+    ],
+    "contracts": {
+      "arbitrum-one": "0x912ce59144191c1204e64559fe8253a0e49e6548",
+      "arbitrum-nova": "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad",
+      "ethereum": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1"
+    }
+  },
+  "facts": {
+    "market": {
+      "sourceId": "S1",
+      "priceUsd": 0.107534,
+      "marketCapUsd": 752899497,
+      "fdvUsd": 1075928780,
+      "volume24hUsd": 80163180,
+      "marketCapRank": 78,
+      "circulatingSupply": 6997670388,
+      "totalSupply": 10000000000,
+      "maxSupply": 10000000000,
+      "athUsd": 2.39,
+      "athChangePct": -95.50122,
+      "priceChange24hPct": -4.86626,
+      "priceChange30dPct": -37.03142,
+      "priceChange1yPct": -49.82299,
+      "mcapToFdvPct": 69.97670394131478,
+      "volumeToMcapPct": 10.647261728745717
+    },
+    "protocol": null,
+    "unlocks": {
+      "sourceId": "S2",
+      "windows": [
+        {
+          "days": 30,
+          "tokens": 92645833.33333334,
+          "usd": 9962577.041666668,
+          "pctOfCirculating": 1.3239525184296712
+        },
+        {
+          "days": 90,
+          "tokens": 277937500,
+          "usd": 29887731.125,
+          "pctOfCirculating": 3.971857555289013
+        },
+        {
+          "days": 365,
+          "tokens": 370583333.3333333,
+          "usd": 39850308.166666664,
+          "pctOfCirculating": 5.295810073718684
+        }
+      ],
+      "upcoming": [
+        {
+          "date": "2026-12-16",
+          "category": "Team & advisors + Investors",
+          "tokens": 92645833.33333334,
+          "usd": 9962577.041666668
+        },
+        {
+          "date": "2027-01-16",
+          "category": "Team & advisors + Investors",
+          "tokens": 92645833.33333334,
+          "usd": 9962577.041666668
+        },
+        {
+          "date": "2027-02-16",
+          "category": "Team & advisors + Investors",
+          "tokens": 92645833.33333334,
+          "usd": 9962577.041666668
+        },
+        {
+          "date": "2027-03-16",
+          "category": "Team & advisors + Investors",
+          "tokens": 92645833.33333334,
+          "usd": 9962577.041666668
+        }
+      ],
+      "remainingLockedTokens": 370583333.3333333,
+      "scheduleEndsOn": "2027-03-16",
+      "notes": "Team/advisors (26.94%) and investors (17.53%) vest over 4 years: 1-year cliff from TGE (16 Mar 2023), then monthly until 16 Mar 2027. DAO treasury tokens are released only by governance votes and are not modelled."
+    },
+    "holders": {
+      "sourceId": "S3",
+      "chain": "Ethereum",
+      "contract": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
+      "top1SharePct": 33.02,
+      "top10SharePct": 61.949999999999996,
+      "holders": [
+        {
+          "address": "0x611f7bf868a6212f871e89f7e44684045ddfb09d",
+          "sharePct": 33.02
+        },
+        {
+          "address": "0x92ea7496eba5f001d620005f88f3e8e686e3d4ea",
+          "sharePct": 7.48
+        },
+        {
+          "address": "0xb0a27099582833c0cb8c7a0565759ff145113d64",
+          "sharePct": 6.26
+        },
+        {
+          "address": "0x0529ea5885702715e83923c59746ae8734c553b7",
+          "sharePct": 4.14
+        },
+        {
+          "address": "0x62d94d917138fdff4cc88afcbfc388f59eca609e",
+          "sharePct": 2.86
+        },
+        {
+          "address": "0xbb3c6d28def21b6297016622a57a0b05015e3ad2",
+          "sharePct": 2.43
+        },
+        {
+          "address": "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+          "sharePct": 1.9
+        },
+        {
+          "address": "0x4a4aaa0155237881fbd5c34bfae16e985a7b068d",
+          "sharePct": 1.86
+        },
+        {
+          "address": "0xd224e961f33ce0b5e59bf1e2235d0a11bcd1ab28",
+          "sharePct": 1.16
+        },
+        {
+          "address": "0xd87e2ac6ea9d7ec1256631830e29336b0b6116e8",
+          "sharePct": 0.84
+        }
+      ]
+    },
+    "news": []
+  },
+  "analysis": {
+    "summary": "Arbitrum (ARB) receives grade B on our transparent checklist (see score breakdown). Market metrics are sourced from CoinGecko (price, capitalization, volume, momentum).",
+    "tokenomics": "Vesting model highlights upcoming unlock categories; see unlock table and the sourced vesting documentation.",
+    "fundamentals": "No matching protocol TVL/revenue footprint — treat as pure token/market exposure.",
+    "distribution": "On Ethereum, review top-holder concentration in the holder tool output (contracts and exchanges included).",
+    "catalysts": [],
+    "risks": [
+      {
+        "title": "Weak recent momentum",
+        "detail": "Recent price trend is negative in market data.",
+        "severity": "medium",
+        "sourceIds": [
+          "S1"
+        ]
+      },
+      {
+        "title": "Concentrated supply",
+        "detail": "Top holders control a majority of on-chain supply.",
+        "severity": "medium",
+        "sourceIds": [
+          "S3"
+        ]
+      }
+    ],
+    "redFlags": [],
+    "verdict": "Grade B — ARB shows relatively balanced fundamentals versus identified risks; verify sources before sizing a position."
+  },
+  "score": {
+    "total": 74,
+    "grade": "B",
+    "coveragePct": 75,
+    "factors": [
+      {
+        "key": "valuation",
+        "label": "Float vs FDV",
+        "weight": 20,
+        "score": 70,
+        "value": 70,
+        "rationale": "Market cap is 70% of FDV; a low float means future supply can dilute holders."
+      },
+      {
+        "key": "supplyOverhang",
+        "label": "Unlock overhang (12m)",
+        "weight": 25,
+        "score": 87,
+        "value": 5.3,
+        "rationale": "Scheduled unlocks over the next 365 days equal 5.3% of circulating supply (40%+ scores 0)."
+      },
+      {
+        "key": "liquidity",
+        "label": "Liquidity (volume / mcap)",
+        "weight": 15,
+        "score": 100,
+        "value": 10.6,
+        "rationale": "24h volume is 10.6% of market cap (10%+ scores 100)."
+      },
+      {
+        "key": "fundamentals",
+        "label": "Revenue yield",
+        "weight": 25,
+        "score": null,
+        "value": null,
+        "rationale": "Not enough data — factor excluded and weights renormalised."
+      },
+      {
+        "key": "concentration",
+        "label": "Holder concentration",
+        "weight": 15,
+        "score": 30,
+        "value": 62,
+        "rationale": "Top 10 addresses hold 62% of supply on Ethereum (20% or less scores 100, 80%+ scores 0; includes exchange and contract wallets)."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tool": "getMarketData",
+      "title": "CoinGecko — ARB",
+      "url": "https://www.coingecko.com/en/coins/arbitrum",
+      "fetchedAt": "2026-11-25T10:50:22.814Z"
+    },
+    {
+      "id": "S2",
+      "tool": "getTokenUnlocks",
+      "title": "Arbitrum Foundation — token distribution",
+      "url": "https://docs.arbitrum.foundation/airdrop-eligibility-distribution",
+      "fetchedAt": "2026-11-25T10:50:22.814Z"
+    },
+    {
+      "id": "S3",
+      "tool": "getHolderConcentration",
+      "title": "Top holders — Ethereum",
+      "url": "https://ethplorer.io/address/0xb50721bcf8d664c30412cfbc6cf7a15145234ad1#tab=tab-holders",
+      "fetchedAt": "2026-11-25T10:50:22.814Z"
+    }
+  ],
+  "meta": {
+    "provider": "mock",
+    "model": "mock-template",
+    "promptVersion": "analysis-v1",
+    "durationMs": 243,
+    "steps": 1,
+    "toolCalls": [],
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "estimatedCostUsd": 0,
+    "guard": {
+      "passed": true,
+      "unverifiedNumbers": [],
+      "invalidCitations": [],
+      "repairAttempts": 0
+    }
+  }
+}

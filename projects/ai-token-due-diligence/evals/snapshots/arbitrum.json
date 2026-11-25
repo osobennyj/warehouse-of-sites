@@ -1,0 +1,138 @@
+{
+  "capturedAt": "2026-11-25T10:50:22.829Z",
+  "query": "arbitrum",
+  "token": {
+    "id": "arbitrum",
+    "symbol": "ARB",
+    "name": "Arbitrum",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/16547/large/arb.jpg?1721358242",
+    "homepage": "https://arbitrum.io/",
+    "categories": [
+      "Smart Contract Platform",
+      "Arbitrum Ecosystem",
+      "Ethereum Ecosystem",
+      "Arbitrum Nova Ecosystem",
+      "Layer 2 (L2)",
+      "eGirl Capital Portfolio"
+    ],
+    "contracts": {
+      "arbitrum-one": "0x912ce59144191c1204e64559fe8253a0e49e6548",
+      "arbitrum-nova": "0xf823c3cd3cebe0a1fa952ba88dc9eef8e0bf46ad",
+      "ethereum": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1"
+    }
+  },
+  "calls": {
+    "unlocks": {
+      "ok": true,
+      "value": {
+        "tokenId": "arbitrum",
+        "sourceTitle": "Arbitrum Foundation — token distribution",
+        "sourceUrl": "https://docs.arbitrum.foundation/airdrop-eligibility-distribution",
+        "notes": "Team/advisors (26.94%) and investors (17.53%) vest over 4 years: 1-year cliff from TGE (16 Mar 2023), then monthly until 16 Mar 2027. DAO treasury tokens are released only by governance votes and are not modelled.",
+        "tranches": [
+          {
+            "category": "Team & advisors",
+            "cliff": {
+              "date": "2024-03-16",
+              "tokens": 673500000
+            },
+            "linear": {
+              "start": "2024-03-16",
+              "end": "2027-03-16",
+              "tokens": 2020500000
+            }
+          },
+          {
+            "category": "Investors",
+            "cliff": {
+              "date": "2024-03-16",
+              "tokens": 438250000
+            },
+            "linear": {
+              "start": "2024-03-16",
+              "end": "2027-03-16",
+              "tokens": 1314750000
+            }
+          }
+        ]
+      }
+    },
+    "market": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://www.coingecko.com/en/coins/arbitrum",
+        "priceUsd": 0.107534,
+        "marketCapUsd": 752899497,
+        "fdvUsd": 1075928780,
+        "volume24hUsd": 80163180,
+        "marketCapRank": 78,
+        "circulatingSupply": 6997670388,
+        "totalSupply": 10000000000,
+        "maxSupply": 10000000000,
+        "athUsd": 2.39,
+        "athChangePct": -95.50122,
+        "priceChange24hPct": -4.86626,
+        "priceChange30dPct": -37.03142,
+        "priceChange1yPct": -49.82299
+      }
+    },
+    "protocol": {
+      "ok": true,
+      "value": null
+    },
+    "news": {
+      "ok": true,
+      "value": []
+    },
+    "holders": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://ethplorer.io/address/0xb50721bcf8d664c30412cfbc6cf7a15145234ad1#tab=tab-holders",
+        "chain": "Ethereum",
+        "contract": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
+        "holders": [
+          {
+            "address": "0x611f7bf868a6212f871e89f7e44684045ddfb09d",
+            "sharePct": 33.02
+          },
+          {
+            "address": "0x92ea7496eba5f001d620005f88f3e8e686e3d4ea",
+            "sharePct": 7.48
+          },
+          {
+            "address": "0xb0a27099582833c0cb8c7a0565759ff145113d64",
+            "sharePct": 6.26
+          },
+          {
+            "address": "0x0529ea5885702715e83923c59746ae8734c553b7",
+            "sharePct": 4.14
+          },
+          {
+            "address": "0x62d94d917138fdff4cc88afcbfc388f59eca609e",
+            "sharePct": 2.86
+          },
+          {
+            "address": "0xbb3c6d28def21b6297016622a57a0b05015e3ad2",
+            "sharePct": 2.43
+          },
+          {
+            "address": "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+            "sharePct": 1.9
+          },
+          {
+            "address": "0x4a4aaa0155237881fbd5c34bfae16e985a7b068d",
+            "sharePct": 1.86
+          },
+          {
+            "address": "0xd224e961f33ce0b5e59bf1e2235d0a11bcd1ab28",
+            "sharePct": 1.16
+          },
+          {
+            "address": "0xd87e2ac6ea9d7ec1256631830e29336b0b6116e8",
+            "sharePct": 0.84
+          }
+        ]
+      }
+    }
+  }
+}
