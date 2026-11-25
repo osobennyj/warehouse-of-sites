@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ProjectLinks, ProjectStatusBadge } from "@/entities/project";
+import { ProjectLivePreview } from "@/widgets/project-live-preview";
 import { getProjectCaseStudy, getProjects } from "@/entities/project/server";
 import { formatMonthYear } from "@/shared/lib";
 import { buildPageMetadata } from "@/shared/seo";
@@ -75,12 +76,14 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
           <ProjectLinks project={project} size="md" className="relative z-10 mt-8 flex flex-wrap gap-2" />
         </header>
 
+        <ProjectLivePreview project={project} />
+
         <section aria-label="Case study" className="mt-12">
           <MarkdownContent html={html} />
         </section>
 
         <footer className="mt-16 border-t border-border pt-10">
-          <p className="text-muted">Explore the repo or view the live demo when it ships.</p>
+          <p className="text-muted">Browse other projects or open the live MVP again from the top of the page.</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <ButtonLink href="/projects/" variant="secondary">
               ← All projects

@@ -21,10 +21,11 @@ export function ContactBlock() {
           <div className="relative">
             <p className="mb-3 font-mono text-xs tracking-[0.2em] text-accent uppercase">Contact</p>
             <h2 id="contact-title" className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-              Hiring for on-chain research, Web3 growth or an AI-native builder?
+              If you are hiring for research, growth, or builder work, I would like to hear from you.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted">
-              I reply within a day. Happy to walk you through the architecture and trade-offs of any project here.
+              I usually reply within a day. I am glad to walk through how any project here was built and what I would do
+              differently next time.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <ButtonLink href={`mailto:${email}`}>

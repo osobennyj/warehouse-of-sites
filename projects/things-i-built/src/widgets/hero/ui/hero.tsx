@@ -57,7 +57,7 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-            I&apos;m <strong className="font-medium text-fg">{siteConfig.name}</strong> — {siteConfig.role}. Dashboards,
+            I&apos;m <strong className="font-medium text-fg">{siteConfig.name}</strong>, {siteConfig.role}. Dashboards,
             bots and AI agents that make on-chain data actionable. Ex-Arkham community lead, ex-P&amp;G engineer.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">

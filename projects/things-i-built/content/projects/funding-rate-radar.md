@@ -1,7 +1,7 @@
 ---
 title: Funding Rate Radar
-tagline: Cross-venue funding spreads across Binance, Bybit, OKX and Hyperliquid — one APR-ranked table with fee-aware math.
-description: Real-time funding arbitrage dashboard with symbol normalization, 7-day history, filters and a net-yield calculator — static export, no API keys.
+tagline: Cross-venue funding spreads across Binance, Bybit, OKX and Hyperliquid in one APR-ranked, fee-aware table.
+description: Funding arbitrage dashboard with symbol normalization, 7-day history, filters and a net-yield calculator. Static export, no API keys.
 status: live
 tags: [Trading, DeFi]
 stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
@@ -10,6 +10,7 @@ metric:
   label: venues × pairs, refresh every 5 min
 role: Product, architecture, AI-assisted implementation
 links:
+  live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/
   github: https://github.com/osobennyj/warehouse-of-sites/pull/4
 cover:
   src: /projects/funding-rate-radar/cover.png
@@ -27,10 +28,10 @@ Funding-rate arbitrage is tedious to operationalize: every exchange uses differe
 
 A static client-side dashboard that polls public REST APIs, normalizes funding to a common **annualized APR**, and ranks delta-neutral opportunities:
 
-- **Opportunities table** — best long vs short venue per asset, spread APR, min OI/volume across legs, filters by spread, volume and exchange.
-- **Per-asset history** — seven days of funding per venue and spread over time.
-- **Net yield calculator** — capital, leverage, holding period and taker/maker fees → net APR and PnL with formulas visible in the UI.
-- **Graceful degradation** — if one exchange fails, the others keep working with a clear stale flag.
+- **Opportunities table:** best long vs short venue per asset, spread APR, min OI/volume across legs, filters by spread, volume and exchange.
+- **Per-asset history:** seven days of funding per venue and spread over time.
+- **Net yield calculator:** capital, leverage, holding period and taker/maker fees, with net APR and PnL formulas visible in the UI.
+- **Graceful degradation:** if one exchange fails, the others keep working with a clear stale flag.
 
 Four adapters implement a shared `ExchangeFundingSource` interface; domain math and API parsing are covered by recorded fixtures and Vitest.
 
@@ -52,7 +53,7 @@ flowchart LR
 
 - **~80%** line coverage on domain and adapter layers with recorded JSON fixtures (no live network in CI).
 - Steiger-enforced FSD layout, Playwright smoke, GitHub Actions CI.
-- Shipped in monorepo PR — ready to extract to a dedicated repo when permissions allow.
+- Shipped in monorepo PR, ready to extract to a dedicated repo when permissions allow.
 
 ## Next steps
 

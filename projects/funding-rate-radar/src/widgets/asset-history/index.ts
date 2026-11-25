@@ -1,0 +1,1 @@
+export { useAssetHistory } from "./model/use-asset-history";

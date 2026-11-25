@@ -12,7 +12,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "independent",
     role: "Independent Researcher & Builder",
     organization: "Self-directed",
-    period: "2023 — now",
+    period: "2023 to now",
     summary:
       "Token valuation research, DeFi strategy analysis and tooling built with AI coding agents. The projects on this site are the public proof.",
     highlights: [
@@ -26,7 +26,7 @@ export const experience: readonly ExperienceItem[] = [
     id: "arkham",
     role: "Community Manager",
     organization: "Arkham",
-    period: "2023 — now",
+    period: "2023 to now",
     summary:
       "Led two CIS communities for an on-chain intelligence platform and closed the loop between users and the product team.",
     highlights: [
@@ -39,18 +39,18 @@ export const experience: readonly ExperienceItem[] = [
     id: "pg",
     role: "Manufacturing Process Engineer",
     organization: "Procter & Gamble",
-    period: "2021 — 2022",
+    period: "2021 to 2022",
     summary: "Data-driven process optimization on high-volume packaging lines.",
     highlights: [
-      "Two cost-reduction projects: −3–4% packaging paper, ≈ $10–30k saved per year",
-      "−12% product weight variation via root cause analysis, ≈ $60k saved per year",
+      "Two cost-reduction projects: about 3 to 4% less packaging paper, roughly $10k to $30k saved per year",
+      "About 12% less product weight variation via root cause analysis, roughly $60k saved per year",
     ],
   },
   {
     id: "education",
     role: "Integrated Engineering, B.Sc.",
     organization: "TalTech · Erasmus+ at TUHH · Huawei Seeds for the Future",
-    period: "2018 — 2022",
+    period: "2018 to 2022",
     summary: "Engineering degree in Tallinn with an Erasmus+ year at Hamburg University of Technology.",
     highlights: ["Selected for Huawei Seeds for the Future (2021): ICT training and entrepreneurship"],
   },

@@ -1,0 +1,52 @@
+{
+  "name": "defi-strategist-mcp",
+  "version": "0.1.0",
+  "description": "MCP server with analyst-grade DeFi strategy tools (yields, Pendle, looping, funding carry).",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "defi-strategist-mcp": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "server.json"
+  ],
+  "scripts": {
+    "build": "tsup src/cli.ts src/http.ts src/server.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@defi-strategist/core": "workspace:*",
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@types/node": "^26.6.10",
+    "tsup": "^8.3.5",
+    "typescript": "~5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osobennyj/warehouse-of-sites.git",
+    "directory": "projects/defi-strategist-mcp/packages/mcp-server"
+  },
+  "keywords": [
+    "mcp",
+    "defi",
+    "pendle",
+    "yield",
+    "model-context-protocol"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

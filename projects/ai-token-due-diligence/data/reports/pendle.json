@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "pendle",
+  "createdAt": "2026-11-25T10:51:08.877Z",
+  "query": "pendle",
+  "token": {
+    "id": "pendle",
+    "symbol": "PENDLE",
+    "name": "Pendle",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png?1696514728",
+    "homepage": "https://pendle.finance/",
+    "categories": [
+      "Decentralized Exchange (DEX)",
+      "Exchange-based Tokens",
+      "Decentralized Finance (DeFi)",
+      "Yield Farming",
+      "Automated Market Maker (AMM)",
+      "BNB Chain Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x808507121b80c02388fad14726482e061b8da827",
+      "berachain": "0xff9c599d51c407a45d631c6e89cb047efb88aef6",
+      "hyperevm": "0xd6eb81136884713e843936843e286fd2a85a205a",
+      "sonic": "0xf1ef7d2d4c0c881cd634481e0586ed5d2871a74b",
+      "base": "0xa99f6e6785da0f5d6fb42495fe424bce029eeb3e",
+      "binance-smart-chain": "0xb3ed0a426155b79b898849803e3b36552f7ed507",
+      "arbitrum-one": "0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8",
+      "optimistic-ethereum": "0xbc7b1ff1c6989f006a1185318ed4e7b5796e66e1",
+      "monad": "0x5e49e1f85813f2b65858860a3fa231b4186f2e0e",
+      "robinhood": "0x5e49e1f85813f2b65858860a3fa231b4186f2e0e"
+    }
+  },
+  "facts": {
+    "market": {
+      "sourceId": "S1",
+      "priceUsd": 1.2,
+      "marketCapUsd": 209160130,
+      "fdvUsd": 338071604,
+      "volume24hUsd": 33117883,
+      "marketCapRank": 148,
+      "circulatingSupply": 174177058.82443613,
+      "totalSupply": 281527448.45853144,
+      "maxSupply": null,
+      "athUsd": 7.5,
+      "athChangePct": -83.99657,
+      "priceChange24hPct": -5.87604,
+      "priceChange30dPct": -38.24098,
+      "priceChange1yPct": -51.13028,
+      "mcapToFdvPct": 61.86858864372413,
+      "volumeToMcapPct": 15.83374565697583
+    },
+    "protocol": {
+      "sourceId": "S2",
+      "name": "Pendle",
+      "category": null,
+      "chains": [
+        "OP Mainnet",
+        "Berachain",
+        "BSC",
+        "Base",
+        "Arbitrum",
+        "Mantle",
+        "Sonic",
+        "Ethereum",
+        "Robinhood Chain",
+        "X Layer",
+        "Hyperliquid L1",
+        "Plasma",
+        "Avalanche",
+        "Monad"
+      ],
+      "tvlUsd": 900991967,
+      "tvlChange30dPct": -15.550918975360398,
+      "fees": {
+        "last24hUsd": 9342,
+        "last30dUsd": 554568,
+        "last365dUsd": 11945526
+      },
+      "revenue": {
+        "last24hUsd": 8969,
+        "last30dUsd": 548519,
+        "last365dUsd": 11769928
+      },
+      "revenueYieldPct": 5.6272330677935605,
+      "priceToRevenue": 17.77072298148298
+    },
+    "unlocks": null,
+    "holders": {
+      "sourceId": "S3",
+      "chain": "Ethereum",
+      "contract": "0x808507121b80c02388fad14726482e061b8da827",
+      "top1SharePct": 22.43,
+      "top10SharePct": 66.44,
+      "holders": [
+        {
+          "address": "0x4f30a9d41b80ecc5b94306ab4364951ae3170210",
+          "sharePct": 22.43
+        },
+        {
+          "address": "0x999999999991e178d52cd95afd4b00d066664144",
+          "sharePct": 10.85
+        },
+        {
+          "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+          "sharePct": 7.81
+        },
+        {
+          "address": "0x8119ec16f0573b7dac7c0cb94eb504fb32456ee1",
+          "sharePct": 7.02
+        },
+        {
+          "address": "0x399be606db281a054e359eb709df9f21e922ec9a",
+          "sharePct": 5.73
+        },
+        {
+          "address": "0xa3a7b6f88361f48403514059f1f16c8e78d60eec",
+          "sharePct": 5.39
+        },
+        {
+          "address": "0x918cf6b16d1426b5aa0edf0492ced1aa89f9659a",
+          "sharePct": 2.75
+        },
+        {
+          "address": "0x5a1e5b56aa33c056ed7bb93b88b1774a456f6694",
+          "sharePct": 1.64
+        },
+        {
+          "address": "0x2081411ed407f2364e5162e641a2db7575ef6f7b",
+          "sharePct": 1.52
+        },
+        {
+          "address": "0x131b2070814623cee8de6054240c9158c007c0a5",
+          "sharePct": 1.3
+        }
+      ]
+    },
+    "news": []
+  },
+  "analysis": {
+    "summary": "Pendle (PENDLE) receives grade B on our transparent checklist (see score breakdown). Market metrics are sourced from CoinGecko (price, capitalization, volume, momentum). DefiLlama tracks Pendle protocol activity across its deployed chains.",
+    "tokenomics": "Float versus fully diluted valuation is the primary dilution lens when no vesting file exists.",
+    "fundamentals": "Pendle (DeFi) — review TVL trend, fee generation and revenue yield in the metrics panel.",
+    "distribution": "On Ethereum, review top-holder concentration in the holder tool output (contracts and exchanges included).",
+    "catalysts": [],
+    "risks": [
+      {
+        "title": "Weak recent momentum",
+        "detail": "Recent price trend is negative in market data.",
+        "severity": "medium",
+        "sourceIds": [
+          "S1"
+        ]
+      },
+      {
+        "title": "Concentrated supply",
+        "detail": "Top holders control a majority of on-chain supply.",
+        "severity": "medium",
+        "sourceIds": [
+          "S3"
+        ]
+      }
+    ],
+    "redFlags": [],
+    "verdict": "Grade B — PENDLE shows relatively balanced fundamentals versus identified risks; verify sources before sizing a position."
+  },
+  "score": {
+    "total": 74,
+    "grade": "B",
+    "coveragePct": 75,
+    "factors": [
+      {
+        "key": "valuation",
+        "label": "Float vs FDV",
+        "weight": 20,
+        "score": 62,
+        "value": 61.9,
+        "rationale": "Market cap is 61.9% of FDV; a low float means future supply can dilute holders."
+      },
+      {
+        "key": "supplyOverhang",
+        "label": "Unlock overhang (12m)",
+        "weight": 25,
+        "score": null,
+        "value": null,
+        "rationale": "Not enough data — factor excluded and weights renormalised."
+      },
+      {
+        "key": "liquidity",
+        "label": "Liquidity (volume / mcap)",
+        "weight": 15,
+        "score": 100,
+        "value": 15.8,
+        "rationale": "24h volume is 15.8% of market cap (10%+ scores 100)."
+      },
+      {
+        "key": "fundamentals",
+        "label": "Revenue yield",
+        "weight": 25,
+        "score": 100,
+        "value": 5.6,
+        "rationale": "Trailing 365d protocol revenue equals 5.6% of market cap (5%+ scores 100)."
+      },
+      {
+        "key": "concentration",
+        "label": "Holder concentration",
+        "weight": 15,
+        "score": 23,
+        "value": 66.4,
+        "rationale": "Top 10 addresses hold 66.4% of supply on Ethereum (20% or less scores 100, 80%+ scores 0; includes exchange and contract wallets)."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tool": "getMarketData",
+      "title": "CoinGecko — PENDLE",
+      "url": "https://www.coingecko.com/en/coins/pendle",
+      "fetchedAt": "2026-11-25T10:51:10.260Z"
+    },
+    {
+      "id": "S2",
+      "tool": "getProtocolMetrics",
+      "title": "DefiLlama — Pendle",
+      "url": "https://defillama.com/protocol/pendle",
+      "fetchedAt": "2026-11-25T10:51:10.260Z"
+    },
+    {
+      "id": "S3",
+      "tool": "getHolderConcentration",
+      "title": "Top holders — Ethereum",
+      "url": "https://ethplorer.io/address/0x808507121b80c02388fad14726482e061b8da827#tab=tab-holders",
+      "fetchedAt": "2026-11-25T10:51:10.260Z"
+    }
+  ],
+  "meta": {
+    "provider": "mock",
+    "model": "mock-template",
+    "promptVersion": "analysis-v1",
+    "durationMs": 1385,
+    "steps": 1,
+    "toolCalls": [],
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "estimatedCostUsd": 0,
+    "guard": {
+      "passed": true,
+      "unverifiedNumbers": [],
+      "invalidCitations": [],
+      "repairAttempts": 0
+    }
+  }
+}

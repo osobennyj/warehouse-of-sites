@@ -1,0 +1,51 @@
+{
+  "name": "ai-token-due-diligence",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:static": "STATIC_EXPORT=true NEXT_PUBLIC_STATIC_DEMO=true next build",
+    "start": "next start",
+    "start:static": "node scripts/serve-static.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "generate:samples": "tsx scripts/generate-samples.ts",
+    "eval:hallucination": "tsx scripts/eval-hallucination.ts",
+    "format": "prettier --check ."
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.108",
+    "@ai-sdk/openai": "^4.0.123",
+    "@ai-sdk/provider": "^4.0.39",
+    "ai": "^7.0.181",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@tailwindcss/turbopack": "4.3.3",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.3.0",
+    "@vitest/coverage-v8": "^5.1.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "eslint-plugin-boundaries": "^7.4.4",
+    "jsdom": "^31.0.1",
+    "prettier": "^3.10.1",
+    "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.1.1"
+  },
+  "packageManager": "pnpm@10.33.4"
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "id": "uniswap",
+  "createdAt": "2026-11-25T10:50:31.558Z",
+  "query": "uniswap",
+  "token": {
+    "id": "uniswap",
+    "symbol": "UNI",
+    "name": "Uniswap",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
+    "homepage": "https://uniswap.org/",
+    "categories": [
+      "Decentralized Exchange (DEX)",
+      "Exchange-based Tokens",
+      "Decentralized Finance (DeFi)",
+      "Yield Farming",
+      "Automated Market Maker (AMM)",
+      "BNB Chain Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "unichain": "0x8f187aa05619a017077f5308904739877ce9ea21",
+      "near-protocol": "1f9840a85d5af5bf1d1762f925bdaddc4201f984.factory.bridge.near",
+      "polygon-pos": "0x06e8bde95be4ce5cb1134bd47ad18a79ffb35822",
+      "arbitrum-one": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
+      "optimistic-ethereum": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
+      "avalanche": "0x8ebaf22b6f053dffeaf46f4dd9efa95d89ba8580",
+      "xdai": "0x4537e328bf7e4efa29d05caea260d7fe26af9d74",
+      "base": "0xc3de830ea07524a0761646a6a4e4be0e114a3c83",
+      "binance-smart-chain": "0x06e8bde95be4ce5cb1134bd47ad18a79ffb35822",
+      "celo": "0xd7493e84a060292cdca6b67619402f7702336bf4",
+      "world-chain": "0x6fd31f56eb971113bea12c5883dec68337b3b7b5",
+      "soneium": "0x8f187aa05619a017077f5308904739877ce9ea21",
+      "x-layer": "0x57fb37d035e6ad0e687e0a50dc3f515691deb815",
+      "zora-network": "0xe7798f023fc62146e8aa1b36da45fb70855a77ea",
+      "robinhood": "0xf177d86a28b520e3e396e4f3b96cd8e72d7dabd8"
+    }
+  },
+  "facts": {
+    "market": {
+      "sourceId": "S1",
+      "priceUsd": 4.51,
+      "marketCapUsd": 2736872840,
+      "fdvUsd": 3991074882,
+      "volume24hUsd": 223324179,
+      "marketCapRank": 30,
+      "circulatingSupply": 607187895.875979,
+      "totalSupply": 885438418.7861971,
+      "maxSupply": 1000000000,
+      "athUsd": 44.92,
+      "athChangePct": -89.96673,
+      "priceChange24hPct": -4.94141,
+      "priceChange30dPct": -36.05263,
+      "priceChange1yPct": -27.0673,
+      "mcapToFdvPct": 68.57483061376448,
+      "volumeToMcapPct": 8.159830290105843
+    },
+    "protocol": {
+      "sourceId": "S2",
+      "name": "Uniswap",
+      "category": null,
+      "chains": [
+        "Ethereum",
+        "Celo",
+        "Base",
+        "Avalanche",
+        "Monad",
+        "Tempo",
+        "Zora",
+        "X Layer",
+        "Unichain",
+        "OP Mainnet",
+        "Ink",
+        "Robinhood Chain",
+        "Arbitrum",
+        "Arc",
+        "BSC",
+        "World Chain",
+        "Elysium",
+        "Polygon",
+        "Blast",
+        "Lisk",
+        "Saga",
+        "Gnosis",
+        "Linea",
+        "Manta",
+        "Rootstock",
+        "Scroll",
+        "Sei",
+        "Mantle",
+        "Boba",
+        "ZKsync Era",
+        "Taiko",
+        "BOB",
+        "Telos",
+        "Nibiru",
+        "Etherlink",
+        "Filecoin",
+        "GOAT",
+        "Hemi",
+        "Sonic",
+        "LightLink",
+        "Lens",
+        "Redbelly",
+        "XDC",
+        "Plasma",
+        "MegaETH",
+        "0G",
+        "Hyperliquid L1",
+        "Soneium"
+      ],
+      "tvlUsd": 3005040726,
+      "tvlChange30dPct": -26.09164396643473,
+      "fees": {
+        "last24hUsd": 1393308.72,
+        "last30dUsd": 69363921.55000001,
+        "last365dUsd": 905033533.3999997
+      },
+      "revenue": {
+        "last24hUsd": 161298,
+        "last30dUsd": 8262225,
+        "last365dUsd": 67533934
+      },
+      "revenueYieldPct": 2.4675583393198495,
+      "priceToRevenue": 40.52589088027953
+    },
+    "unlocks": {
+      "sourceId": "S3",
+      "windows": [
+        {
+          "days": 30,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        },
+        {
+          "days": 90,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        },
+        {
+          "days": 365,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        }
+      ],
+      "upcoming": [],
+      "remainingLockedTokens": 0,
+      "scheduleEndsOn": null,
+      "notes": "Team, investors and advisors vested over 4 years from Sep 2020; vesting completed in Sep 2024. UNI has a perpetual 2% annual inflation option that governance has not activated."
+    },
+    "holders": {
+      "sourceId": "S4",
+      "chain": "Ethereum",
+      "contract": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "top1SharePct": 26.22,
+      "top10SharePct": 51.91999999999999,
+      "holders": [
+        {
+          "address": "0x1a9c8182c09f50c8318d769245bea52c32be35bc",
+          "sharePct": 26.22
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "sharePct": 11.46
+        },
+        {
+          "address": "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+          "sharePct": 3.34
+        },
+        {
+          "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+          "sharePct": 2.4
+        },
+        {
+          "address": "0x61cb39bece033c5bda281747db1c15cced2096eb",
+          "sharePct": 2.3
+        },
+        {
+          "address": "0x611f7bf868a6212f871e89f7e44684045ddfb09d",
+          "sharePct": 1.68
+        },
+        {
+          "address": "0x5069a64bc6616dec1584ee0500b7813a9b680f7e",
+          "sharePct": 1.33
+        },
+        {
+          "address": "0x36ca0abdf3852f00aee7798c7dfb5ead5d3fec2a",
+          "sharePct": 1.26
+        },
+        {
+          "address": "0x6d278351f4a973d1349ef1e54ed37daed0799e19",
+          "sharePct": 1.03
+        },
+        {
+          "address": "0x177df24addc9a216f927d2a894ab0b6eec59eb09",
+          "sharePct": 0.9
+        }
+      ]
+    },
+    "news": []
+  },
+  "analysis": {
+    "summary": "Uniswap (UNI) receives grade B on our transparent checklist (see score breakdown). Market metrics are sourced from CoinGecko (price, capitalization, volume, momentum). DefiLlama tracks Uniswap protocol activity across its deployed chains.",
+    "tokenomics": "Vesting model highlights upcoming unlock categories; see unlock table and the sourced vesting documentation.",
+    "fundamentals": "Uniswap (DeFi) — review TVL trend, fee generation and revenue yield in the metrics panel.",
+    "distribution": "On Ethereum, review top-holder concentration in the holder tool output (contracts and exchanges included).",
+    "catalysts": [],
+    "risks": [
+      {
+        "title": "Weak recent momentum",
+        "detail": "Recent price trend is negative in market data.",
+        "severity": "medium",
+        "sourceIds": [
+          "S1"
+        ]
+      },
+      {
+        "title": "Concentrated supply",
+        "detail": "Top holders control a majority of on-chain supply.",
+        "severity": "medium",
+        "sourceIds": [
+          "S4"
+        ]
+      }
+    ],
+    "redFlags": [],
+    "verdict": "Grade B — UNI shows relatively balanced fundamentals versus identified risks; verify sources before sizing a position."
+  },
+  "score": {
+    "total": 70,
+    "grade": "B",
+    "coveragePct": 100,
+    "factors": [
+      {
+        "key": "valuation",
+        "label": "Float vs FDV",
+        "weight": 20,
+        "score": 69,
+        "value": 68.6,
+        "rationale": "Market cap is 68.6% of FDV; a low float means future supply can dilute holders."
+      },
+      {
+        "key": "supplyOverhang",
+        "label": "Unlock overhang (12m)",
+        "weight": 25,
+        "score": 100,
+        "value": 0,
+        "rationale": "Scheduled unlocks over the next 365 days equal 0% of circulating supply (40%+ scores 0)."
+      },
+      {
+        "key": "liquidity",
+        "label": "Liquidity (volume / mcap)",
+        "weight": 15,
+        "score": 82,
+        "value": 8.2,
+        "rationale": "24h volume is 8.2% of market cap (10%+ scores 100)."
+      },
+      {
+        "key": "fundamentals",
+        "label": "Revenue yield",
+        "weight": 25,
+        "score": 49,
+        "value": 2.5,
+        "rationale": "Trailing 365d protocol revenue equals 2.5% of market cap (5%+ scores 100)."
+      },
+      {
+        "key": "concentration",
+        "label": "Holder concentration",
+        "weight": 15,
+        "score": 47,
+        "value": 51.9,
+        "rationale": "Top 10 addresses hold 51.9% of supply on Ethereum (20% or less scores 100, 80%+ scores 0; includes exchange and contract wallets)."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tool": "getMarketData",
+      "title": "CoinGecko — UNI",
+      "url": "https://www.coingecko.com/en/coins/uniswap",
+      "fetchedAt": "2026-11-25T10:50:31.754Z"
+    },
+    {
+      "id": "S2",
+      "tool": "getProtocolMetrics",
+      "title": "DefiLlama — Uniswap",
+      "url": "https://defillama.com/protocol/uniswap",
+      "fetchedAt": "2026-11-25T10:50:31.754Z"
+    },
+    {
+      "id": "S3",
+      "tool": "getTokenUnlocks",
+      "title": "Uniswap Labs — Introducing UNI",
+      "url": "https://blog.uniswap.org/uni",
+      "fetchedAt": "2026-11-25T10:50:31.754Z"
+    },
+    {
+      "id": "S4",
+      "tool": "getHolderConcentration",
+      "title": "Top holders — Ethereum",
+      "url": "https://ethplorer.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984#tab=tab-holders",
+      "fetchedAt": "2026-11-25T10:50:31.754Z"
+    }
+  ],
+  "meta": {
+    "provider": "mock",
+    "model": "mock-template",
+    "promptVersion": "analysis-v1",
+    "durationMs": 197,
+    "steps": 1,
+    "toolCalls": [],
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "estimatedCostUsd": 0,
+    "guard": {
+      "passed": true,
+      "unverifiedNumbers": [],
+      "invalidCitations": [],
+      "repairAttempts": 0
+    }
+  }
+}

@@ -1,0 +1,62 @@
+# Public CEX / infrastructure labels for BFS stop-list and heuristics.
+# Each entry includes a source URL documenting the public label.
+addresses:
+  - address: "0x28c6c06298d5141aec6c2c94d5a2e2b8c2e4c11"
+    label: "Binance 14"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/binance"
+
+  - address: "0x21a31ee1afc51d94c2e7c2eb37f21a0dac1c001"
+    label: "Binance 7"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/binance"
+
+  - address: "0xdfd5293d8e347dfe59e90efd55b41b8100a0aff8"
+    label: "Binance 16"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/binance"
+
+  - address: "0x3f5cefb8b8c2f72a35bc98d246b82f60b2f02c4d"
+    label: "Binance 1"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/binance"
+
+  - address: "0xd551234ae421e3bcba99a0da6d736074f22192ff"
+    label: "Binance 2"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/binance"
+
+  - address: "0x71660c4005ba85c37ccec55d0c4493e66fe775d3"
+    label: "Coinbase 1"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://etherscan.io/accounts/label/coinbase"
+
+  - address: "0xa9d1e08c7793f67e9d130fe8729bd2cc70fba65"
+    label: "Kraken 4"
+    category: "CEX hot wallet"
+    stop_expansion: true
+    source: "https://platform.arkhamintelligence.com/explorer/entity/kraken"
+
+  - address: "0x8315177ab297ba92e060abdb973f2675e8296978"
+    label: "Uniswap V3 Router"
+    category: "DEX router"
+    stop_expansion: true
+    source: "https://docs.uniswap.org/contracts/v3/reference/deployments/ethereum-deployments"
+
+  - address: "0x7a250d5630b4cf539739df2c5dacb4c659f2488d"
+    label: "Uniswap V2 Router"
+    category: "DEX router"
+    stop_expansion: true
+    source: "https://docs.uniswap.org/contracts/v2/reference/smart-contracts/router-02"
+
+  - address: "0xae2fc483527b8dcf99facbc737b06e1f9830cab5"
+    label: "Arbitrum Bridge"
+    category: "Bridge"
+    stop_expansion: true
+    source: "https://bridge.arbitrum.io/"

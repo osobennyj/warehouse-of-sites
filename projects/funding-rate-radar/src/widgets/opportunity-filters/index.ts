@@ -1,0 +1,1 @@
+export { OpportunityFiltersPanel } from "./ui/opportunity-filters";

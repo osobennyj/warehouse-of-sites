@@ -1,0 +1,166 @@
+{
+  "capturedAt": "2026-11-25T10:50:28.618Z",
+  "query": "aave",
+  "token": {
+    "id": "aave",
+    "symbol": "AAVE",
+    "name": "Aave",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354",
+    "homepage": "https://aave.com/",
+    "categories": [
+      "Decentralized Finance (DeFi)",
+      "Yield Farming",
+      "BNB Chain Ecosystem",
+      "Lending/Borrowing Protocols",
+      "Solana Ecosystem",
+      "Avalanche Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "solana": "AavE1kKKnesPw4MuRJmJ9jZs9QzEE8CPxQ3ViczUDfc1",
+      "base": "0x63706e401c06ac8513145b7687a14804d17f814b",
+      "hydration": "asset_registry%2F1000624",
+      "harmony-shard-0": "0xcf323aad9e522b93f11c352caa519ad0e14eb40f",
+      "huobi-token": "0x202b4936fe1a82a4965220860ae46d7d3939bb25",
+      "fantom": "0x6a07a792ab2965c72a5b8088d3a069a7ac3a993b",
+      "near-protocol": "7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9.factory.bridge.near",
+      "energi": "0xa7f2f790355e0c32cab03f92f6eb7f488e6f049a",
+      "sora": "0x0091bd8d8295b25cab5a7b8b0e44498e678cfc15d872ede3215f7d4c7635ba36",
+      "polygon-pos": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "binance-smart-chain": "0xfb6115445bff7b52feb98650c87f44907e58f802",
+      "arbitrum-one": "0xba5ddd1f9d7f570dc94a51479a000e3bce967196",
+      "optimistic-ethereum": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+      "avalanche": "0x63a72806098bd3d9520cc43356dd78afe5d386d9"
+    }
+  },
+  "calls": {
+    "unlocks": {
+      "ok": true,
+      "value": {
+        "tokenId": "aave",
+        "sourceTitle": "Aave docs — Aavenomics",
+        "sourceUrl": "https://aave.com/docs/aave-governance",
+        "notes": "No team/investor vesting: 13M AAVE were minted for the LEND migration and 3M sit in the governance-controlled Ecosystem Reserve.",
+        "tranches": []
+      }
+    },
+    "market": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://www.coingecko.com/en/coins/aave",
+        "priceUsd": 91.54,
+        "marketCapUsd": 1413988157,
+        "fdvUsd": 1465120413,
+        "volume24hUsd": 160399312,
+        "marketCapRank": 52,
+        "circulatingSupply": 15441604.873111403,
+        "totalSupply": 16000000,
+        "maxSupply": 16000000,
+        "athUsd": 661.69,
+        "athChangePct": -86.1664,
+        "priceChange24hPct": -3.24184,
+        "priceChange30dPct": -32.56859,
+        "priceChange1yPct": -48.46119
+      }
+    },
+    "news": {
+      "ok": true,
+      "value": []
+    },
+    "holders": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://ethplorer.io/address/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9#tab=tab-holders",
+        "chain": "Ethereum",
+        "contract": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+        "holders": [
+          {
+            "address": "0x4da27a545c0c5b758a6ba100e3a049001de870f5",
+            "sharePct": 15.4
+          },
+          {
+            "address": "0xa700b4eb416be35b2911fd5dee80678ff64ff6c9",
+            "sharePct": 4.95
+          },
+          {
+            "address": "0x494aa25fa055d370424ed9db3839e76ee3e9e945",
+            "sharePct": 4.94
+          },
+          {
+            "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+            "sharePct": 4.42
+          },
+          {
+            "address": "0x25f2226b597e8f9514b3f68f00f494cf4f286491",
+            "sharePct": 3.49
+          },
+          {
+            "address": "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+            "sharePct": 2.75
+          },
+          {
+            "address": "0x47ac0fb4f2d84898e4d9e7b4dab3c24507a6d503",
+            "sharePct": 2.5
+          },
+          {
+            "address": "0xc9480602f77769c7a1e67011edea533bc8ac9fbe",
+            "sharePct": 2.17
+          },
+          {
+            "address": "0x1d48963dd8fada6ab5c2c7b92eba81ecc5030270",
+            "sharePct": 1.57
+          },
+          {
+            "address": "0x5a801a9418d036fd453078c3adcb761fdc5ae695",
+            "sharePct": 1.45
+          }
+        ]
+      }
+    },
+    "protocol": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://defillama.com/protocol/aave",
+        "name": "Aave",
+        "category": null,
+        "chains": [
+          "Polygon",
+          "Ethereum",
+          "Avalanche",
+          "Metis",
+          "Arbitrum",
+          "OP Mainnet",
+          "Fantom",
+          "Monad",
+          "X Layer",
+          "Base",
+          "Gnosis",
+          "Mantle",
+          "Scroll",
+          "Plasma",
+          "MegaETH",
+          "BSC",
+          "Soneium",
+          "ZKsync Era",
+          "Linea",
+          "Celo",
+          "Sonic",
+          "Aptos",
+          "Arc"
+        ],
+        "tvlUsd": 15921939570,
+        "tvl30dAgoUsd": 17637506336,
+        "fees": {
+          "last24hUsd": 1083173,
+          "last30dUsd": 44751089,
+          "last365dUsd": 590566038.26
+        },
+        "revenue": {
+          "last24hUsd": 158034,
+          "last30dUsd": 6411102,
+          "last365dUsd": 85170379.43
+        }
+      }
+    }
+  }
+}
