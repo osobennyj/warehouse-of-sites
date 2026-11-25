@@ -1,0 +1,201 @@
+{
+  "capturedAt": "2026-11-25T10:50:31.757Z",
+  "query": "uniswap",
+  "token": {
+    "id": "uniswap",
+    "symbol": "UNI",
+    "name": "Uniswap",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
+    "homepage": "https://uniswap.org/",
+    "categories": [
+      "Decentralized Exchange (DEX)",
+      "Exchange-based Tokens",
+      "Decentralized Finance (DeFi)",
+      "Yield Farming",
+      "Automated Market Maker (AMM)",
+      "BNB Chain Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "unichain": "0x8f187aa05619a017077f5308904739877ce9ea21",
+      "near-protocol": "1f9840a85d5af5bf1d1762f925bdaddc4201f984.factory.bridge.near",
+      "polygon-pos": "0x06e8bde95be4ce5cb1134bd47ad18a79ffb35822",
+      "arbitrum-one": "0xfa7f8980b0f1e64a2062791cc3b0871572f1f7f0",
+      "optimistic-ethereum": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
+      "avalanche": "0x8ebaf22b6f053dffeaf46f4dd9efa95d89ba8580",
+      "xdai": "0x4537e328bf7e4efa29d05caea260d7fe26af9d74",
+      "base": "0xc3de830ea07524a0761646a6a4e4be0e114a3c83",
+      "binance-smart-chain": "0x06e8bde95be4ce5cb1134bd47ad18a79ffb35822",
+      "celo": "0xd7493e84a060292cdca6b67619402f7702336bf4",
+      "world-chain": "0x6fd31f56eb971113bea12c5883dec68337b3b7b5",
+      "soneium": "0x8f187aa05619a017077f5308904739877ce9ea21",
+      "x-layer": "0x57fb37d035e6ad0e687e0a50dc3f515691deb815",
+      "zora-network": "0xe7798f023fc62146e8aa1b36da45fb70855a77ea",
+      "robinhood": "0xf177d86a28b520e3e396e4f3b96cd8e72d7dabd8"
+    }
+  },
+  "calls": {
+    "unlocks": {
+      "ok": true,
+      "value": {
+        "tokenId": "uniswap",
+        "sourceTitle": "Uniswap Labs — Introducing UNI",
+        "sourceUrl": "https://blog.uniswap.org/uni",
+        "notes": "Team, investors and advisors vested over 4 years from Sep 2020; vesting completed in Sep 2024. UNI has a perpetual 2% annual inflation option that governance has not activated.",
+        "tranches": [
+          {
+            "category": "Team, investors & advisors",
+            "linear": {
+              "start": "2020-09-17",
+              "end": "2024-09-17",
+              "tokens": 400000000
+            }
+          }
+        ]
+      }
+    },
+    "market": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://www.coingecko.com/en/coins/uniswap",
+        "priceUsd": 4.51,
+        "marketCapUsd": 2736872840,
+        "fdvUsd": 3991074882,
+        "volume24hUsd": 223324179,
+        "marketCapRank": 30,
+        "circulatingSupply": 607187895.875979,
+        "totalSupply": 885438418.7861971,
+        "maxSupply": 1000000000,
+        "athUsd": 44.92,
+        "athChangePct": -89.96673,
+        "priceChange24hPct": -4.94141,
+        "priceChange30dPct": -36.05263,
+        "priceChange1yPct": -27.0673
+      }
+    },
+    "news": {
+      "ok": true,
+      "value": []
+    },
+    "holders": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://ethplorer.io/address/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984#tab=tab-holders",
+        "chain": "Ethereum",
+        "contract": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+        "holders": [
+          {
+            "address": "0x1a9c8182c09f50c8318d769245bea52c32be35bc",
+            "sharePct": 26.22
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "sharePct": 11.46
+          },
+          {
+            "address": "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+            "sharePct": 3.34
+          },
+          {
+            "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+            "sharePct": 2.4
+          },
+          {
+            "address": "0x61cb39bece033c5bda281747db1c15cced2096eb",
+            "sharePct": 2.3
+          },
+          {
+            "address": "0x611f7bf868a6212f871e89f7e44684045ddfb09d",
+            "sharePct": 1.68
+          },
+          {
+            "address": "0x5069a64bc6616dec1584ee0500b7813a9b680f7e",
+            "sharePct": 1.33
+          },
+          {
+            "address": "0x36ca0abdf3852f00aee7798c7dfb5ead5d3fec2a",
+            "sharePct": 1.26
+          },
+          {
+            "address": "0x6d278351f4a973d1349ef1e54ed37daed0799e19",
+            "sharePct": 1.03
+          },
+          {
+            "address": "0x177df24addc9a216f927d2a894ab0b6eec59eb09",
+            "sharePct": 0.9
+          }
+        ]
+      }
+    },
+    "protocol": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://defillama.com/protocol/uniswap",
+        "name": "Uniswap",
+        "category": null,
+        "chains": [
+          "Ethereum",
+          "Celo",
+          "Base",
+          "Avalanche",
+          "Monad",
+          "Tempo",
+          "Zora",
+          "X Layer",
+          "Unichain",
+          "OP Mainnet",
+          "Ink",
+          "Robinhood Chain",
+          "Arbitrum",
+          "Arc",
+          "BSC",
+          "World Chain",
+          "Elysium",
+          "Polygon",
+          "Blast",
+          "Lisk",
+          "Saga",
+          "Gnosis",
+          "Linea",
+          "Manta",
+          "Rootstock",
+          "Scroll",
+          "Sei",
+          "Mantle",
+          "Boba",
+          "ZKsync Era",
+          "Taiko",
+          "BOB",
+          "Telos",
+          "Nibiru",
+          "Etherlink",
+          "Filecoin",
+          "GOAT",
+          "Hemi",
+          "Sonic",
+          "LightLink",
+          "Lens",
+          "Redbelly",
+          "XDC",
+          "Plasma",
+          "MegaETH",
+          "0G",
+          "Hyperliquid L1",
+          "Soneium"
+        ],
+        "tvlUsd": 3005040726,
+        "tvl30dAgoUsd": 4065901188,
+        "fees": {
+          "last24hUsd": 1393308.72,
+          "last30dUsd": 69363921.55000001,
+          "last365dUsd": 905033533.3999997
+        },
+        "revenue": {
+          "last24hUsd": 161298,
+          "last30dUsd": 8262225,
+          "last365dUsd": 67533934
+        }
+      }
+    }
+  }
+}

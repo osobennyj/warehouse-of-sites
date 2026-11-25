@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "id": "aave",
+  "createdAt": "2026-11-25T10:50:28.333Z",
+  "query": "aave",
+  "token": {
+    "id": "aave",
+    "symbol": "AAVE",
+    "name": "Aave",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354",
+    "homepage": "https://aave.com/",
+    "categories": [
+      "Decentralized Finance (DeFi)",
+      "Yield Farming",
+      "BNB Chain Ecosystem",
+      "Lending/Borrowing Protocols",
+      "Solana Ecosystem",
+      "Avalanche Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "solana": "AavE1kKKnesPw4MuRJmJ9jZs9QzEE8CPxQ3ViczUDfc1",
+      "base": "0x63706e401c06ac8513145b7687a14804d17f814b",
+      "hydration": "asset_registry%2F1000624",
+      "harmony-shard-0": "0xcf323aad9e522b93f11c352caa519ad0e14eb40f",
+      "huobi-token": "0x202b4936fe1a82a4965220860ae46d7d3939bb25",
+      "fantom": "0x6a07a792ab2965c72a5b8088d3a069a7ac3a993b",
+      "near-protocol": "7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9.factory.bridge.near",
+      "energi": "0xa7f2f790355e0c32cab03f92f6eb7f488e6f049a",
+      "sora": "0x0091bd8d8295b25cab5a7b8b0e44498e678cfc15d872ede3215f7d4c7635ba36",
+      "polygon-pos": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+      "binance-smart-chain": "0xfb6115445bff7b52feb98650c87f44907e58f802",
+      "arbitrum-one": "0xba5ddd1f9d7f570dc94a51479a000e3bce967196",
+      "optimistic-ethereum": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+      "avalanche": "0x63a72806098bd3d9520cc43356dd78afe5d386d9"
+    }
+  },
+  "facts": {
+    "market": {
+      "sourceId": "S1",
+      "priceUsd": 91.54,
+      "marketCapUsd": 1413988157,
+      "fdvUsd": 1465120413,
+      "volume24hUsd": 160399312,
+      "marketCapRank": 52,
+      "circulatingSupply": 15441604.873111403,
+      "totalSupply": 16000000,
+      "maxSupply": 16000000,
+      "athUsd": 661.69,
+      "athChangePct": -86.1664,
+      "priceChange24hPct": -3.24184,
+      "priceChange30dPct": -32.56859,
+      "priceChange1yPct": -48.46119,
+      "mcapToFdvPct": 96.51003046942054,
+      "volumeToMcapPct": 11.343752152798265
+    },
+    "protocol": {
+      "sourceId": "S2",
+      "name": "Aave",
+      "category": null,
+      "chains": [
+        "Polygon",
+        "Ethereum",
+        "Avalanche",
+        "Metis",
+        "Arbitrum",
+        "OP Mainnet",
+        "Fantom",
+        "Monad",
+        "X Layer",
+        "Base",
+        "Gnosis",
+        "Mantle",
+        "Scroll",
+        "Plasma",
+        "MegaETH",
+        "BSC",
+        "Soneium",
+        "ZKsync Era",
+        "Linea",
+        "Celo",
+        "Sonic",
+        "Aptos",
+        "Arc"
+      ],
+      "tvlUsd": 15921939570,
+      "tvlChange30dPct": -9.726810203879833,
+      "fees": {
+        "last24hUsd": 1083173,
+        "last30dUsd": 44751089,
+        "last365dUsd": 590566038.26
+      },
+      "revenue": {
+        "last24hUsd": 158034,
+        "last30dUsd": 6411102,
+        "last365dUsd": 85170379.43
+      },
+      "revenueYieldPct": 6.023415331193612,
+      "priceToRevenue": 16.60187692555874
+    },
+    "unlocks": {
+      "sourceId": "S3",
+      "windows": [
+        {
+          "days": 30,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        },
+        {
+          "days": 90,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        },
+        {
+          "days": 365,
+          "tokens": 0,
+          "usd": 0,
+          "pctOfCirculating": 0
+        }
+      ],
+      "upcoming": [],
+      "remainingLockedTokens": 0,
+      "scheduleEndsOn": null,
+      "notes": "No team/investor vesting: 13M AAVE were minted for the LEND migration and 3M sit in the governance-controlled Ecosystem Reserve."
+    },
+    "holders": {
+      "sourceId": "S4",
+      "chain": "Ethereum",
+      "contract": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "top1SharePct": 15.4,
+      "top10SharePct": 43.64000000000001,
+      "holders": [
+        {
+          "address": "0x4da27a545c0c5b758a6ba100e3a049001de870f5",
+          "sharePct": 15.4
+        },
+        {
+          "address": "0xa700b4eb416be35b2911fd5dee80678ff64ff6c9",
+          "sharePct": 4.95
+        },
+        {
+          "address": "0x494aa25fa055d370424ed9db3839e76ee3e9e945",
+          "sharePct": 4.94
+        },
+        {
+          "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+          "sharePct": 4.42
+        },
+        {
+          "address": "0x25f2226b597e8f9514b3f68f00f494cf4f286491",
+          "sharePct": 3.49
+        },
+        {
+          "address": "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+          "sharePct": 2.75
+        },
+        {
+          "address": "0x47ac0fb4f2d84898e4d9e7b4dab3c24507a6d503",
+          "sharePct": 2.5
+        },
+        {
+          "address": "0xc9480602f77769c7a1e67011edea533bc8ac9fbe",
+          "sharePct": 2.17
+        },
+        {
+          "address": "0x1d48963dd8fada6ab5c2c7b92eba81ecc5030270",
+          "sharePct": 1.57
+        },
+        {
+          "address": "0x5a801a9418d036fd453078c3adcb761fdc5ae695",
+          "sharePct": 1.45
+        }
+      ]
+    },
+    "news": []
+  },
+  "analysis": {
+    "summary": "Aave (AAVE) receives grade A on our transparent checklist (see score breakdown). Market metrics are sourced from CoinGecko (price, capitalization, volume, momentum). DefiLlama tracks Aave protocol activity across its deployed chains.",
+    "tokenomics": "Vesting model highlights upcoming unlock categories; see unlock table and the sourced vesting documentation.",
+    "fundamentals": "Aave (DeFi) — review TVL trend, fee generation and revenue yield in the metrics panel.",
+    "distribution": "On Ethereum, review top-holder concentration in the holder tool output (contracts and exchanges included).",
+    "catalysts": [],
+    "risks": [
+      {
+        "title": "Weak recent momentum",
+        "detail": "Recent price trend is negative in market data.",
+        "severity": "medium",
+        "sourceIds": [
+          "S1"
+        ]
+      }
+    ],
+    "redFlags": [],
+    "verdict": "Grade A — AAVE shows relatively balanced fundamentals versus identified risks; verify sources before sizing a position."
+  },
+  "score": {
+    "total": 94,
+    "grade": "A",
+    "coveragePct": 100,
+    "factors": [
+      {
+        "key": "valuation",
+        "label": "Float vs FDV",
+        "weight": 20,
+        "score": 97,
+        "value": 96.5,
+        "rationale": "Market cap is 96.5% of FDV; a low float means future supply can dilute holders."
+      },
+      {
+        "key": "supplyOverhang",
+        "label": "Unlock overhang (12m)",
+        "weight": 25,
+        "score": 100,
+        "value": 0,
+        "rationale": "Scheduled unlocks over the next 365 days equal 0% of circulating supply (40%+ scores 0)."
+      },
+      {
+        "key": "liquidity",
+        "label": "Liquidity (volume / mcap)",
+        "weight": 15,
+        "score": 100,
+        "value": 11.3,
+        "rationale": "24h volume is 11.3% of market cap (10%+ scores 100)."
+      },
+      {
+        "key": "fundamentals",
+        "label": "Revenue yield",
+        "weight": 25,
+        "score": 100,
+        "value": 6,
+        "rationale": "Trailing 365d protocol revenue equals 6% of market cap (5%+ scores 100)."
+      },
+      {
+        "key": "concentration",
+        "label": "Holder concentration",
+        "weight": 15,
+        "score": 61,
+        "value": 43.6,
+        "rationale": "Top 10 addresses hold 43.6% of supply on Ethereum (20% or less scores 100, 80%+ scores 0; includes exchange and contract wallets)."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tool": "getMarketData",
+      "title": "CoinGecko — AAVE",
+      "url": "https://www.coingecko.com/en/coins/aave",
+      "fetchedAt": "2026-11-25T10:50:28.616Z"
+    },
+    {
+      "id": "S2",
+      "tool": "getProtocolMetrics",
+      "title": "DefiLlama — Aave",
+      "url": "https://defillama.com/protocol/aave",
+      "fetchedAt": "2026-11-25T10:50:28.616Z"
+    },
+    {
+      "id": "S3",
+      "tool": "getTokenUnlocks",
+      "title": "Aave docs — Aavenomics",
+      "url": "https://aave.com/docs/aave-governance",
+      "fetchedAt": "2026-11-25T10:50:28.616Z"
+    },
+    {
+      "id": "S4",
+      "tool": "getHolderConcentration",
+      "title": "Top holders — Ethereum",
+      "url": "https://ethplorer.io/address/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9#tab=tab-holders",
+      "fetchedAt": "2026-11-25T10:50:28.616Z"
+    }
+  ],
+  "meta": {
+    "provider": "mock",
+    "model": "mock-template",
+    "promptVersion": "analysis-v1",
+    "durationMs": 283,
+    "steps": 1,
+    "toolCalls": [],
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "estimatedCostUsd": 0,
+    "guard": {
+      "passed": true,
+      "unverifiedNumbers": [],
+      "invalidCitations": [],
+      "repairAttempts": 0
+    }
+  }
+}

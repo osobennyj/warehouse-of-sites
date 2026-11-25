@@ -1,0 +1,175 @@
+{
+  "capturedAt": "2026-11-25T10:50:25.565Z",
+  "query": "ethena",
+  "token": {
+    "id": "ethena",
+    "symbol": "ENA",
+    "name": "Ethena",
+    "imageUrl": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png?1711701436",
+    "homepage": "https://www.ethena.fi/",
+    "categories": [
+      "Decentralized Finance (DeFi)",
+      "Binance Launchpool",
+      "Solana Ecosystem",
+      "Avalanche Ecosystem",
+      "Arbitrum Ecosystem",
+      "Ethereum Ecosystem"
+    ],
+    "contracts": {
+      "ethereum": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "mantle": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "metis-andromeda": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "fraxtal": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "kava": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "zircuit": "0x813635891aa06bd55036bbd8f7d1a34ab3de9a0f",
+      "swellchain": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "morph-l2": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "mode": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "the-open-network": "EQAPh9RCprgg5kKumtJi8uB7nFKctPBwuRUu82JgTGmzklNV",
+      "base": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "arbitrum-one": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "blast": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "optimistic-ethereum": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "avalanche": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "solana": "72QvBVwpxqmheEPfaCwWSWqEFsUy3rhWt6JhQBMNTwD1",
+      "manta-pacific": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "scroll": "0x58538e6a46e07434d7e7375bc268d3cb839c0133",
+      "zksync": "0x686b311f82b407f0be842652a98e5619f64cc25f"
+    }
+  },
+  "calls": {
+    "unlocks": {
+      "ok": true,
+      "value": {
+        "tokenId": "ethena",
+        "sourceTitle": "Ethena docs — ENA tokenomics",
+        "sourceUrl": "https://docs.ethena.fi/ena/tokenomics",
+        "notes": "Core contributors (30%) and investors (25%): 25% unlocked after a 1-year cliff (2 Apr 2025), the rest monthly over 3 years. Foundation and ecosystem allocations are discretionary and not modelled.",
+        "tranches": [
+          {
+            "category": "Core contributors",
+            "cliff": {
+              "date": "2025-04-02",
+              "tokens": 1125000000
+            },
+            "linear": {
+              "start": "2025-04-02",
+              "end": "2028-04-02",
+              "tokens": 3375000000
+            }
+          },
+          {
+            "category": "Investors",
+            "cliff": {
+              "date": "2025-04-02",
+              "tokens": 937500000
+            },
+            "linear": {
+              "start": "2025-04-02",
+              "end": "2028-04-02",
+              "tokens": 2812500000
+            }
+          }
+        ]
+      }
+    },
+    "market": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://www.coingecko.com/en/coins/ethena",
+        "priceUsd": 0.094317,
+        "marketCapUsd": 1274938792,
+        "fdvUsd": 1416598658,
+        "volume24hUsd": 162103457,
+        "marketCapRank": 58,
+        "circulatingSupply": 13500000000,
+        "totalSupply": 15000000000,
+        "maxSupply": 15000000000,
+        "athUsd": 1.52,
+        "athChangePct": -93.78554,
+        "priceChange24hPct": -4.13164,
+        "priceChange30dPct": -54.25977,
+        "priceChange1yPct": -64.71329
+      }
+    },
+    "news": {
+      "ok": true,
+      "value": []
+    },
+    "protocol": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://defillama.com/protocol/ethena",
+        "name": "Ethena",
+        "category": null,
+        "chains": [
+          "Ethereum",
+          "TON",
+          "Avalanche"
+        ],
+        "tvlUsd": 5191159196.79783,
+        "tvl30dAgoUsd": 5019158444.51655,
+        "fees": {
+          "last24hUsd": 17797,
+          "last30dUsd": 18188080.900000006,
+          "last365dUsd": 230008128.0399999
+        },
+        "revenue": {
+          "last24hUsd": 2796,
+          "last30dUsd": 114600.20999999999,
+          "last365dUsd": 2060795.7200000014
+        }
+      }
+    },
+    "holders": {
+      "ok": true,
+      "value": {
+        "sourceUrl": "https://ethplorer.io/address/0x57e114b691db790c35207b2e685d4a43181e6061#tab=tab-holders",
+        "chain": "Ethereum",
+        "contract": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "holders": [
+          {
+            "address": "0xfa847c23ae9bd5407a64acb2678f584ba350a078",
+            "sharePct": 8.21
+          },
+          {
+            "address": "0x2146aa5807d96e6b2922a149cee870f17347f1d0",
+            "sharePct": 7.79
+          },
+          {
+            "address": "0xb805ef84dd9c7de96d8fe79c1b6f2ca52e890936",
+            "sharePct": 7.33
+          },
+          {
+            "address": "0x8be3460a480c80728a8c4d7a5d5303c85ba7b3b9",
+            "sharePct": 6.4
+          },
+          {
+            "address": "0xd332ab00f78884a467f11ba9c7551ec32671aec9",
+            "sharePct": 6.1
+          },
+          {
+            "address": "0x6a4b4a0fce628750ca200b73c10bb211b3614eb8",
+            "sharePct": 5.89
+          },
+          {
+            "address": "0xb2af973905f05bc82bf97486b6ab883598d98298",
+            "sharePct": 5.6
+          },
+          {
+            "address": "0xf977814e90da44bfa03b6295a0616a897441acec",
+            "sharePct": 5.25
+          },
+          {
+            "address": "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+            "sharePct": 4.34
+          },
+          {
+            "address": "0x0c36fda877d41671b14fb4e7655798965237c7d0",
+            "sharePct": 2.59
+          }
+        ]
+      }
+    }
+  }
+}
