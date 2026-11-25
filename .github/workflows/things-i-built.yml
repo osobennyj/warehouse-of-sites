@@ -68,13 +68,10 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ""
           PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000
 
-  deploy:
+  build:
     needs: quality
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -92,10 +89,21 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
           NEXT_PUBLIC_SITE_URL: https://osobennyj.github.io/warehouse-of-sites
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: projects/things-i-built/out
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
