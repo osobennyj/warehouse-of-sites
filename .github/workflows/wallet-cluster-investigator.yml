@@ -61,14 +61,17 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
-      - run: pnpm run build
+      - name: Build for Playwright (root base)
+        run: pnpm run build
         env:
-          VITE_BASE_PATH: /warehouse-of-sites/
+          VITE_BASE_PATH: /
       - name: Install Playwright
         run: pnpm exec playwright install --with-deps chromium
       - run: pnpm run test:e2e
+      - name: Build for GitHub Pages
+        run: pnpm run build
         env:
-          VITE_BASE_PATH: /
+          VITE_BASE_PATH: /warehouse-of-sites/
 
   deploy-pages:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
