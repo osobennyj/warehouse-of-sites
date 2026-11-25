@@ -1,0 +1,42 @@
+{
+  "code": "0",
+  "data": [
+    {
+      "instId": "BTC-USD-SWAP",
+      "instType": "SWAP",
+      "markPx": "58870.9",
+      "ts": "1795603309776"
+    },
+    {
+      "instId": "BTC-USDT-SWAP",
+      "instType": "SWAP",
+      "markPx": "58954.5",
+      "ts": "1795603309776"
+    },
+    {
+      "instId": "ETH-USDT-SWAP",
+      "instType": "SWAP",
+      "markPx": "1645.24",
+      "ts": "1795603309776"
+    },
+    {
+      "instId": "DOGE-USDT-SWAP",
+      "instType": "SWAP",
+      "markPx": "0.05402",
+      "ts": "1795603309776"
+    },
+    {
+      "instId": "SOL-USDT-SWAP",
+      "instType": "SWAP",
+      "markPx": "67.72",
+      "ts": "1795603309776"
+    },
+    {
+      "instId": "PEPE-USDT-SWAP",
+      "instType": "SWAP",
+      "markPx": "0.0000034389",
+      "ts": "1795603309776"
+    }
+  ],
+  "msg": ""
+}

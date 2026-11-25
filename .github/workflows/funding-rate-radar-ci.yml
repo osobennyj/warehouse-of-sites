@@ -1,0 +1,37 @@
+name: Funding Rate Radar CI
+
+on:
+  push:
+    paths:
+      - "projects/funding-rate-radar/**"
+      - ".github/workflows/funding-rate-radar-ci.yml"
+  pull_request:
+    paths:
+      - "projects/funding-rate-radar/**"
+      - ".github/workflows/funding-rate-radar-ci.yml"
+
+defaults:
+  run:
+    working-directory: projects/funding-rate-radar
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+        cache-dependency-path: projects/funding-rate-radar/pnpm-lock.yaml
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm run lint
+    - run: pnpm run typecheck
+    - run: pnpm run fsd:lint
+    - run: pnpm run test:coverage
+    - run: pnpm run build
+    - run: pnpm exec playwright install chromium --with-deps
+    - run: pnpm run test:e2e

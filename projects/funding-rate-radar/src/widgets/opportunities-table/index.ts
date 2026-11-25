@@ -1,0 +1,1 @@
+export { OpportunitiesTable } from "./ui/opportunities-table";

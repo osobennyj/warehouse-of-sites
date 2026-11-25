@@ -1,0 +1,50 @@
+name: Funding Rate Radar Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "projects/funding-rate-radar/**"
+      - ".github/workflows/funding-rate-radar-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: funding-rate-radar-pages
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: projects/funding-rate-radar
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: projects/funding-rate-radar/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - name: Build static site
+        env:
+          NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
+          NEXT_PUBLIC_REPOSITORY_URL: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/funding-rate-radar
+        run: pnpm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: projects/funding-rate-radar/out
+      - id: deployment
+        uses: actions/deploy-pages@v4
