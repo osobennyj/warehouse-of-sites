@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState, type Dispatch, type SetState
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { runTool } from '@/features/run-tool/lib';
 import { toolList, type ToolId } from '@/shared/config/tools';
+import { PortfolioTopBar } from '@/widgets/portfolio-chrome/PortfolioTopBar';
 import transcripts from '@/views/transcripts/data.json';
 
 function toolFromHash(): ToolId {
@@ -90,8 +91,9 @@ export function App() {
   }, [result, tool]);
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-slate-800 bg-slate-900/80 px-4 py-6">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+      <PortfolioTopBar />
+      <header className="border-b border-zinc-800 bg-zinc-950/80 px-4 py-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs uppercase tracking-widest text-emerald-400">Portfolio demo</p>
