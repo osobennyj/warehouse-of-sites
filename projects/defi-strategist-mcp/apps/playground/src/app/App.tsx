@@ -91,7 +91,7 @@ export function App() {
   }, [result, tool]);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-zinc-950 pt-16 text-zinc-100">
       <PortfolioTopBar />
       <header className="border-b border-zinc-800 bg-zinc-950/80 px-4 py-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 md:flex-row md:items-end md:justify-between">

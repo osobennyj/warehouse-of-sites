@@ -31,7 +31,7 @@ echo "Assembling GitHub Pages artifact at $SITE_OUT"
   pnpm install --frozen-lockfile
   NEXT_PUBLIC_BASE_PATH="$BASE_URL_PATH/demos/funding-rate-radar" \
     NEXT_PUBLIC_SITE_URL="https://osobennyj.github.io$BASE_URL_PATH/demos/funding-rate-radar" \
-    NEXT_PUBLIC_PORTFOLIO_HOME="$BASE_URL_PATH/" \
+    NEXT_PUBLIC_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \
     pnpm build
 )
 copy_next_app "$ROOT/projects/funding-rate-radar" "funding-rate-radar"
@@ -42,7 +42,7 @@ copy_next_app "$ROOT/projects/funding-rate-radar" "funding-rate-radar"
   STATIC_EXPORT=true \
     NEXT_PUBLIC_BASE_PATH="$BASE_URL_PATH/demos/ai-token-due-diligence" \
     NEXT_PUBLIC_SITE_URL="https://osobennyj.github.io$BASE_URL_PATH/demos/ai-token-due-diligence" \
-    NEXT_PUBLIC_PORTFOLIO_HOME="$BASE_URL_PATH/" \
+    NEXT_PUBLIC_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \
     pnpm build
 )
 copy_next_app "$ROOT/projects/ai-token-due-diligence" "ai-token-due-diligence"
@@ -51,7 +51,7 @@ copy_next_app "$ROOT/projects/ai-token-due-diligence" "ai-token-due-diligence"
   cd "$ROOT/projects/wallet-cluster-investigator/web"
   pnpm install --frozen-lockfile
   VITE_BASE_PATH="$BASE_URL_PATH/demos/wallet-cluster-investigator/" \
-    VITE_PORTFOLIO_HOME="$BASE_URL_PATH/" \
+    VITE_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \
     pnpm build
 )
 copy_vite_app "$ROOT/projects/wallet-cluster-investigator/web/dist" "wallet-cluster-investigator"
@@ -61,7 +61,7 @@ copy_vite_app "$ROOT/projects/wallet-cluster-investigator/web/dist" "wallet-clus
   pnpm install --frozen-lockfile
   pnpm --filter @defi-strategist/core build
   VITE_BASE="$BASE_URL_PATH/demos/defi-strategist-mcp/" \
-    VITE_PORTFOLIO_HOME="$BASE_URL_PATH/" \
+    VITE_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \
     pnpm --filter @defi-strategist/playground build
 )
 copy_vite_app "$ROOT/projects/defi-strategist-mcp/apps/playground/dist" "defi-strategist-mcp"

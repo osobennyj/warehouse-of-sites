@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 
-import { CopyEmailButton } from "@/features/copy-email";
 import { siteConfig } from "@/shared/config";
 import { ButtonLink, Container, GitHubIcon, LinkedInIcon, TelegramIcon } from "@/shared/ui";
 
@@ -27,7 +26,6 @@ export function ContactBlock() {
               <ButtonLink href={`mailto:${email}`}>
                 <Mail aria-hidden className="size-4" /> {email}
               </ButtonLink>
-              <CopyEmailButton email={email} />
             </div>
             <ul className="mt-6 flex flex-wrap justify-center gap-2">
               {channels.map(({ href, label, Icon }) => (
