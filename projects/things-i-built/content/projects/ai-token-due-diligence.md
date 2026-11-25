@@ -2,7 +2,7 @@
 title: AI Token Due Diligence Agent
 tagline: Five data tools → scored, source-linked token memo with a numeric hallucination guard.
 description: Static Next.js agent that gathers market, protocol, unlock, holder and news data, then writes a structured report — mock LLM by default, real keys optional.
-status: beta
+status: live
 tags: [AI, Research]
 stack: [Next.js, Vercel AI SDK, Zod, Tailwind, Vitest]
 metric:
