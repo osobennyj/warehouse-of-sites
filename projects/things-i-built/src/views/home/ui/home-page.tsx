@@ -14,7 +14,7 @@ export function HomePage() {
   return (
     <>
       <JsonLd data={personJsonLd()} />
-      <Hero />
+      <Hero projects={projects} />
       <FeaturedProjects projects={projects} />
       <AiProcess />
       <ResearchPreview notes={getResearchNotes()} />
