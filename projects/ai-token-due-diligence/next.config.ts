@@ -6,7 +6,6 @@ const isStaticExport = process.env.STATIC_EXPORT === "true";
 const nextConfig: NextConfig = {
   ...(isStaticExport ? { output: "export" as const } : {}),
   basePath: basePath || undefined,
-  assetPrefix: basePath ? `${basePath}/` : undefined,
   trailingSlash: true,
   images: { unoptimized: true },
   cacheComponents: !isStaticExport,

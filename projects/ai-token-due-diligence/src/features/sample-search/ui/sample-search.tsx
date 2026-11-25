@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { siteConfig, withBasePath } from "@/shared/config/site";
+import { siteConfig } from "@/shared/config/site";
 
 export function SampleSearchForm() {
   const router = useRouter();
@@ -15,8 +15,8 @@ export function SampleSearchForm() {
   const match = siteConfig.sampleTokens.find(
       (t) => t === id || t.startsWith(id),
     );
-    if (match) router.push(withBasePath(`/reports/${match}/`));
-    else router.push(withBasePath(`/gallery/?q=${encodeURIComponent(query)}`));
+    if (match) router.push(`/reports/${match}/`);
+    else router.push(`/gallery/?q=${encodeURIComponent(query)}`);
   };
 
   return (

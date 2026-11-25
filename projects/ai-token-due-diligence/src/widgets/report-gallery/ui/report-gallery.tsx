@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ReportSummary } from "@/entities/report";
 import { ReportScoreBadge } from "@/entities/report/ui/report-score-badge";
-import { withBasePath } from "@/shared/config/site";
 
 export function ReportGallery({ reports }: { reports: ReportSummary[] }) {
   if (!reports.length) {
@@ -17,7 +16,7 @@ export function ReportGallery({ reports }: { reports: ReportSummary[] }) {
       {reports.map((report) => (
         <li key={report.id}>
           <Link
-            href={withBasePath(`/reports/${report.id}/`)}
+            href={`/reports/${report.id}/`}
             className="block h-full rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 transition hover:border-sky-500/40 hover:bg-zinc-900"
           >
             <TokenHeader report={report} />

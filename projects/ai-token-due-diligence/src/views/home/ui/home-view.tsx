@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SampleSearchForm } from "@/features/sample-search/ui/sample-search";
 import { ReportGallery } from "@/widgets/report-gallery/ui/report-gallery";
-import { siteConfig, withBasePath } from "@/shared/config/site";
+import { siteConfig } from "@/shared/config/site";
 import { getReportSummaries } from "@/shared/lib/reports";
 
 export async function HomeView() {
@@ -20,7 +20,7 @@ export async function HomeView() {
         <div className="flex flex-wrap gap-2 text-sm text-zinc-500">
           Try:
           {siteConfig.sampleTokens.map((token) => (
-            <Link key={token} href={withBasePath(`/reports/${token}/`)} className="text-sky-400 hover:underline">
+            <Link key={token} href={`/reports/${token}/`} className="text-sky-400 hover:underline">
               {token}
             </Link>
           ))}
@@ -30,7 +30,7 @@ export async function HomeView() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-medium text-zinc-100">Example reports</h2>
-          <Link href={withBasePath("/gallery/")} className="text-sm text-sky-400 hover:underline">
+          <Link href="/gallery/" className="text-sm text-sky-400 hover:underline">
             View all
           </Link>
         </div>
