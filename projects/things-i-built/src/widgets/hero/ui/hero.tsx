@@ -7,7 +7,7 @@ import { ButtonLink, Container } from "@/shared/ui";
 const credentials = [
   { value: "Arkham", label: "CIS Community Manager" },
   { value: "$70k+/yr", label: "Cost savings at P&G" },
-  { value: "Just building things.", label: "Research tools I use myself" },
+  { value: "Just building things.", label: "Trading and research demos" },
 ] as const;
 
 /** Terminal listing order (first site layout, no status column). */

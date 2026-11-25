@@ -27,10 +27,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full bg-zinc-950 font-sans text-zinc-100">
+      <body className="min-h-full bg-zinc-950 pt-16 font-sans text-zinc-100">
         <PortfolioTopBar title="Funding Rate Radar" />
         <QueryProvider>
-          <div className="mx-auto min-h-screen w-full max-w-6xl px-4 pb-12 sm:px-6">{children}</div>
+          <div className="mx-auto min-h-[calc(100vh-4rem)] w-full max-w-6xl px-4 pb-12 sm:px-6">{children}</div>
         </QueryProvider>
       </body>
     </html>

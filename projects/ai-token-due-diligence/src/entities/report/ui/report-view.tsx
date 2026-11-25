@@ -27,8 +27,12 @@ export function ReportView({ report }: { report: Report }) {
           <ReportScoreBadge score={report.score} />
         </div>
         <p className="text-lg leading-relaxed text-zinc-200">{report.analysis.verdict}</p>
+        <p className="rounded-lg border border-amber-900/40 bg-amber-950/30 px-3 py-2 text-sm text-amber-100/90">
+          Static deploy: narrative sections below use a <strong className="text-amber-50">mock writer</strong>. The
+          checklist score is formulaic from tool data, not live LLM analysis.
+        </p>
         <div className="flex flex-wrap gap-2 text-xs text-zinc-500">
-          <span>Model: {report.meta.model}</span>
+          <span>Sample writer: {report.meta.model} (mock)</span>
           <span>·</span>
           <span>Guard: {report.meta.guard.passed ? "passed" : "failed"}</span>
           <span>·</span>

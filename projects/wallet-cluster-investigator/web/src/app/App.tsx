@@ -7,7 +7,7 @@ import { InvestigationView } from "@/views/investigation/InvestigationView";
 export function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-zinc-950 text-zinc-100">
+      <div className="min-h-screen bg-zinc-950 pt-16 text-zinc-100">
         <PortfolioTopBar />
         <Routes>
           <Route path="/" element={<GalleryView />} />

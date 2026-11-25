@@ -22,7 +22,8 @@ export function ReportGallery({ reports }: { reports: ReportSummary[] }) {
             <TokenHeader report={report} />
             <p className="line-clamp-3 text-sm text-zinc-400">{report.headline}</p>
             <p className="mt-3 text-xs text-zinc-500">
-              {report.model} · {new Date(report.createdAt).toLocaleDateString("en-GB")}
+              Checklist score (formula) · mock narrative in static deploy ·{" "}
+              {new Date(report.createdAt).toLocaleDateString("en-GB")}
             </p>
           </Link>
         </li>
