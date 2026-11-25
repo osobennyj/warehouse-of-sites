@@ -1,0 +1,1 @@
+export { researchListMetadata, ResearchListPage } from "./ui/research-list-page";

@@ -1,0 +1,100 @@
+name: Things I Built
+
+on:
+  push:
+    branches: [master, cursor/things-i-built-portfolio-73a4]
+    paths:
+      - "projects/things-i-built/**"
+      - ".github/workflows/things-i-built.yml"
+  pull_request:
+    paths:
+      - "projects/things-i-built/**"
+      - ".github/workflows/things-i-built.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: things-i-built-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: projects/things-i-built
+
+env:
+  NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
+  NEXT_PUBLIC_SITE_URL: https://osobennyj.github.io/warehouse-of-sites
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: projects/things-i-built/pnpm-lock.yaml
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Unit tests
+        run: pnpm test
+      - name: Build (production base path smoke)
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
+          NEXT_PUBLIC_SITE_URL: https://osobennyj.github.io/warehouse-of-sites
+      - name: Build for E2E
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3000
+      - name: Install Playwright
+        run: pnpm exec playwright install chromium --with-deps
+      - name: E2E smoke
+        run: pnpm test:e2e
+        env:
+          NEXT_PUBLIC_BASE_PATH: ""
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000
+
+  deploy:
+    needs: quality
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/cursor/things-i-built-portfolio-73a4')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: projects/things-i-built/pnpm-lock.yaml
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Build static site
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /warehouse-of-sites
+          NEXT_PUBLIC_SITE_URL: https://osobennyj.github.io/warehouse-of-sites
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: projects/things-i-built/out
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
