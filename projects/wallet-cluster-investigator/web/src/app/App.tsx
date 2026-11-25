@@ -1,4 +1,5 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { PortfolioTopBar } from "@/widgets/portfolio-chrome/PortfolioTopBar";
 import { AnalyzeWalletView } from "@/views/analyze/AnalyzeWalletView";
 import { GalleryView } from "@/views/gallery/GalleryView";
 import { InvestigationView } from "@/views/investigation/InvestigationView";
@@ -6,7 +7,8 @@ import { InvestigationView } from "@/views/investigation/InvestigationView";
 export function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-surface text-slate-100">
+      <div className="min-h-screen bg-zinc-950 text-zinc-100">
+        <PortfolioTopBar />
         <Routes>
           <Route path="/" element={<GalleryView />} />
           <Route path="/analyze" element={<AnalyzeWalletView />} />

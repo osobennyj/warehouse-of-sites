@@ -23,12 +23,12 @@ function BuildLog({ projects }: { projects: readonly Project[] }) {
   const lines = TERMINAL_SLUGS.filter((slug) => known.has(slug));
 
   return (
-    <div className="relative rounded-2xl border border-border bg-card/70 shadow-2xl shadow-black/20 backdrop-blur">
-      <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
+    <div className="border-border bg-card/70 relative rounded-2xl border shadow-2xl shadow-black/20 backdrop-blur">
+      <div className="border-border flex items-center gap-1.5 border-b px-4 py-3">
         <span className="size-2.5 rounded-full bg-rose-400/80" />
         <span className="size-2.5 rounded-full bg-amber-300/80" />
         <span className="size-2.5 rounded-full bg-emerald-400/80" />
-        <span className="ml-3 font-mono text-xs text-muted">~/things-i-built</span>
+        <span className="text-muted ml-3 font-mono text-xs">~/things-i-built</span>
       </div>
       <div className="space-y-3 p-5 font-mono text-sm">
         <p className="text-muted">
@@ -53,10 +53,10 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28">
       <div aria-hidden className="hero-glow pointer-events-none absolute inset-0 -z-10" />
-      <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 -z-10 mask-fade opacity-50" />
+      <div aria-hidden className="bg-grid mask-fade pointer-events-none absolute inset-0 -z-10 opacity-50" />
       <Container className="grid items-center gap-14 lg:grid-cols-[1.25fr_1fr]">
         <div>
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-sm text-muted">
+          <p className="border-border bg-card/60 text-muted mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm">
             <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden />
             Open to on-chain research, Web3 growth and builder roles
           </p>
@@ -66,8 +66,8 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
               working tools.
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-            I&apos;m <strong className="font-medium text-fg">{siteConfig.name}</strong>, {siteConfig.role}. Dashboards,
+          <p className="text-muted mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
+            I&apos;m <strong className="text-fg font-medium">{siteConfig.name}</strong>, {siteConfig.role}. Dashboards,
             bots and agents that make on-chain data easier to act on. Arkham community manager, former P&amp;G engineer.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
@@ -81,12 +81,20 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
               <Mail aria-hidden className="size-4" /> Contact
             </ButtonLink>
           </div>
-          <dl className="mt-12 grid max-w-xl grid-cols-1 gap-6 border-t border-border/70 pt-6 sm:grid-cols-3">
+          <dl className="border-border/70 mt-12 grid max-w-xl grid-cols-1 gap-6 border-t pt-6 sm:grid-cols-3">
             {credentials.map((item) => (
               <div key={item.label}>
                 <dt className="sr-only">{item.label}</dt>
-                <dd className="text-xl font-semibold tracking-tight sm:text-2xl">{item.value}</dd>
-                <dd className="mt-1 text-sm text-muted">{item.label}</dd>
+                <dd
+                  className={
+                    item.value === "Just building things."
+                      ? "text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl"
+                      : "text-xl font-semibold tracking-tight sm:text-2xl"
+                  }
+                >
+                  {item.value}
+                </dd>
+                <dd className="text-muted mt-1 text-sm">{item.label}</dd>
               </div>
             ))}
           </dl>

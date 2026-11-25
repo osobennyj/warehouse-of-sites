@@ -9,7 +9,7 @@ export function FeaturedProjects({ projects }: { projects: readonly Project[] })
       id="projects"
       eyebrow="Things I built"
       title="Tools born from my own research workflow"
-      description="Each project starts from a problem I hit as an analyst or trader, then ships as a deployed product with tests, CI and a written case study."
+      description="Frameworks, Dune dashboards and write-ups. The tools above are these ideas turned into software."
       action={
         <ButtonLink href="/projects/" variant="secondary" size="sm">
           All projects <ArrowRight aria-hidden className="size-4" />
