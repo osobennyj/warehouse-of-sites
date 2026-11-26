@@ -58,16 +58,16 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
 
   return (
     <Card className="border-emerald-900/60 bg-gradient-to-b from-emerald-950/40 to-slate-950/80">
-      <CardTitle>Size the arb · net after fees (next funding window)</CardTitle>
+      <CardTitle>Net yield after fees, next funding window</CardTitle>
       <CardDescription className="mt-1">
-        Ranked by estimated net USD at default size. Set margin on each leg, then read net PnL for the next ~8h window
-        after taker fees on both legs. Not financial advice.
+        Ranked by estimated net USD at the default size. Set the size of each leg to see net PnL for the next ~8h window
+        after taker fees on both legs.
       </CardDescription>
 
       {opportunity && topNetUsd !== null ? (
         <p className="mt-4 rounded-lg border border-emerald-800/60 bg-emerald-950/50 px-4 py-3 text-sm text-emerald-100">
-          Top pick right now: <strong className="text-white">{opportunity.asset}</strong> · estimated net{" "}
-          <strong className="font-mono text-lg text-emerald-300">{formatUsd(topNetUsd)}</strong> on your sizes below
+          Highest net: <strong className="text-white">{opportunity.asset}</strong> · estimated{" "}
+          <strong className="font-mono text-lg text-emerald-300">{formatUsd(topNetUsd)}</strong> at the sizes below
         </p>
       ) : null}
 
@@ -89,7 +89,7 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
       </div>
 
       {!opportunity ? (
-        <p className="mt-4 text-sm text-slate-400">Waiting for live spreads…</p>
+        <p className="mt-4 text-sm text-slate-400">Loading spreads…</p>
       ) : (
         <>
           <p className="mt-4 text-sm text-slate-300">
@@ -99,15 +99,15 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <label className="grid gap-1 text-xs text-slate-400">
-              Long leg size (USD)
+              Long leg, USD
               <Input value={longCapitalUsd} onChange={(e) => setLongCapitalUsd(e.target.value)} inputMode="decimal" />
             </label>
             <label className="grid gap-1 text-xs text-slate-400">
-              Short leg size (USD)
+              Short leg, USD
               <Input value={shortCapitalUsd} onChange={(e) => setShortCapitalUsd(e.target.value)} inputMode="decimal" />
             </label>
             <label className="grid gap-1 text-xs text-slate-400">
-              Leverage (both legs)
+              Leverage, both legs
               <Input value={leverage} onChange={(e) => setLeverage(e.target.value)} inputMode="decimal" />
             </label>
           </div>
@@ -115,9 +115,9 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
           {result ? (
             <dl className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <Metric label="Spread APR" value={formatApr(opportunity.spreadApr)} />
-              <Metric label="Gross (next window)" value={formatUsd(result.grossPnlUsd)} />
-              <Metric label="Fees (entry + exit, both legs)" value={formatUsd(result.feesUsd)} highlight />
-              <Metric label="Net (next window)" value={formatUsd(result.netPnlUsd)} highlight accent />
+              <Metric label="Gross, next window" value={formatUsd(result.grossPnlUsd)} />
+              <Metric label="Fees, entry and exit" value={formatUsd(result.feesUsd)} highlight />
+              <Metric label="Net, next window" value={formatUsd(result.netPnlUsd)} highlight accent />
             </dl>
           ) : null}
           {result ? (

@@ -33,7 +33,7 @@ export function NetYieldCalculator({ opportunity }: { opportunity?: FundingOppor
     <Card>
       <CardTitle>Net yield calculator</CardTitle>
       <CardDescription className="mt-1">
-        Delta-neutral funding arb after entry/exit taker fees on both legs. Not financial advice.
+        Delta-neutral funding arb after entry/exit taker fees on both legs. Not investment advice.
       </CardDescription>
 
       {!opportunity ? (

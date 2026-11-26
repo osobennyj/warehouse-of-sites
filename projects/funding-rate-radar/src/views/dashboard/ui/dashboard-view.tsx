@@ -25,14 +25,24 @@ export function DashboardView() {
 
   return (
     <DashboardShell>
-      <p className="text-sm text-slate-400">
-        Live funding spreads · Binance, Bybit, OKX, Hyperliquid · refresh every {SNAPSHOT_REFRESH_MS / 60_000} min ·
-        no API keys
-        <span className="text-slate-600">
-          {" "}
-          · {isFetching ? "Refreshing…" : dataUpdatedAt ? `Updated ${new Date(dataUpdatedAt).toLocaleTimeString()}` : null}
-        </span>
-      </p>
+      <section className="grid gap-2.5 pt-6">
+        <p className="font-mono text-xs font-semibold tracking-[0.2em] text-teal-400 uppercase">Demo</p>
+        <h1 className="text-[clamp(1.9rem,1.4rem+1.6vw,2.75rem)] leading-[1.1] font-semibold tracking-tight">
+          Funding Rate Radar
+        </h1>
+        <p className="max-w-[44rem] text-zinc-400">
+          Compares perpetual funding rates across Binance, Bybit, OKX and Hyperliquid and ranks the spreads by net
+          profit after fees at the position size you set.
+        </p>
+        <p className="max-w-[44rem] rounded-xl border border-teal-400/35 bg-teal-400/10 px-3 py-2.5 text-sm text-teal-100">
+          Live data from public exchange APIs, refreshed every {SNAPSHOT_REFRESH_MS / 60_000} minutes. No API keys, no
+          orders. Not investment advice.
+          <span className="text-teal-200/70">
+            {" "}
+            {isFetching ? "Refreshing…" : dataUpdatedAt ? `Updated ${new Date(dataUpdatedAt).toLocaleTimeString()}.` : null}
+          </span>
+        </p>
+      </section>
 
       {error ? (
         <p className="rounded-lg border border-rose-900 bg-rose-950/40 p-3 text-sm text-rose-200">
@@ -46,7 +56,7 @@ export function DashboardView() {
 
       <details className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
         <summary className="cursor-pointer text-sm font-medium text-slate-200">
-          All ranked spreads ({isLoading ? "…" : opportunities.length})
+          All spreads ({isLoading ? "…" : opportunities.length})
         </summary>
         <div className="mt-4 space-y-4">
           <OpportunityFiltersPanel filters={filters} onChange={setFilters} />
@@ -62,8 +72,8 @@ export function DashboardView() {
 function Disclaimer() {
   return (
     <p className="text-xs leading-relaxed text-slate-500">
-      Educational dashboard only, not financial advice. Rates and spreads are indicative. Execution, basis risk, borrow
-      costs and exchange outages are not modeled beyond the fee assumptions above.
+      Not investment advice. Rates are indicative. Very high spread APRs usually mean thin liquidity on one leg. Execution,
+      basis risk, borrow costs and exchange outages are not modeled beyond the taker fees shown.
     </p>
   );
 }

@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Funding Rate Radar",
-  description: "Cross-exchange perpetual funding arbitrage scanner for Binance, Bybit, OKX and Hyperliquid.",
+  description: "Compares perpetual funding rates across Binance, Bybit, OKX and Hyperliquid and ranks spreads by net profit after fees.",
   openGraph: {
     title: "Funding Rate Radar",
-    description: "Live funding spreads, history and net-yield calculator.",
+    description: "Funding spreads across four exchanges, ranked by net yield after fees.",
     type: "website",
   },
 };
