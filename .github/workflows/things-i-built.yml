@@ -11,6 +11,7 @@ on:
       - "projects/ai-token-due-diligence/**"
       - "projects/defi-strategist-mcp/**"
       - "projects/perpetual-grid-bot/**"
+      - "projects/discipline-calendar/**"
       - ".github/workflows/things-i-built.yml"
       - ".github/scripts/assemble-pages.sh"
   pull_request:
@@ -21,6 +22,7 @@ on:
       - "projects/ai-token-due-diligence/**"
       - "projects/defi-strategist-mcp/**"
       - "projects/perpetual-grid-bot/**"
+      - "projects/discipline-calendar/**"
       - ".github/workflows/things-i-built.yml"
       - ".github/scripts/assemble-pages.sh"
 

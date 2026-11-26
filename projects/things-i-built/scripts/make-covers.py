@@ -90,7 +90,36 @@ def funding_radar():
         out.append(f'<circle cx="{x}" cy="674" r="8" fill="{col}"/><text x="{x+20}" y="681" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">{name}</text>')
     return frame("FUNDING RATE RADAR", "#2dd4bf", "#10b981", "#5eead4", "\n".join(out))
 
-for slug, svg in (("grid-bot", grid_bot()), ("funding-rate-radar", funding_radar())):
+def discipline_calendar():
+    # Violet gradient with a month grid of green/red/gray days and one selected day.
+    rnd = random.Random(12)
+    out = []
+    cols, rows = 7, 5
+    cw, ch, gap = 120, 76, 12
+    x0 = (W - (cols * cw + (cols - 1) * gap)) // 2
+    y0 = 150
+    sel = (3, 2)
+    for r in range(rows):
+        for c in range(cols):
+            x, y = x0 + c * (cw + gap), y0 + r * (ch + gap)
+            roll = rnd.random()
+            if c >= 5:
+                fill, stroke = "#18181b", "#2a2a2f"
+            elif roll < 0.58:
+                fill, stroke = "#14532d", GREEN
+            elif roll < 0.8:
+                fill, stroke = "#7f1d1d", RED
+            else:
+                fill, stroke = "#18181b", "#3a3a41"
+            width = 5 if (c, r) == sel else 2
+            if (c, r) == sel:
+                stroke = "#fafafa"
+            out.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" rx="14" fill="{fill}" fill-opacity=".8" stroke="{stroke}" stroke-opacity=".7" stroke-width="{width}"/>')
+    out.append(f'<rect x="64" y="{H-58}" width="18" height="18" rx="5" fill="#14532d" stroke="{GREEN}"/><text x="92" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">By plan</text>')
+    out.append(f'<rect x="230" y="{H-58}" width="18" height="18" rx="5" fill="#7f1d1d" stroke="{RED}"/><text x="258" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">Off plan</text>')
+    return frame("DISCIPLINE CALENDAR", "#a78bfa", "#8b5cf6", "#a78bfa", "\n".join(out))
+
+for slug, svg in (("grid-bot", grid_bot()), ("funding-rate-radar", funding_radar()), ("discipline-calendar", discipline_calendar())):
     d = OUT / slug; d.mkdir(parents=True, exist_ok=True)
     s = d / "cover.svg"; s.write_text(svg, encoding="utf-8")
     subprocess.run(["rsvg-convert", "-w", str(W), "-h", str(H), str(s), "-o", str(d / "cover-v2.png")], check=True)
