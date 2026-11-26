@@ -163,13 +163,13 @@ function drawChart(index) {
       const cy = y(m.price);
       const up = m.side === "buy";
       ctx.beginPath();
-      ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+      ctx.arc(cx, cy, 11, 0, Math.PI * 2);
       ctx.fillStyle = up ? "rgba(74,222,128,0.18)" : "rgba(248,113,113,0.18)";
       ctx.fill();
       ctx.beginPath();
-      ctx.moveTo(cx, cy + (up ? -5 : 5));
-      ctx.lineTo(cx - 4.5, cy + (up ? 4 : -4));
-      ctx.lineTo(cx + 4.5, cy + (up ? 4 : -4));
+      ctx.moveTo(cx, cy + (up ? -8 : 8));
+      ctx.lineTo(cx - 7, cy + (up ? 6 : -6));
+      ctx.lineTo(cx + 7, cy + (up ? 6 : -6));
       ctx.closePath();
       ctx.fillStyle = up ? "#4ade80" : "#f87171";
       ctx.fill();
