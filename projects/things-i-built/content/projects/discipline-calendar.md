@@ -1,6 +1,6 @@
 ---
 title: Discipline Calendar
-tagline: A trading journal that colors every day by one question: did each trade follow the plan?
+tagline: "A trading journal that colors every day by one question: did each trade follow the plan?"
 description: Calendar-based trading journal with by-plan vs off-plan stats, skipped-trade tracking, mood and notes. Demo runs on sample data in the browser.
 status: live
 tags: [Trading]
