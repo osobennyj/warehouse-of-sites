@@ -60,7 +60,7 @@ export function SiteHeader() {
                     download
                     className="text-accent hover:bg-card block rounded-xl px-3 py-2.5 text-sm"
                   >
-                    Download CV (PDF)
+                    Download CV
                   </a>
                 </li>
               </ul>

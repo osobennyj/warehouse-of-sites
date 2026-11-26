@@ -6,7 +6,7 @@ type Tone = "neutral" | "success" | "warning" | "info";
 
 const tones: Record<Tone, string> = {
   neutral: "border-border bg-card/70 text-muted",
-  success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
+  success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
   warning: "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
   info: "border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-300",
 };

@@ -5,7 +5,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 test.describe("portfolio smoke", () => {
   test("home renders hero and projects", async ({ page }) => {
     await page.goto(`${basePath}/`);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(/working tools/i);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(/crypto analyst/i);
     await expect(page.getByRole("link", { name: /Funding Rate Radar/i }).first()).toBeVisible();
   });
 

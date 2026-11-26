@@ -14,7 +14,7 @@ export const experience: readonly ExperienceItem[] = [
     organization: "Self-directed",
     period: "2023 to now",
     summary:
-      "Token valuation research, DeFi strategy analysis and tooling built with AI coding agents. The projects on this site are the public proof.",
+      "Token valuation research, DeFi strategy analysis and trading tools built with AI coding assistants. The projects on this site are examples.",
     highlights: [
       "Tokenomics: FDV, circulating supply, vesting & unlock pressure, liquidity",
       "DeFi: Pendle PT/YT, looping, points farming, funding-rate arbitrage",
@@ -27,8 +27,7 @@ export const experience: readonly ExperienceItem[] = [
     role: "Community Manager",
     organization: "Arkham",
     period: "2023 to now",
-    summary:
-      "CIS community manager for an on-chain intelligence platform. Closed the loop between users and the product team.",
+    summary: "CIS community manager for an on-chain intelligence platform. Passed user feedback to the product team.",
     highlights: [
       "Planned partnerships with the largest CIS crypto KOLs",
       "Relayed user feedback that shaped the CEX → DEX transition, VIP benefits and bug fixes",

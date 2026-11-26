@@ -6,8 +6,8 @@ export function ExperienceTimeline() {
     <Section
       id="experience"
       eyebrow="Experience"
-      title="Engineer by training, crypto-native by choice"
-      description="Measurable process work at P&G, community and product feedback at Arkham, and independent research that feeds everything I build. I try to be clear about this: the useful part is knowing the domain, writing a tight spec, and reviewing every change. That work is on me."
+      title="From process engineering to crypto"
+      description="Process engineering at P&G, community management at Arkham, independent research since 2023."
     >
       <ol className="before:bg-border relative before:absolute before:top-2 before:bottom-2 before:left-[4.5px] before:w-px sm:before:left-[calc(11rem-0.5px)]">
         {experience.map((item) => (

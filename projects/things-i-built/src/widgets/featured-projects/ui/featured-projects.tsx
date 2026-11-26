@@ -7,9 +7,9 @@ export function FeaturedProjects({ projects }: { projects: readonly Project[] })
   return (
     <Section
       id="projects"
-      eyebrow="Things I built"
-      title="Tools born from my own research workflow"
-      description="Frameworks and research notes. The tools above are these ideas turned into software."
+      eyebrow="Projects"
+      title="Three tools for trading research"
+      description="Each card states the problem and what I decided myself. Demos on sample or simulated data are labeled."
       action={
         <ButtonLink href="/projects/" variant="secondary" size="sm">
           All projects <ArrowRight aria-hidden className="size-4" />

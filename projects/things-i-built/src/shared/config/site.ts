@@ -3,10 +3,10 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").re
 export const siteConfig = {
   name: "Bohdan Maistrenko",
   shortName: "Things I Built",
-  title: "Bohdan Maistrenko: research analyst and builder",
-  role: "Research analyst and builder",
+  title: "Bohdan Maistrenko: crypto research analyst",
+  role: "Crypto research analyst",
   description:
-    "I turn crypto research into working tools: dashboards, bots and agents. Arkham community manager, former P&G process engineer.",
+    "Crypto research analyst. Three trading research tools built with AI coding assistants. Community manager at Arkham, former process engineer at P&G.",
   url: siteUrl,
   locale: "en_US",
   cvPath: "/cv.pdf",
@@ -21,6 +21,7 @@ export const siteConfig = {
 
 export const navigation = [
   { href: "/projects/", label: "Projects" },
+  { href: "/research/", label: "Research" },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
 ] as const;

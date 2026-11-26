@@ -5,9 +5,9 @@ import { siteConfig } from "@/shared/config";
 import { ButtonLink, Container } from "@/shared/ui";
 
 const credentials = [
-  { value: "Arkham", label: "CIS Community Manager" },
-  { value: "$70k+/yr", label: "Cost savings at P&G" },
-  { value: "Research + code", label: "Trading tools" },
+  { value: "Arkham", label: "CIS community manager since 2023" },
+  { value: "$70k+/yr", label: "est. savings from P&G process projects" },
+  { value: "3 demos", label: "source code on GitHub" },
 ] as const;
 
 /** Terminal listing order (first site layout, no status column). */
@@ -55,15 +55,16 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
             <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden />
             Open to research and analyst roles
           </p>
-          <h1 id="hero-title" className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-            I turn crypto research into{" "}
+          <h1 id="hero-title" className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <span className="block">Crypto analyst.</span>I build tools to check{" "}
             <span className="bg-gradient-to-r from-teal-300 via-sky-300 to-violet-400 bg-clip-text text-transparent">
-              working tools.
+              my own research.
             </span>
           </h1>
           <p className="text-muted mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-            I&apos;m <strong className="text-fg font-medium">{siteConfig.name}</strong>, {siteConfig.role.charAt(0).toLowerCase() + siteConfig.role.slice(1)}. Dashboards,
-            bots and agents that make on-chain data easier to act on. Arkham community manager, former P&amp;G engineer.
+            I&apos;m <strong className="text-fg font-medium">{siteConfig.name}</strong>. I manage the CIS community at
+            Arkham and was a process engineer at P&amp;G before that. I write the specs and review every change. AI
+            coding assistants write the code.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <ButtonLink href="/#projects">
@@ -80,9 +81,7 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
             {credentials.map((item) => (
               <div key={item.label}>
                 <dt className="sr-only">{item.label}</dt>
-                <dd className="text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl">
-                  {item.value}
-                </dd>
+                <dd className="text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl">{item.value}</dd>
                 <dd className="text-muted mt-1 text-sm">{item.label}</dd>
               </div>
             ))}
