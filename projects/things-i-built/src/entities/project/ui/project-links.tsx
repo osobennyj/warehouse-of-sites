@@ -26,8 +26,8 @@ export function ProjectLinks({ project, size = "sm", className }: ProjectLinksPr
   return (
     <div className={className ?? "flex flex-wrap gap-2"}>
       {live && (
-        <ButtonLink href={live} size={size} aria-label={`${project.title}: live demo`}>
-          Live demo <ArrowRight aria-hidden className="size-4" />
+        <ButtonLink href={live} size={size} aria-label={`${project.title}: demo`}>
+          Demo <ArrowRight aria-hidden className="size-4" />
         </ButtonLink>
       )}
       {github && (

@@ -35,7 +35,7 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
   return (
     <article className="pb-20">
       <Container className="pt-12 sm:pt-16">
-        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-muted">
+        <nav aria-label="Breadcrumb" className="text-muted mb-8 text-sm">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/projects/" className="hover:text-fg">
@@ -47,16 +47,16 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
           </ol>
         </nav>
 
-        <header className="max-w-3xl border-b border-border pb-10">
+        <header className="border-border max-w-3xl border-b pb-10">
           <div className="flex flex-wrap items-center gap-2">
             <ProjectStatusBadge status={project.status} />
           </div>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{project.title}</h1>
-          <p className="mt-4 text-xl leading-relaxed text-muted">{project.tagline}</p>
+          <p className="text-muted mt-4 text-xl leading-relaxed">{project.tagline}</p>
           <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-3">
             <div>
               <dt className="text-muted">Key metric</dt>
-              <dd className="mt-1 font-mono text-lg text-accent">{project.metric.value}</dd>
+              <dd className="text-accent mt-1 font-mono text-lg">{project.metric.value}</dd>
               <dd className="text-muted">{project.metric.label}</dd>
             </div>
             <div>
@@ -64,10 +64,26 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
               <dd className="mt-1">{project.role}</dd>
             </div>
             <div>
-              <dt className="text-muted">Started</dt>
+              <dt className="text-muted">Date</dt>
               <dd className="mt-1">{formatMonthYear(project.date)}</dd>
             </div>
           </dl>
+          {(project.solves || project.decision) && (
+            <dl className="border-accent/60 mt-6 space-y-2 border-l-2 pl-4 text-base leading-relaxed">
+              {project.solves && (
+                <div>
+                  <dt className="inline font-medium">Problem: </dt>
+                  <dd className="text-muted inline">{project.solves}</dd>
+                </div>
+              )}
+              {project.decision && (
+                <div>
+                  <dt className="inline font-medium">My call: </dt>
+                  <dd className="text-muted inline">{project.decision}</dd>
+                </div>
+              )}
+            </dl>
+          )}
           <ProjectLinks project={project} size="md" className="relative z-10 mt-8 flex flex-wrap gap-2" />
         </header>
 
@@ -77,13 +93,12 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
           <MarkdownContent html={html} />
         </section>
 
-        <footer className="mt-16 border-t border-border pt-10">
-          <p className="text-muted">Browse other projects or open the live MVP again from the top of the page.</p>
-          <div className="mt-4 flex flex-wrap gap-3">
+        <footer className="border-border mt-16 border-t pt-10">
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <ButtonLink href="/projects/" variant="secondary">
               ← All projects
             </ButtonLink>
-            <ProjectLinks project={project} size="md" />
+            <p className="text-muted text-sm">Research and journaling tool. Not investment advice.</p>
           </div>
         </footer>
       </Container>

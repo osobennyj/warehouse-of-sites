@@ -9,7 +9,7 @@ import { ProjectsCatalog } from "@/widgets/projects-catalog";
 export const projectsListMetadata: Metadata = buildPageMetadata({
   title: "Projects",
   description:
-    "Crypto research tools built with AI coding agents: funding-rate arbitrage, wallet clustering, DeFi analytics for AI agents and token due diligence.",
+    "Three trading research tools built with AI coding assistants: a funding-rate scanner, a grid bot simulator and a trading discipline journal.",
   path: "/projects/",
 });
 
@@ -17,9 +17,9 @@ export function ProjectsListPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Things I built"
-        title="Every project, with the reasoning behind it"
-        description="Filter by area. Each card opens a case study: the problem, the architecture, the trade-offs and what shipped."
+        eyebrow="Projects"
+        title="Projects"
+        description="Each case study covers the problem, my decisions, the architecture and the limits."
       />
       <Container className="pb-8">
         <ProjectsCatalog projects={getProjects()} />

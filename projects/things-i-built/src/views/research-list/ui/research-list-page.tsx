@@ -7,7 +7,8 @@ import { Container, PageIntro } from "@/shared/ui";
 
 export const researchListMetadata: Metadata = buildPageMetadata({
   title: "Research",
-  description: "Tokenomics frameworks, on-chain notes and dashboards that inform the tools I build.",
+  description:
+    "Short notes on token unlock risk, funding rate comparison, community feedback at Arkham and process engineering at P&G.",
   path: "/research/",
 });
 
@@ -18,8 +19,8 @@ export function ResearchListPage() {
     <>
       <PageIntro
         eyebrow="Research"
-        title="Notes and dashboards"
-        description="Frameworks plus documented outcomes: tools from this site, Arkham community work, carry process notes, and pre-crypto engineering wins."
+        title="Research notes"
+        description="Short notes on how I analyze tokens and funding, plus background from Arkham and P&G."
       />
       <Container className="pb-20">
         <ul className="grid gap-4">

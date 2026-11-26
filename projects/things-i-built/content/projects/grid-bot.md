@@ -1,13 +1,15 @@
 ---
 title: Perpetual Grid Bot
-tagline: A visual arithmetic grid on a simulated BTC perpetual, showing fills, cycle PnL, funding and liquidation risk.
-description: Grid strategy simulator with seeded price scenarios, replay slider, fee and funding accounting, stops and a worst-case estimate. No API keys, no live orders.
-status: beta
+tagline: "Simulates a grid strategy on a synthetic BTC perpetual and shows fills, fees, funding and liquidation risk."
+description: "Grid trading simulator on synthetic BTC prices: fills, cycle PnL, fees, funding, stops and a worst-case estimate. No API keys, no real orders."
+solves: "Grid charts show where orders sit, but not what fees, funding and a one-way move do to the account."
+decision: "Show the worst-case loss for a one-way move out of the range next to the PnL."
+status: demo
 tags: [Trading, DeFi]
 stack: [JavaScript, Canvas, node:test]
 metric:
-  value: Simulated
-  label: synthetic prices, no live orders
+  value: 10 tests
+  label: engine logic, incl. PnL reconciliation on a random path
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/grid-bot/
@@ -23,42 +25,43 @@ date: 2026-11-26
 
 ## Problem
 
-A grid strategy looks simple on paper, but its results depend on details that are easy to miss: how fees and funding accumulate, how far the price can travel before the position becomes dangerous, and what a stop actually closes. A chart of the grid rarely shows these.
+A grid strategy looks simple on paper. Its result depends on details that a price chart does not show: how fees and funding accumulate, how far price can travel before the position is in danger, and what a stop actually closes.
 
-## Solution
+## What it does
 
-A browser simulator that places one resting limit order per level and replays a synthetic price path:
+It places one resting limit order per level and replays a synthetic price path:
 
-- **Fills and cycles:** a buy fill places a sell one level up, and a sell fill places a buy one level down. Each completed cycle books its gain.
-- **Accounting:** realized and unrealized PnL, maker and taker fees, and funding paid or received, all shown side by side.
-- **Risk:** a liquidation price estimate, stop-loss levels that close the position, and a worst-case loss for a one-way move out of the range.
-- **Replay:** a slider steps through the run so you can see exactly when each fill happened.
+- A buy fill places a sell one level up, a sell fill places a buy one level down. Each completed cycle books its gain.
+- Realized and unrealized PnL, maker and taker fees, and funding are shown side by side.
+- It estimates the liquidation price and the worst-case loss if price leaves the range and never returns.
+- Stop-loss levels close the position and halt the grid.
+- A replay slider steps through the run fill by fill.
 
-The engine is pure logic with no exchange code. It has 10 tests, including a reconciliation check on a random path.
+## Decisions
+
+- **Worst case is shown by default.** Grid results look good while price stays in range. The one-way-move loss is what the setup can actually cost, so it sits next to the PnL.
+- **Synthetic prices from a seed.** The same seed gives the same run, so a result can be reproduced and checked.
+- **The engine has no UI or exchange code.** It can be tested on its own.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  P[Seeded price path] --> E[GridSim engine]
-  C[Config: range, levels, size, stops] --> E
+  P[Seeded price path] --> E[Grid engine]
+  C[Range, levels, size, stops] --> E
   E --> F[Fills and cycles]
   E --> A[PnL, fees, funding]
   E --> R[Liquidation and worst case]
   F & A & R --> U[Canvas chart and replay]
 ```
 
-## Results
+## Tests
 
-- Engine tests cover round-trip cycle accounting, funding sign, stop and liquidation triggers, worst-case loss and reconciliation.
-- Runs entirely in the browser with no build step and no runtime dependencies.
+10 tests (node:test) cover cycle accounting, funding sign, stop and liquidation triggers, worst-case loss, seed determinism and a reconciliation check on a random path.
 
 ## Limits
 
-- The simulator uses synthetic prices, and fees and funding are fixed demo values.
-- Money is handled as JavaScript numbers, which is fine for a demo and not for real order sizing.
-- No exchange adapter is included. Connecting one would be a separate project.
-
-## Next steps
-
-A real exchange adapter behind the same engine interface, tested on recorded data before any live use.
+- Prices are synthetic. Fees (maker 0.02%, taker 0.05%) and funding are fixed demo values.
+- Money is handled as JavaScript numbers. Fine for a demo, not for real order sizing.
+- No exchange adapter. Connecting one would be a separate project, tested on recorded data first.
+- Not investment advice.

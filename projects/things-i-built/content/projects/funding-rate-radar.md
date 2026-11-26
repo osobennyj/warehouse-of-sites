@@ -1,13 +1,15 @@
 ---
 title: Funding Rate Radar
-tagline: Cross-venue funding spreads across Binance, Bybit, OKX and Hyperliquid in one APR-ranked, fee-aware table.
-description: Funding arbitrage dashboard with symbol normalization, 7-day history, filters and a net-yield calculator. Static export, no API keys.
+tagline: "Funding rates for the same perpetual differ by exchange. This ranks the spreads by net profit after fees."
+description: "Compares perpetual funding rates across Binance, Bybit, OKX and Hyperliquid and ranks spreads by net profit after fees. Live public data, no API keys."
+solves: "Comparing funding by hand across four exchanges with different symbols, intervals and fees."
+decision: "Rank by net USD after taker fees at a chosen size, not by raw APR, which favors illiquid markets."
 status: live
 tags: [Trading, DeFi]
 stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
 metric:
   value: 4 exchanges
-  label: refreshed every 5 min
+  label: 50 markets each, live public APIs, no keys
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/
@@ -22,18 +24,21 @@ date: 2026-11-25
 
 ## Problem
 
-Funding-rate arbitrage is tedious to operationalize: every exchange uses different symbols, funding intervals (1h / 4h / 8h) and fee schedules. A spread that looks rich often disappears once you normalize APR and account for thin liquidity on one leg.
+Funding-rate arbitrage means going long a perpetual on the exchange that pays less and short on the one that pays more. Each exchange uses different symbols, funding intervals (1h, 4h, 8h) and fees, so comparing them by hand is slow and error-prone. A spread that looks large often disappears after fees or sits on a market with little liquidity.
 
-## Solution
+## What it does
 
-A static client-side dashboard that polls public REST APIs, normalizes funding to a common **annualized APR**, and ranks delta-neutral opportunities:
+- Reads public REST APIs from Binance, Bybit, OKX and Hyperliquid (top 50 markets each) every 5 minutes. No API keys.
+- Converts every rate to an annualized APR so the venues are comparable.
+- Ranks assets by net USD for the next funding window, after taker fees on both legs, at the position size you enter.
+- Shows 7 days of funding history per asset, and a net yield calculator with the formulas visible.
+- If one exchange fails, the others keep working and the failed one is flagged.
 
-- **Opportunities table:** best long vs short venue per asset, spread APR, min OI/volume across legs, filters by spread, volume and exchange.
-- **Per-asset history:** seven days of funding per venue and spread over time.
-- **Net yield calculator:** capital, leverage, holding period and taker/maker fees, with net APR and PnL formulas visible in the UI.
-- **Graceful degradation:** if one exchange fails, the others keep working with a clear stale flag.
+## Decisions
 
-Four adapters implement a shared `ExchangeFundingSource` interface; domain math and API parsing are covered by recorded fixtures and Vitest.
+- **Rank by net USD, not APR.** The highest APRs on the page are usually thin markets. Net USD at a fixed size is the number that decides whether the trade is worth opening.
+- **Taker fees on both legs, entry and exit.** The conservative case, so the result is not flattered.
+- **Everything runs in the browser.** No backend to maintain. The cost is that history is limited to what the exchange APIs return.
 
 ## Architecture
 
@@ -42,19 +47,22 @@ flowchart LR
   subgraph Sources
     B[Binance] & Y[Bybit] & O[OKX] & H[Hyperliquid]
   end
-  Sources --> A[ExchangeFundingSource adapters]
-  A --> N[Normalize → APR]
-  N --> UI[Static dashboard]
-  UI --> T[Opportunities]
-  UI --> K[Net yield]
+  Sources --> A[One adapter per exchange]
+  A --> N[Normalize to APR]
+  N --> R[Rank by net USD]
+  R --> UI[Dashboard]
 ```
 
-## Results
+## Tests
 
-- **~80%** line coverage on domain and adapter layers with recorded JSON fixtures (no live network in CI).
-- Steiger-enforced FSD layout, Playwright smoke, GitHub Actions CI.
-- Shipped in monorepo PR, ready to extract to a dedicated repo when permissions allow.
+50 unit tests (Vitest) cover APR conversion, spread ranking, the calculator and the parsing of each exchange response. Responses are recorded as fixtures, so CI does not call the live APIs. A Playwright smoke test and GitHub Actions run on every push.
+
+## Limits
+
+- Execution, basis risk, borrow cost and exchange outages are not modeled.
+- The next funding time is assumed to be 8 hours away, because the public APIs do not expose it consistently.
+- Not investment advice.
 
 ## Next steps
 
-Postgres history via cron on a serverful host, spread alerts, more venues.
+Stored history, spread alerts, more venues.
