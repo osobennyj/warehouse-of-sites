@@ -53,7 +53,7 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
         <div>
           <p className="border-border bg-card/60 text-muted mb-6 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm">
             <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden />
-            Open to on-chain research, Web3 growth and builder roles
+            Open to research and analyst roles · Web3 community background
           </p>
           <h1 id="hero-title" className="text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
             I turn crypto research into{" "}

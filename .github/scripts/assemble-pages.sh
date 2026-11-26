@@ -76,7 +76,7 @@ copy_vite_app "$ROOT/projects/defi-strategist-mcp/apps/playground/dist" "defi-st
 
 (
   cd "$ROOT/projects/discipline-calendar"
-  npm ci --no-audit --no-fund
+  npm install --no-audit --no-fund
   NEXT_PUBLIC_DEMO_MODE=true \
     NEXT_PUBLIC_BASE_PATH="$BASE_URL_PATH/demos/discipline-calendar" \
     NEXT_PUBLIC_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \

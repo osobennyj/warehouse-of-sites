@@ -3,8 +3,8 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").re
 export const siteConfig = {
   name: "Bohdan Maistrenko",
   shortName: "Things I Built",
-  title: "Bohdan Maistrenko: on-chain research and builder",
-  role: "On-chain research and builder",
+  title: "Bohdan Maistrenko: research analyst and builder",
+  role: "Research analyst and builder",
   description:
     "I turn crypto research into working tools: dashboards, bots and agents. Arkham community manager, former P&G process engineer.",
   url: siteUrl,

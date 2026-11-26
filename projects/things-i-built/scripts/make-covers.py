@@ -39,27 +39,45 @@ def line(vals, x0, x1, top, bot, width, color, opacity=1):
     return f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="{opacity}"/>', pts
 
 def grid_bot():
-    # Same look as the generated cover (amber), plus grid levels and buy/sell fills.
+    """Amber cover: a price path through a 5-level grid. Fills sit exactly where the line crosses
+    a level: crossing downward = buy, crossing upward = sell. Five of each."""
     x0, x1, top, bot = 0, W, 250, 640
-    rnd = random.Random(8)
-    vals, v = [], 50.0
-    for i in range(46):
-        v += rnd.gauss(0, 7) + (50 - v) * 0.1
-        vals.append(min(90, max(10, v)))
-    levels = [26, 38, 50, 62, 74]
+    levels = [28, 39, 50, 61, 72]
     ly = lambda lv: bot - (bot - top) * (lv - 12) / 76
-    out = [f'<line x1="0" x2="{W}" y1="{ly(l):.1f}" y2="{ly(l):.1f}" stroke="#fcd34d" stroke-opacity=".28" stroke-dasharray="6 9"/>' for l in levels]
-    path_svg, pts = line(vals, x0, x1, top, bot, 5, "#fcd34d")
-    out.append(path_svg)
-    xs = lambda i: x0 + (x1 - x0) * i / (len(vals) - 1)
-    for i in range(1, len(vals)):
-        for lv in levels:
+
+    def crossings(vals):
+        res = []
+        for i in range(1, len(vals)):
             a, b = vals[i - 1], vals[i]
-            if (a - lv) * (b - lv) < 0:
-                buy = b < a  # crossed the level downward -> buy; upward -> sell
-                cx, cy, col, d = xs(i), ly(lv), (GREEN if buy else RED), (-1 if buy else 1)
-                out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="21" fill="{col}" fill-opacity=".2"/>')
-                out.append(f'<polygon points="{cx:.1f},{cy+13*d:.1f} {cx-12:.1f},{cy-10*d:.1f} {cx+12:.1f},{cy-10*d:.1f}" fill="{col}"/>')
+            for lv in levels:
+                if (a - lv) * (b - lv) < 0:
+                    res.append((i - 1 + (lv - a) / (b - a), lv, "buy" if b < a else "sell"))
+        return res
+
+    # Designed swings (turning points every 4 steps), noise only away from the levels.
+    knots = [55.5, 44.3, 33.2, 56.6, 66.3, 55.6, 44.5, 56.7, 45.3, 58.2]
+    rnd = random.Random(3)
+    vals = []
+    for k in range(len(knots) - 1):
+        for j in range(4):
+            base = knots[k] + (knots[k + 1] - knots[k]) * j / 4
+            near = min(abs(base - l) for l in levels) < 2.6
+            vals.append(base + (0 if near else rnd.gauss(0, 1.6)))
+    vals.append(knots[-1])
+    cr = crossings(vals)
+    assert len(cr) == 10 and sum(1 for c in cr if c[2] == "buy") == 5, cr
+
+    n = len(vals)
+    xs = lambda t: x0 + (x1 - x0) * t / (n - 1)
+    out = [f'<line x1="0" x2="{W}" y1="{ly(l):.1f}" y2="{ly(l):.1f}" stroke="#fcd34d" stroke-opacity=".28" stroke-dasharray="6 9"/>' for l in levels]
+    path_svg, _ = line(vals, x0, x1, top, bot, 5, "#fcd34d")
+    out.append(path_svg)
+    for t, lv, side in cr:
+        cx, cy = xs(t), ly(lv)
+        buy = side == "buy"
+        col, d = (GREEN if buy else RED), (-1 if buy else 1)
+        out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="21" fill="{col}" fill-opacity=".25"/>')
+        out.append(f'<polygon points="{cx:.1f},{cy+13*d:.1f} {cx-12:.1f},{cy-10*d:.1f} {cx+12:.1f},{cy-10*d:.1f}" fill="{col}"/>')
     out.append(f'<polygon points="64,664 52,682 76,682" fill="{GREEN}"/><text x="90" y="681" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">Buy filled</text>')
     out.append(f'<polygon points="252,682 240,664 264,664" fill="{RED}"/><text x="278" y="681" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">Sell filled</text>')
     return frame("PERPETUAL GRID BOT", "#fcd34d", "#f97316", "#fcd34d", "\n".join(out))

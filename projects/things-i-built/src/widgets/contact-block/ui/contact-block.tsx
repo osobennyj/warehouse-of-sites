@@ -20,7 +20,7 @@ export function ContactBlock() {
           <div className="relative">
             <p className="mb-3 font-mono text-xs tracking-[0.2em] text-accent uppercase">Contact</p>
             <h2 id="contact-title" className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-              If you are hiring for research, growth, or builder work, I would like to hear from you.
+              If you are hiring for research, analyst or Web3 community work, I would like to hear from you.
             </h2>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <ButtonLink href={`mailto:${email}`}>
