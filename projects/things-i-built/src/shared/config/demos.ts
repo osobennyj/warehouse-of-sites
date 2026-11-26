@@ -1,11 +1,6 @@
 import { siteConfig } from "./site";
 
-const DEMO_SLUGS = [
-  "funding-rate-radar",
-  "wallet-cluster-investigator",
-  "defi-strategist-mcp",
-  "ai-token-due-diligence",
-] as const;
+const DEMO_SLUGS = ["funding-rate-radar", "defi-strategist-mcp"] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
 

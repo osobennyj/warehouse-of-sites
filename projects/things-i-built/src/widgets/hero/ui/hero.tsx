@@ -7,16 +7,11 @@ import { ButtonLink, Container } from "@/shared/ui";
 const credentials = [
   { value: "Arkham", label: "CIS Community Manager" },
   { value: "$70k+/yr", label: "Cost savings at P&G" },
-  { value: "Just building things.", label: "Trading and research demos" },
+  { value: "Research + code", label: "Trading and research demos" },
 ] as const;
 
 /** Terminal listing order (first site layout, no status column). */
-const TERMINAL_SLUGS = [
-  "funding-rate-radar",
-  "wallet-cluster-investigator",
-  "defi-strategist-mcp",
-  "ai-token-due-diligence",
-] as const;
+const TERMINAL_SLUGS = ["funding-rate-radar", "defi-strategist-mcp"] as const;
 
 function BuildLog({ projects }: { projects: readonly Project[] }) {
   const known = new Set(projects.map((p) => p.slug));
@@ -85,13 +80,7 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
             {credentials.map((item) => (
               <div key={item.label}>
                 <dt className="sr-only">{item.label}</dt>
-                <dd
-                  className={
-                    item.value === "Just building things."
-                      ? "text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl"
-                      : "text-xl font-semibold tracking-tight sm:text-2xl"
-                  }
-                >
+                <dd className="text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl">
                   {item.value}
                 </dd>
                 <dd className="text-muted mt-1 text-sm">{item.label}</dd>

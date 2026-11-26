@@ -11,7 +11,7 @@ export function ResearchPreview({ notes }: { notes: readonly ResearchNote[] }) {
       id="research"
       eyebrow="Research"
       title="How I think about tokens and markets"
-      description="Frameworks, Dune dashboards and write-ups. The tools above are these ideas turned into software."
+      description="Frameworks and research notes. The tools above are these ideas turned into software."
       action={
         <ButtonLink href="/research/" variant="secondary" size="sm">
           All research <ArrowRight aria-hidden className="size-4" />

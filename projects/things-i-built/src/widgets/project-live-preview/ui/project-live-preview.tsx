@@ -7,10 +7,6 @@ import { ButtonLink } from "@/shared/ui";
 
 const HONESTY: Partial<Record<string, string>> = {
   "funding-rate-radar": "Live funding data and fee-aware arb math for the next payment window.",
-  "wallet-cluster-investigator":
-    "Work in progress: no Arkham API. Open the paste flow for a Blockscout preview, or saved investigations for full heuristics.",
-  "ai-token-due-diligence":
-    "Checklist and scoring work without keys. Narrative in samples is mock unless you add an LLM key locally.",
   "defi-strategist-mcp":
     "Sized stablecoin recommendation on snapshots. MCP + live feeds need the server outside this static page.",
 };

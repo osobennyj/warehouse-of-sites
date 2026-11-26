@@ -11,10 +11,14 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 py-10">
       <Container className="flex flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
-        <p>
-          © {new Date().getFullYear()} {siteConfig.name}. Designed and directed by me, implemented with AI coding
-          agents.
-        </p>
+        <div className="space-y-1 text-center sm:text-left">
+          <p>
+            © {new Date().getFullYear()} {siteConfig.name}. Designed by me, built with AI coding assistants.
+          </p>
+          <p className="text-xs">
+            Research and tooling only. Nothing on this site is investment advice.
+          </p>
+        </div>
         <ul className="flex items-center gap-1">
           {socials.map(({ href, label, Icon }) => (
             <li key={label}>
