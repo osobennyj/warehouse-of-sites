@@ -7,11 +7,11 @@ import { ButtonLink, Container } from "@/shared/ui";
 const credentials = [
   { value: "Arkham", label: "CIS Community Manager" },
   { value: "$70k+/yr", label: "Cost savings at P&G" },
-  { value: "Research + code", label: "Trading and research demos" },
+  { value: "Research + code", label: "Trading tools" },
 ] as const;
 
 /** Terminal listing order (first site layout, no status column). */
-const TERMINAL_SLUGS = ["funding-rate-radar", "grid-bot", "defi-strategist-mcp"] as const;
+const TERMINAL_SLUGS = ["funding-rate-radar", "grid-bot"] as const;
 
 function BuildLog({ projects }: { projects: readonly Project[] }) {
   const known = new Set(projects.map((p) => p.slug));
@@ -62,7 +62,7 @@ export function Hero({ projects }: { projects: readonly Project[] }) {
             </span>
           </h1>
           <p className="text-muted mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-            I&apos;m <strong className="text-fg font-medium">{siteConfig.name}</strong>, {siteConfig.role}. Dashboards,
+            I&apos;m <strong className="text-fg font-medium">{siteConfig.name}</strong>, {siteConfig.role.charAt(0).toLowerCase() + siteConfig.role.slice(1)}. Dashboards,
             bots and agents that make on-chain data easier to act on. Arkham community manager, former P&amp;G engineer.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">

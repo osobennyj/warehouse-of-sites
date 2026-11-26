@@ -1,126 +1,217 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perpetual Grid Bot: симулятор | Things I Built</title>
-  <meta name="description" content="Симулятор арифметической сетки на перпетуале. Без API-ключей и без торговли." />
+  <title>Perpetual Grid Bot simulator | Things I Built</title>
+  <meta name="description" content="Grid trading simulator on a synthetic BTC perpetual. Simulated data only, no live trading." />
   <style>
-    :root { color-scheme: dark; }
+    :root {
+      color-scheme: dark;
+      --bg: #09090b;
+      --card: #111113;
+      --border: #27272a;
+      --fg: #fafafa;
+      --muted: #a1a1aa;
+      --accent: #2dd4bf;
+      --accent-rgb: 45 212 191;
+      --buy: #4ade80;
+      --sell: #f87171;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #09090b; color: #e4e4e7; font: 14px/1.5 system-ui, sans-serif; }
-    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #27272a; }
-    .home { display: inline-flex; align-items: center; height: 2.25rem; padding: 0 16px; border-radius: 9999px; background: #fff; color: #18181b; font-weight: 600; text-decoration: none; }
-    .home:hover { background: #f4f4f5; }
-    h1 { font-size: 18px; margin: 0; }
-    main { display: grid; grid-template-columns: 300px 1fr; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-    @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
-    fieldset { border: 1px solid #27272a; border-radius: 12px; padding: 14px; margin: 0 0 14px; }
-    legend { color: #a1a1aa; padding: 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
-    label { display: grid; gap: 4px; margin-bottom: 10px; color: #a1a1aa; font-size: 12px; }
-    input, select { background: #18181b; color: #e4e4e7; border: 1px solid #3f3f46; border-radius: 8px; padding: 7px 9px; font: inherit; }
-    button { background: #fff; color: #18181b; border: 0; border-radius: 8px; padding: 9px 14px; font-weight: 600; cursor: pointer; width: 100%; }
-    .notice { border: 1px solid #854d0e; background: #422006; color: #fde68a; border-radius: 10px; padding: 10px 12px; margin-bottom: 16px; font-size: 13px; }
-    canvas { width: 100%; height: 360px; display: block; background: #0f0f12; border: 1px solid #27272a; border-radius: 12px; }
-    .replay { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
-    .replay input[type=range] { flex: 1; }
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0; }
-    .stat { border: 1px solid #27272a; border-radius: 10px; padding: 10px 12px; }
-    .stat span { display: block; color: #a1a1aa; font-size: 12px; }
-    .stat b { font-size: 18px; font-variant-numeric: tabular-nums; }
-    .pos { color: #4ade80; } .neg { color: #f87171; }
-    .warn { color: #fbbf24; }
-    ol.log { max-height: 220px; overflow: auto; padding-left: 20px; margin: 0; color: #a1a1aa; font-variant-numeric: tabular-nums; }
-    .muted { color: #71717a; font-size: 12px; }
-    .error { color: #f87171; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--fg);
+      font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgb(var(--accent-rgb) / 0.16), transparent);
+      background-repeat: no-repeat;
+    }
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px) { .wrap { padding: 0 1.5rem; } }
+
+    /* Top bar: same size and position as on the other demos */
+    .topbar { border-bottom: 1px solid var(--border); background: #09090b; box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.06); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 4rem; }
+    a.home, a.home:visited {
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; height: 2.25rem;
+      padding: 0 .875rem; border-radius: 9999px; border: 1px solid #d4d4d8; background: #fff; color: #18181b;
+      font-size: .875rem; font-weight: 600; text-decoration: none; box-shadow: 0 1px 2px rgb(0 0 0 / .2);
+    }
+    a.home:hover { background: #f4f4f5; }
+    .topbar p { margin: 0; color: #a1a1aa; font-size: .875rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .intro { padding: 2.5rem 0 1.5rem; }
+    .eyebrow { margin: 0 0 .5rem; font: 600 .72rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+    h1 { margin: 0; font-size: clamp(1.9rem, 4vw, 2.75rem); line-height: 1.1; letter-spacing: -.02em; font-weight: 600; }
+    .lead { margin: .9rem 0 0; max-width: 42rem; color: var(--muted); font-size: 1.05rem; }
+
+    main.layout { display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem; padding-bottom: 4rem; align-items: start; }
+    @media (max-width: 900px) { main.layout { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; }
+    form.card { padding: 1.1rem; }
+    fieldset { border: 0; padding: 0; margin: 0 0 1.1rem; }
+    legend { padding: 0; margin-bottom: .6rem; color: var(--accent); font: 600 .7rem ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .16em; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+    label { display: grid; gap: .25rem; margin-bottom: .6rem; color: var(--muted); font-size: .78rem; }
+    input, select {
+      width: 100%; background: #0c0c0e; color: var(--fg); border: 1px solid #3f3f46; border-radius: .6rem;
+      padding: .5rem .65rem; font: inherit; font-size: .9rem; transition: border-color .15s, box-shadow .15s;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / .18); }
+    button.run {
+      width: 100%; height: 2.6rem; border: 0; border-radius: 9999px; background: #fff; color: #18181b;
+      font: inherit; font-weight: 600; cursor: pointer; transition: background .15s;
+    }
+    button.run:hover { background: #e4e4e7; }
+    .notice { border: 1px solid rgb(var(--accent-rgb) / .35); background: rgb(var(--accent-rgb) / .08); color: #ccfbf1; border-radius: .75rem; padding: .7rem .85rem; margin-bottom: 1.1rem; font-size: .82rem; }
+    .muted { color: #71717a; font-size: .78rem; }
+
+    .panel { padding: 1rem; }
+    .panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .75rem; }
+    .panel-head h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .legend { display: flex; flex-wrap: wrap; gap: .9rem; color: var(--muted); font-size: .78rem; }
+    .legend i { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .35rem; }
+    canvas { width: 100%; height: 380px; display: block; background: #0c0c0e; border: 1px solid var(--border); border-radius: .75rem; }
+    .replay { display: flex; align-items: center; gap: .9rem; margin-top: .85rem; }
+    .replay input[type=range] { flex: 1; padding: 0; accent-color: var(--accent); }
+    #stepLabel { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .65rem; margin: 1rem 0 0; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: .85rem; padding: .7rem .85rem; }
+    .stat span { display: block; color: var(--muted); font-size: .75rem; }
+    .stat b { font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .pos { color: var(--buy); } .neg { color: var(--sell); } .warn { color: #fbbf24; }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    @media (max-width: 700px) { .two { grid-template-columns: 1fr; } }
+    h3 { margin: 0 0 .5rem; font: 600 .7rem ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); }
+    ol.log { max-height: 220px; overflow: auto; margin: 0; padding-left: 1.2rem; color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+    #worst { margin: 0; color: var(--muted); font-size: .88rem; }
+    .error { color: var(--sell); margin-bottom: .5rem; }
   </style>
 </head>
 <body>
-  <header>
-    <a class="home" href="https://osobennyj.github.io/warehouse-of-sites/">Things I Built</a>
-    <h1>Perpetual Grid Bot: симулятор</h1>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="home" href="https://osobennyj.github.io/warehouse-of-sites/">Things I Built</a>
+      <p>Perpetual Grid Bot</p>
+    </div>
   </header>
 
-  <main>
-    <form id="config" aria-label="Настройки сетки">
-      <div class="notice">
-        Симулятор на синтетических ценах. Ключей нет, ордера никуда не отправляются, торговли нет.
-        Это не финансовая рекомендация.
-      </div>
-
-      <fieldset>
-        <legend>Рынок</legend>
-        <label>Сценарий
-          <select id="scenario"></select>
-        </label>
-        <label>Seed (воспроизводимость)
-          <input id="seed" type="number" value="7" min="1" step="1" />
-        </label>
-        <label>Стартовая цена, USDT
-          <input id="startPrice" type="number" value="100" step="0.01" />
-        </label>
-        <label>Волатильность на шаге
-          <input id="vol" type="number" value="0.004" step="0.001" min="0" />
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Сетка</legend>
-        <label>Нижняя граница
-          <input id="lower" type="number" value="90" step="0.01" />
-        </label>
-        <label>Верхняя граница
-          <input id="upper" type="number" value="110" step="0.01" />
-        </label>
-        <label>Количество уровней
-          <input id="levels" type="number" value="11" min="2" step="1" />
-        </label>
-        <label>Размер ордера, BTC
-          <input id="qty" type="number" value="0.05" step="0.001" min="0" />
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Счёт и риск</legend>
-        <label>Капитал, USDT
-          <input id="capital" type="number" value="1000" step="10" min="1" />
-        </label>
-        <label>Плечо (для справки)
-          <input id="leverage" type="number" value="5" min="1" step="1" />
-        </label>
-        <label>Ставка финансирования за интервал
-          <input id="fundingRate" type="number" value="0.0001" step="0.0001" />
-        </label>
-        <label>Стоп снизу, USDT (необязательно)
-          <input id="stopLow" type="number" step="0.01" placeholder="например 85" />
-        </label>
-        <label>Стоп сверху, USDT (необязательно)
-          <input id="stopHigh" type="number" step="0.01" placeholder="например 115" />
-        </label>
-      </fieldset>
-
-      <button type="submit">Запустить симуляцию</button>
-      <p class="muted">Комиссии: maker 0.02%, taker 0.05%. Финансирование каждые 8 шагов. Maintenance margin 0.5%.</p>
-    </form>
-
-    <section>
-      <div id="error" class="error" role="alert"></div>
-      <canvas id="chart" aria-label="Price chart with grid levels"></canvas>
-
-      <div class="replay">
-        <input id="scrub" type="range" min="0" max="0" value="0" aria-label="Шаг симуляции" />
-        <span id="stepLabel" class="muted"></span>
-      </div>
-
-      <div class="stats" id="stats"></div>
-
-      <h2 style="font-size:14px;color:#a1a1aa;text-transform:uppercase;letter-spacing:.06em">Последние события</h2>
-      <ol class="log" id="log"></ol>
-
-      <h2 style="font-size:14px;color:#a1a1aa;text-transform:uppercase;letter-spacing:.06em">Оценка худшего сценария</h2>
-      <p id="worst" class="muted"></p>
+  <div class="wrap">
+    <section class="intro">
+      <p class="eyebrow">Simulator</p>
+      <h1>See how a grid bot actually behaves.</h1>
+      <p class="lead">
+        A grid places buy and sell orders at fixed price steps and books a small gain each time the price swings through
+        them. Change the settings, run the simulation, and watch fills, fees, funding and risk build up.
+      </p>
     </section>
-  </main>
+
+    <main class="layout">
+      <form id="config" class="card" aria-label="Grid settings">
+        <div class="notice">
+          Simulated data only. No API keys, no exchange connection, no real orders. Not financial advice.
+        </div>
+
+        <fieldset>
+          <legend>Market</legend>
+          <label>Scenario
+            <select id="scenario"></select>
+          </label>
+          <div class="row">
+            <label>Seed
+              <input id="seed" type="number" value="7" min="1" step="1" />
+            </label>
+            <label>Volatility per step
+              <input id="vol" type="number" value="0.004" step="0.001" min="0" />
+            </label>
+          </div>
+          <label>Start price, USDT
+            <input id="startPrice" type="number" value="100" step="0.01" />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Grid</legend>
+          <div class="row">
+            <label>Lower bound
+              <input id="lower" type="number" value="90" step="0.01" />
+            </label>
+            <label>Upper bound
+              <input id="upper" type="number" value="110" step="0.01" />
+            </label>
+          </div>
+          <div class="row">
+            <label>Levels
+              <input id="levels" type="number" value="11" min="2" step="1" />
+            </label>
+            <label>Order size, BTC
+              <input id="qty" type="number" value="0.05" step="0.001" min="0" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Account and risk</legend>
+          <div class="row">
+            <label>Capital, USDT
+              <input id="capital" type="number" value="1000" step="10" min="1" />
+            </label>
+            <label>Leverage
+              <input id="leverage" type="number" value="5" min="1" step="1" />
+            </label>
+          </div>
+          <label>Funding rate per interval
+            <input id="fundingRate" type="number" value="0.0001" step="0.0001" />
+          </label>
+          <div class="row">
+            <label>Stop below
+              <input id="stopLow" type="number" step="0.01" placeholder="e.g. 85" />
+            </label>
+            <label>Stop above
+              <input id="stopHigh" type="number" step="0.01" placeholder="e.g. 115" />
+            </label>
+          </div>
+        </fieldset>
+
+        <button class="run" type="submit">Run simulation</button>
+        <p class="muted" style="margin:.8rem 0 0">Fees: maker 0.02%, taker 0.05%. Funding every 8 steps. Maintenance margin 0.5%.</p>
+      </form>
+
+      <section>
+        <div class="card panel">
+          <div class="panel-head">
+            <h2>Price and grid</h2>
+            <div class="legend">
+              <span><i style="background:var(--buy)"></i>Buy filled</span>
+              <span><i style="background:var(--sell)"></i>Sell filled</span>
+              <span><i style="background:#71717a"></i>Grid level</span>
+            </div>
+          </div>
+          <div id="error" class="error" role="alert"></div>
+          <canvas id="chart" aria-label="Price chart with grid levels and filled orders"></canvas>
+          <div class="replay">
+            <input id="scrub" type="range" min="0" max="0" value="0" aria-label="Simulation step" />
+            <span id="stepLabel" class="muted"></span>
+          </div>
+        </div>
+
+        <div class="stats" id="stats"></div>
+
+        <div class="two">
+          <div class="card panel">
+            <h3>Recent events</h3>
+            <ol class="log" id="log"></ol>
+          </div>
+          <div class="card panel">
+            <h3>Worst-case estimate</h3>
+            <p id="worst"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <script type="module" src="./app.mjs"></script>
 </body>

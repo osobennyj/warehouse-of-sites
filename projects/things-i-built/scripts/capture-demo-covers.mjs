@@ -18,11 +18,6 @@ const demos = [
     waitFor: "text=Things I Built",
   },
   {
-    slug: "defi-strategist-mcp",
-    url: "https://osobennyj.github.io/warehouse-of-sites/demos/defi-strategist-mcp/",
-    waitFor: "text=DeFi Strategist",
-  },
-  {
     slug: "ai-token-due-diligence",
     url: "https://osobennyj.github.io/warehouse-of-sites/demos/ai-token-due-diligence/",
     waitFor: "text=Things I Built",

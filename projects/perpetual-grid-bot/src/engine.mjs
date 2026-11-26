@@ -8,10 +8,10 @@ const snap = (x) => (Math.abs(x) < EPS ? 0 : Number(x.toFixed(10)));
 
 export function buildLevels({ lower, upper, levels }) {
   if (!(lower > 0) || !(upper > lower)) {
-    throw new Error("Нужно 0 < lower < upper");
+    throw new Error("Need 0 < lower < upper");
   }
   if (!Number.isInteger(levels) || levels < 2) {
-    throw new Error("Уровней должно быть целое число, не меньше 2");
+    throw new Error("Levels must be a whole number, at least 2");
   }
   const step = (upper - lower) / (levels - 1);
   return Array.from({ length: levels }, (_, i) => lower + i * step);
@@ -37,10 +37,10 @@ export class GridSim {
     } = config;
 
     if (!(startPrice >= lower && startPrice <= upper)) {
-      throw new Error("Стартовая цена должна быть внутри диапазона");
+      throw new Error("Start price must be inside the range");
     }
     if (!(qtyPerLevel > 0) || !(capital > 0)) {
-      throw new Error("Размер ордера и капитал должны быть больше нуля");
+      throw new Error("Order size and capital must be greater than zero");
     }
 
     this.levels = buildLevels({ lower, upper, levels: levelCount });

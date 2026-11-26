@@ -7,8 +7,7 @@ import { ButtonLink } from "@/shared/ui";
 
 const HONESTY: Partial<Record<string, string>> = {
   "funding-rate-radar": "Live funding data and fee-aware arb math for the next payment window.",
-  "defi-strategist-mcp":
-    "Sized stablecoin recommendation on snapshots. MCP + live feeds need the server outside this static page.",
+  "grid-bot": "Simulated prices and fixed demo fees. No exchange connection, no real orders.",
 };
 
 type ProjectLivePreviewProps = {

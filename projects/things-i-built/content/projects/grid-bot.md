@@ -6,15 +6,18 @@ status: beta
 tags: [Trading, DeFi]
 stack: [JavaScript, Canvas, node:test]
 metric:
-  value: 0 API keys
-  label: simulated market only, no live orders
+  value: Simulated
+  label: synthetic prices, no live orders
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/grid-bot/
-  github: https://github.com/osobennyj/warehouse-of-sites/pull/13
+  github: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/perpetual-grid-bot
 accent: amber
+cover:
+  src: /projects/grid-bot/cover.png
+  alt: Grid bot price chart with buy and sell fills marked on the grid levels
 featured: true
-order: 3
+order: 2
 date: 2026-11-26
 ---
 

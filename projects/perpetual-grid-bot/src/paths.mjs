@@ -20,9 +20,9 @@ function gaussian(rand) {
 }
 
 export const SCENARIOS = {
-  range: "Боковик: цена колеблется внутри диапазона",
-  trendUp: "Рост: цена уходит вверх через верхнюю границу",
-  breakdown: "Пробой вниз: цена уходит ниже диапазона",
+  range: "Sideways: price oscillates inside the range",
+  trendUp: "Uptrend: price breaks out above the range",
+  breakdown: "Breakdown: price falls below the range",
 };
 
 // Returns an array of prices of length steps + 1, starting at `start`.

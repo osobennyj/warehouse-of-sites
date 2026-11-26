@@ -138,18 +138,40 @@ function drawChart(index) {
   // Price line
   ctx.beginPath();
   shown.forEach((p, i) => (i === 0 ? ctx.moveTo(x(i), y(p)) : ctx.lineTo(x(i), y(p))));
-  ctx.strokeStyle = "#e4e4e7";
-  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = "#2dd4bf";
+  ctx.lineWidth = 2;
+  ctx.lineJoin = "round";
   ctx.stroke();
   ctx.lineWidth = 1;
+  // Soft area under the price line
+  if (shown.length > 1) {
+    const grad = ctx.createLinearGradient(0, 0, 0, height);
+    grad.addColorStop(0, "rgba(45,212,191,0.18)");
+    grad.addColorStop(1, "rgba(45,212,191,0)");
+    ctx.lineTo(x(shown.length - 1), height - 16);
+    ctx.lineTo(x(0), height - 16);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
 
-  // Fills so far
+  // Filled orders: triangle up = buy, triangle down = sell, with a ring so they stand out
   fillMarks
     .filter((m) => m.frame <= index)
     .forEach((m) => {
+      const cx = x(m.frame);
+      const cy = y(m.price);
+      const up = m.side === "buy";
       ctx.beginPath();
-      ctx.arc(x(m.frame), y(m.price), 4, 0, Math.PI * 2);
-      ctx.fillStyle = m.side === "buy" ? "#4ade80" : "#f87171";
+      ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+      ctx.fillStyle = up ? "rgba(74,222,128,0.18)" : "rgba(248,113,113,0.18)";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx, cy + (up ? -5 : 5));
+      ctx.lineTo(cx - 4.5, cy + (up ? 4 : -4));
+      ctx.lineTo(cx + 4.5, cy + (up ? 4 : -4));
+      ctx.closePath();
+      ctx.fillStyle = up ? "#4ade80" : "#f87171";
       ctx.fill();
     });
 
@@ -161,7 +183,7 @@ function drawChart(index) {
 
 function liqLabel(s) {
   if (!s.liquidationPrice) return "—";
-  if (Math.abs(s.liquidationPrice / s.price - 1) >= 0.5) return "далеко";
+  if (Math.abs(s.liquidationPrice / s.price - 1) >= 0.5) return "far away";
   return fmt(s.liquidationPrice);
 }
 
@@ -169,23 +191,23 @@ function renderStats(index) {
   const s = frames[index].snap;
   const { cfg } = view;
   const cards = [
-    ["Цена", fmt(s.price)],
-    ["Позиция, BTC", fmt(s.pos, 4)],
-    ["Средняя цена входа", s.pos === 0 ? "—" : fmt(s.entry)],
-    ["Реализованный PnL", fmt(s.realized), cls(s.realized)],
-    ["Нереализованный PnL", fmt(s.unrealized), cls(s.unrealized)],
-    ["Комиссии", fmt(s.fees)],
-    ["Финансирование", fmt(s.funding), cls(s.funding)],
-    ["Капитал + PnL", fmt(s.equity), cls(s.equity - cfg.capital)],
-    ["Исполнено ордеров", String(s.fillCount)],
-    ["Открытых ордеров", String(s.openOrders)],
-    ["Цена ликвидации (оценка)", liqLabel(s), s.liquidationPrice && Math.abs(s.liquidationPrice / s.price - 1) < 0.5 ? "warn" : ""],
-    ["Статус", s.status === "running" ? "работает" : s.status === "stopped" ? "стоп сработал" : "ликвидация"],
+    ["Price", fmt(s.price)],
+    ["Position, BTC", fmt(s.pos, 4)],
+    ["Average entry", s.pos === 0 ? "—" : fmt(s.entry)],
+    ["Realized PnL", fmt(s.realized), cls(s.realized)],
+    ["Unrealized PnL", fmt(s.unrealized), cls(s.unrealized)],
+    ["Fees", fmt(s.fees)],
+    ["Funding", fmt(s.funding), cls(s.funding)],
+    ["Equity", fmt(s.equity), cls(s.equity - cfg.capital)],
+    ["Orders filled", String(s.fillCount)],
+    ["Open orders", String(s.openOrders)],
+    ["Liquidation price (est.)", liqLabel(s), s.liquidationPrice && Math.abs(s.liquidationPrice / s.price - 1) < 0.5 ? "warn" : ""],
+    ["Status", s.status === "running" ? "running" : s.status === "stopped" ? "stop hit" : "liquidated"],
   ];
   $("stats").innerHTML = cards
     .map(([label, value, c]) => `<div class="stat"><span>${label}</span><b class="${c ?? ""}">${value}</b></div>`)
     .join("");
-  $("stepLabel").textContent = `шаг ${index} из ${frames.length - 1}`;
+  $("stepLabel").textContent = `step ${index} of ${frames.length - 1}`;
 }
 
 function renderLog(index) {
@@ -193,13 +215,13 @@ function renderLog(index) {
   for (let i = 1; i <= index; i += 1) {
     for (const e of frames[i].events) {
       const t = `#${i}`;
-      if (e.type === "fill") items.push(`${t} ${e.side === "buy" ? "покупка" : "продажа"} ${fmt(e.qty, 4)} BTC по ${fmt(e.price)}`);
-      if (e.type === "funding") items.push(`${t} финансирование ${fmt(e.amount, 4)} USDT`);
-      if (e.type === "stop") items.push(`${t} стоп: позиция закрыта по ${fmt(e.price)}`);
-      if (e.type === "liquidated") items.push(`${t} ликвидация по ${fmt(e.price)}`);
+      if (e.type === "fill") items.push(`${t} ${e.side === "buy" ? "buy" : "sell"} ${fmt(e.qty, 4)} BTC at ${fmt(e.price)}`);
+      if (e.type === "funding") items.push(`${t} funding ${fmt(e.amount, 4)} USDT`);
+      if (e.type === "stop") items.push(`${t} stop: position closed at ${fmt(e.price)}`);
+      if (e.type === "liquidated") items.push(`${t} liquidated at ${fmt(e.price)}`);
     }
   }
-  $("log").innerHTML = items.slice(-20).reverse().map((t) => `<li>${t}</li>`).join("") || "<li>Событий пока нет</li>";
+  $("log").innerHTML = items.slice(-20).reverse().map((t) => `<li>${t}</li>`).join("") || "<li>No events yet</li>";
 }
 
 function render(index) {
@@ -237,7 +259,7 @@ $("config").addEventListener("submit", (event) => {
     scrub.value = String(frames.length - 1);
     $("worst").textContent = (() => {
       const w = sim.worstCaseLoss();
-      return `Если цена уйдёт ниже диапазона и не вернётся, нереализованный убыток около ${fmt(w.down)} USDT. Если выше, около ${fmt(w.up)} USDT. Комиссии и финансирование здесь не учтены.`;
+      return `If price leaves the range downward and never returns, the unrealized loss is about ${fmt(w.down)} USDT. Upward, about ${fmt(w.up)} USDT. Fees and funding are not included.`;
     })();
     render(frames.length - 1);
     startPlayback();
