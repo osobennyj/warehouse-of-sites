@@ -58,7 +58,7 @@ export const TradeForm = ({ onAddTrade, onAddAttachments }: TradeFormProps) => {
 
   return (
     <form className="form" onSubmit={submit}>
-      <h3>Add Trade</h3>
+      <h3>Add trade</h3>
       <label>
         Asset
         <input value={asset} onChange={(event) => setAsset(event.target.value)} placeholder="BTC" required />
@@ -74,7 +74,7 @@ export const TradeForm = ({ onAddTrade, onAddAttachments }: TradeFormProps) => {
         Result
         <select value={result} onChange={(event) => setResult(event.target.value as TradeResult)}>
           <option value="win">Win</option>
-          <option value="lose">Lose</option>
+          <option value="lose">Loss</option>
         </select>
       </label>
       <label>
@@ -107,7 +107,7 @@ export const TradeForm = ({ onAddTrade, onAddAttachments }: TradeFormProps) => {
           onChange={(event) => setAttachments(Array.from(event.target.files ?? []))}
         />
       </label>
-      <button type="submit">Save Trade</button>
+      <button type="submit">Save trade</button>
     </form>
   );
 };

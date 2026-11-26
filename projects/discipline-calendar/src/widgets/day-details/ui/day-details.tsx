@@ -180,7 +180,7 @@ export const DayDetails = ({
               checked={Boolean(dayRecord.noTradeDay)}
               onChange={(event) => onToggleNoTradeDay(event.target.checked)}
             />
-            <span>No-Trade Day</span>
+            <span>No-trade day</span>
           </label>
           <button
             type="button"
@@ -191,14 +191,14 @@ export const DayDetails = ({
               }
             }}
           >
-            Clear Day
+            Clear day
           </button>
         </div>
       </div>
       <div className="details__top">
         <div className="details__meta">
           <label className="details__comment">
-            Daily Comment
+            Daily comment
             <textarea
               ref={commentTextareaRef}
               value={commentDraft}
@@ -215,7 +215,7 @@ export const DayDetails = ({
 
       <div className="details__controls">
         <label>
-          Emotional State
+          Emotional state
           <select
             value={moodDraft}
             onChange={(event) => {
@@ -255,10 +255,10 @@ export const DayDetails = ({
 
       <div className="details__actions">
         <button type="button" onClick={() => setIsTradeModalOpen(true)}>
-          Add Trade
+          Add trade
         </button>
         <button type="button" onClick={() => setIsSkippedModalOpen(true)}>
-          Add Skipped Trade
+          Add skipped trade
         </button>
       </div>
 
@@ -266,20 +266,20 @@ export const DayDetails = ({
 
       <div className="details__bottom">
         <article className={`day-info day-info--${dayTone}`}>
-          <h3>Trades for the Day</h3>
+          <h3>Trades for the day</h3>
           <div className="day-info__stats">
             <div className="day-info__stat">
               <span className="day-info__stat-label">Trades</span>
               <strong className="day-info__stat-value">{dayTradeCount}</strong>
             </div>
             <div className={`day-info__stat day-info__stat--${wlTone}`}>
-              <span className="day-info__stat-label">Win/Lose</span>
+              <span className="day-info__stat-label">Win / loss</span>
               <strong className="day-info__stat-value">
                 {dayWins} • {dayLosses}
               </strong>
             </div>
             <div className={`day-info__stat day-info__stat--${planTone}`}>
-              <span className="day-info__stat-label">By Plan / Off Plan</span>
+              <span className="day-info__stat-label">By plan / off plan</span>
               <strong className="day-info__stat-value">
                 {dayByPlan} • {dayOffPlan}
               </strong>
@@ -295,7 +295,7 @@ export const DayDetails = ({
               </strong>
             </div>
             <div className="day-info__stat day-info__stat--neutral day-info__stat--assets">
-              <span className="day-info__stat-label">Traded Assets</span>
+              <span className="day-info__stat-label">Traded assets</span>
               <strong className="day-info__stat-value">
                 {tradedAssets.length > 0 ? tradedAssets.join(", ") : "No trades"}
               </strong>
@@ -310,10 +310,10 @@ export const DayDetails = ({
                   <div className="day-info__item-tags">
                     <span className="day-info__tag day-info__tag--neutral">{trade.positionType === "long" ? "Long" : "Short"}</span>
                     <span className={`day-info__tag day-info__tag--${trade.result === "win" ? "good" : "bad"}`}>
-                      {trade.result === "win" ? "Win" : "Lose"}
+                      {trade.result === "win" ? "Win" : "Loss"}
                     </span>
                     <span className={`day-info__tag day-info__tag--${trade.byPlan ? "good" : "bad"}`}>
-                      {trade.byPlan ? "By Plan" : "Off Plan"}
+                      {trade.byPlan ? "By plan" : "Off plan"}
                     </span>
                   </div>
                 </div>
@@ -333,7 +333,7 @@ export const DayDetails = ({
                   <p className="day-info__item-text">{toAssetDisplayLabel(record.asset) || record.asset}</p>
                   <div className="day-info__item-tags">
                     <span className={`day-info__tag day-info__tag--${record.hypotheticalResult === "win" ? "good" : "bad"}`}>
-                      {record.hypotheticalResult === "win" ? "Win" : "Lose"}
+                      {record.hypotheticalResult === "win" ? "Win" : "Loss"}
                     </span>
                     <span className="day-info__tag day-info__tag--skip">Skipped</span>
                   </div>
@@ -392,7 +392,7 @@ export const DayDetails = ({
           <button type="button" className="entry-modal__backdrop" aria-label="Close dialog" onClick={() => setTradeDraft(null)} />
           <div className="entry-modal__content">
             <article className="edit-panel">
-              <h3>Edit Trade</h3>
+              <h3>Edit trade</h3>
               <div className="edit-panel__grid">
                 <input
                   value={tradeDraft.asset}
@@ -426,7 +426,7 @@ export const DayDetails = ({
                   }
                 >
                   <option value="win">Win</option>
-                  <option value="lose">Lose</option>
+                  <option value="lose">Loss</option>
                 </select>
                 <input
                   type="number"
@@ -449,8 +449,8 @@ export const DayDetails = ({
                     })
                   }
                 >
-                  <option value="by-plan">By Plan</option>
-                  <option value="off-plan">Off Plan</option>
+                  <option value="by-plan">By plan</option>
+                  <option value="off-plan">Off plan</option>
                 </select>
                 {!tradeDraft.byPlan && (
                   <select
@@ -494,7 +494,7 @@ export const DayDetails = ({
           <button type="button" className="entry-modal__backdrop" aria-label="Close dialog" onClick={() => setSkippedDraft(null)} />
           <div className="entry-modal__content">
             <article className="edit-panel">
-              <h3>Edit Skipped Trade</h3>
+              <h3>Edit skipped trade</h3>
               <div className="edit-panel__grid">
                 <input
                   value={skippedDraft.asset}
@@ -526,7 +526,7 @@ export const DayDetails = ({
                   }
                 >
                   <option value="win">Win</option>
-                  <option value="lose">Lose</option>
+                  <option value="lose">Loss</option>
                 </select>
                 <input
                   type="number"

@@ -42,7 +42,7 @@ export const AuthPanel = ({ onAuthenticated }: AuthPanelProps) => {
 
   return (
     <section className="auth-panel">
-      <h1>Trading Discipline Calendar</h1>
+      <h1>Discipline Calendar</h1>
       <p className="subtitle">Sign in to keep your personal discipline journal.</p>
 
       <div className="auth-tabs">

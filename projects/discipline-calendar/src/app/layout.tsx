@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Trading Discipline Calendar",
-  description: "A trading journal that colors each day by whether every trade followed the plan. Demo with sample data.",
+  title: "Discipline Calendar",
+  description: "Trading journal that colors each day by whether every trade followed the plan. Demo on sample data.",
 };
 
 interface RootLayoutProps {

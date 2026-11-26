@@ -319,24 +319,24 @@ export default function HomePage() {
 
   return (
     <>
-    {isDemoMode && <PortfolioTopBar title="Trading Discipline Calendar" />}
+    {isDemoMode && <PortfolioTopBar title="Discipline Calendar" />}
     <main className={isDemoMode ? "page page--with-bar" : "page"}>
       {isDemoMode && (
         <section className="demo-intro">
           <p className="demo-intro__eyebrow">Demo</p>
-          <h1>Trading Discipline Calendar</h1>
+          <h1>Discipline Calendar</h1>
           <p>
-            A journal that colors each day by one question: did every trade follow the plan? Green days are by-plan,
-            red days include an off-plan trade. Pick a day to log trades, skipped setups, mood and notes.
+            Each day is green if every trade followed the plan and red if at least one did not. Click a day to log
+            trades, skipped setups, mood and notes.
           </p>
           <p className="demo-intro__note">
-            Sample data, created in your browser. Anything you add stays on this device. No account, no server.
+            Sample data, generated in your browser. Anything you add stays on this device. Not investment advice.
           </p>
         </section>
       )}
       <header className="page__header">
         <div>
-          {isMonthLoading && <p className="subtitle">Updating data...</p>}
+          {isMonthLoading && <p className="subtitle">Updating data…</p>}
           {error && <p className="auth-error">{error}</p>}
         </div>
         <div className="page__actions">

@@ -49,7 +49,7 @@ export const SkipForm = ({ onAddSkipped, onAddAttachments }: SkipFormProps) => {
 
   return (
     <form className="form" onSubmit={submit}>
-      <h3>Add Skipped Trade</h3>
+      <h3>Add skipped trade</h3>
       <label>
         Asset
         <input value={asset} onChange={(event) => setAsset(event.target.value)} placeholder="BTC" required />
@@ -67,7 +67,7 @@ export const SkipForm = ({ onAddSkipped, onAddAttachments }: SkipFormProps) => {
         Hypothetical Result
         <select value={result} onChange={(event) => setResult(event.target.value as TradeResult)}>
           <option value="win">Win</option>
-          <option value="lose">Lose</option>
+          <option value="lose">Loss</option>
         </select>
       </label>
       <label>
@@ -88,7 +88,7 @@ export const SkipForm = ({ onAddSkipped, onAddAttachments }: SkipFormProps) => {
           onChange={(event) => setAttachments(Array.from(event.target.files ?? []))}
         />
       </label>
-      <button type="submit">Save Skip</button>
+      <button type="submit">Save skip</button>
     </form>
   );
 };

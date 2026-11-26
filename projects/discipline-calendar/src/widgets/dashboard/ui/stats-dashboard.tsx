@@ -1,3 +1,4 @@
+import { isDemoMode } from "@/shared/config/demo";
 import type { MonthlyMetrics } from "@/entities/record/model/metrics";
 
 interface StatsDashboardProps {
@@ -26,10 +27,10 @@ export const StatsDashboard = ({ metrics }: StatsDashboardProps) => {
 
   return (
     <section className={`dashboard dashboard--${monthTone}`}>
-      <h2>Monthly Stats</h2>
+      <h2>{isDemoMode ? "Monthly stats (sample data)" : "Monthly stats"}</h2>
       <div className="dashboard__kpis">
         <article className="kpi-card">
-          <span className="kpi-card__label">Days Tracked</span>
+          <span className="kpi-card__label">Days tracked</span>
           <strong>{metrics.filledDays}</strong>
         </article>
         <article className="kpi-card">
@@ -37,7 +38,7 @@ export const StatsDashboard = ({ metrics }: StatsDashboardProps) => {
           <strong className={`stat-pill stat-pill--${disciplineTone}`}>{metrics.greenDaysPercent}%</strong>
         </article>
         <article className="kpi-card">
-          <span className="kpi-card__label">Green Streak</span>
+          <span className="kpi-card__label">Green streak</span>
           <strong>
             {metrics.greenStreak} {greenStreakText}
           </strong>
@@ -46,15 +47,15 @@ export const StatsDashboard = ({ metrics }: StatsDashboardProps) => {
 
       <div className="dashboard__stats">
         <article className={`dashboard-stat dashboard-stat--${planTradesTone}`}>
-          <span className="dashboard-stat__label">Planned Trades</span>
+          <span className="dashboard-stat__label">Planned trades</span>
           <strong className="dashboard-stat__value">{metrics.byPlanTrades}</strong>
         </article>
         <article className={`dashboard-stat dashboard-stat--${byPlanWinrateTone}`}>
-          <span className="dashboard-stat__label">Planned Winrate</span>
+          <span className="dashboard-stat__label">Planned win rate</span>
           <strong className="dashboard-stat__value">{metrics.byPlanWinrate}%</strong>
         </article>
         <article className={`dashboard-stat dashboard-stat--${offPlanWinrateTone}`}>
-          <span className="dashboard-stat__label">Off-plan / Winrate</span>
+          <span className="dashboard-stat__label">Off-plan / win rate</span>
           <strong className="dashboard-stat__value">
             {metrics.offPlanTrades} • {metrics.offPlanWinrate}%
           </strong>
@@ -74,11 +75,11 @@ export const StatsDashboard = ({ metrics }: StatsDashboardProps) => {
           </strong>
         </article>
         <article className={`dashboard-stat dashboard-stat--${bestAssetTone}`}>
-          <span className="dashboard-stat__label">Best Asset</span>
+          <span className="dashboard-stat__label">Best asset</span>
           <strong className="dashboard-stat__value">{formatAssetValue(metrics.bestAsset)}</strong>
         </article>
         <article className={`dashboard-stat dashboard-stat--${worstAssetTone}`}>
-          <span className="dashboard-stat__label">Worst Asset</span>
+          <span className="dashboard-stat__label">Worst asset</span>
           <strong className="dashboard-stat__value">{formatAssetValue(metrics.worstAsset)}</strong>
         </article>
       </div>
