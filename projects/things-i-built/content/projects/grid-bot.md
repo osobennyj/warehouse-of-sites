@@ -55,10 +55,3 @@ flowchart LR
 ## Tests
 
 10 tests (node:test) cover cycle accounting, funding sign, stop and liquidation triggers, worst-case loss, seed determinism and a reconciliation check on a random path.
-
-## Limits
-
-- Prices are synthetic. Fees (maker 0.02%, taker 0.05%) and funding are fixed demo values.
-- Money is handled as JavaScript numbers. Fine for a demo, not for real order sizing.
-- No exchange adapter. Connecting one would be a separate project, tested on recorded data first.
-- Not investment advice.

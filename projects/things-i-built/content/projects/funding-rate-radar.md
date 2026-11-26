@@ -53,13 +53,3 @@ flowchart LR
 ## Tests
 
 50 unit tests (Vitest) cover APR conversion, spread ranking, the calculator and the parsing of each exchange response. Responses are recorded as fixtures, so CI does not call the live APIs. A Playwright smoke test and GitHub Actions run on every push.
-
-## Limits
-
-- Execution, basis risk, borrow cost and exchange outages are not modeled.
-- The next funding time is assumed to be 8 hours away, because the public APIs do not expose it consistently.
-- Not investment advice.
-
-## Next steps
-
-Stored history, spread alerts, more venues.

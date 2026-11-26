@@ -52,13 +52,3 @@ flowchart LR
 ```
 
 The same screens run on two backends. The private version signs in and stores data in Supabase. The public demo uses browser storage, so no login is needed and nothing leaves your device.
-
-## Limits
-
-- The demo data is invented and generated per month. It is not real trading history.
-- No automated tests.
-- Not investment advice.
-
-## Next steps
-
-Weekly review, CSV export, breakdown of off-plan trades by tag.

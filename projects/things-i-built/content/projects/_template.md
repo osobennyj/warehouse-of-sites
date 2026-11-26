@@ -33,5 +33,3 @@ flowchart LR
 ## Key decisions & trade-offs
 
 ## Results
-
-## Next steps

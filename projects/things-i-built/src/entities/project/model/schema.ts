@@ -18,7 +18,7 @@ export const projectFrontmatterSchema = z
     description: z.string().min(30).max(220),
     status: z.enum(PROJECT_STATUSES),
     tags: z.array(z.enum(PROJECT_TAGS)).min(1).max(3),
-    stack: z.array(z.string().min(1)).min(2).max(6),
+    stack: z.array(z.string().min(1)).min(1).max(6),
     solves: z.string().min(10).max(140).optional(),
     decision: z.string().min(10).max(160).optional(),
     role: z.string().min(3).default("Product, architecture, AI-assisted implementation"),
