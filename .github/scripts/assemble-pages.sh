@@ -74,8 +74,18 @@ copy_vite_app "$ROOT/projects/defi-strategist-mcp/apps/playground/dist" "defi-st
   cp -a "$ROOT/projects/perpetual-grid-bot/src/." "$dest/src/"
 )
 
+(
+  cd "$ROOT/projects/discipline-calendar"
+  npm ci --no-audit --no-fund
+  NEXT_PUBLIC_DEMO_MODE=true \
+    NEXT_PUBLIC_BASE_PATH="$BASE_URL_PATH/demos/discipline-calendar" \
+    NEXT_PUBLIC_PORTFOLIO_HOME="https://osobennyj.github.io$BASE_URL_PATH/" \
+    npm run build
+)
+copy_next_app "$ROOT/projects/discipline-calendar" "discipline-calendar"
+
 echo "Done. Demo entrypoints:"
-for slug in funding-rate-radar ai-token-due-diligence wallet-cluster-investigator defi-strategist-mcp grid-bot; do
+for slug in funding-rate-radar ai-token-due-diligence wallet-cluster-investigator defi-strategist-mcp grid-bot discipline-calendar; do
   test -f "$SITE_OUT/demos/$slug/index.html"
   echo "  $BASE_URL_PATH/demos/$slug/"
 done

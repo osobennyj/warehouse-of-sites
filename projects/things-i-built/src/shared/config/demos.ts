@@ -1,6 +1,6 @@
 import { siteConfig } from "./site";
 
-const DEMO_SLUGS = ["funding-rate-radar", "grid-bot"] as const;
+const DEMO_SLUGS = ["funding-rate-radar", "grid-bot", "discipline-calendar"] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
 

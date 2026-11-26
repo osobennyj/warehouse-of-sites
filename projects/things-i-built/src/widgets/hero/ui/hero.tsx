@@ -11,7 +11,7 @@ const credentials = [
 ] as const;
 
 /** Terminal listing order (first site layout, no status column). */
-const TERMINAL_SLUGS = ["funding-rate-radar", "grid-bot"] as const;
+const TERMINAL_SLUGS = ["funding-rate-radar", "grid-bot", "discipline-calendar"] as const;
 
 function BuildLog({ projects }: { projects: readonly Project[] }) {
   const known = new Set(projects.map((p) => p.slug));
