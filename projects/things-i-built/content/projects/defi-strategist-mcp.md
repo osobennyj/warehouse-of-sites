@@ -17,6 +17,7 @@ cover:
   alt: DeFi Strategist MCP playground showing tool forms and scenario results
 accent: amber
 order: 3
+featured: false # replaced by the grid bot on the home page
 date: 2026-11-25
 ---
 

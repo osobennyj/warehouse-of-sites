@@ -66,8 +66,16 @@ copy_vite_app "$ROOT/projects/wallet-cluster-investigator/web/dist" "wallet-clus
 )
 copy_vite_app "$ROOT/projects/defi-strategist-mcp/apps/playground/dist" "defi-strategist-mcp"
 
+(
+  dest="$SITE_OUT/demos/grid-bot"
+  rm -rf "$dest"
+  mkdir -p "$dest/src"
+  cp -a "$ROOT/projects/perpetual-grid-bot/index.html" "$ROOT/projects/perpetual-grid-bot/app.mjs" "$dest/"
+  cp -a "$ROOT/projects/perpetual-grid-bot/src/." "$dest/src/"
+)
+
 echo "Done. Demo entrypoints:"
-for slug in funding-rate-radar ai-token-due-diligence wallet-cluster-investigator defi-strategist-mcp; do
+for slug in funding-rate-radar ai-token-due-diligence wallet-cluster-investigator defi-strategist-mcp grid-bot; do
   test -f "$SITE_OUT/demos/$slug/index.html"
   echo "  $BASE_URL_PATH/demos/$slug/"
 done

@@ -5,6 +5,7 @@ const DEMO_SLUGS = [
   "wallet-cluster-investigator",
   "defi-strategist-mcp",
   "ai-token-due-diligence",
+  "grid-bot",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
