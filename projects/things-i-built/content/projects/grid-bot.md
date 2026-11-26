@@ -6,7 +6,7 @@ solves: "Grid charts show where orders sit, but not what fees, funding and a one
 decision: "Show the worst-case loss for a one-way move out of the range next to the PnL."
 status: demo
 tags: [Trading, DeFi]
-stack: [JavaScript]
+stack: [Python, SQL]
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/grid-bot/
@@ -55,3 +55,7 @@ flowchart LR
 ## Tests
 
 10 tests (node:test) cover cycle accounting, funding sign, stop and liquidation triggers, worst-case loss, seed determinism and a reconciliation check on a random path.
+
+## Stack
+
+The demo is plain JavaScript in the browser. A real bot would be written in Python, with SQL storage for orders, fills and funding history. That version is not built.
