@@ -65,6 +65,6 @@ export const getWeekdayLabels = (): string[] => {
   return Array.from({ length: 7 }, (_, index) => {
     const date = new Date(baseMonday);
     date.setDate(baseMonday.getDate() + ((MONDAY_INDEX + index) % 7));
-    return date.toLocaleDateString("ru-RU", { weekday: "short" });
+    return date.toLocaleDateString("en-US", { weekday: "short" });
   });
 };
