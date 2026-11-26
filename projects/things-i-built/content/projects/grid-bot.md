@@ -14,7 +14,7 @@ links:
   github: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/perpetual-grid-bot
 accent: amber
 cover:
-  src: /projects/grid-bot/cover-v2.png
+  src: /projects/grid-bot/cover-v3.png
   alt: Grid bot price chart with buy and sell fills marked on the grid levels
 featured: true
 order: 2

@@ -13,7 +13,7 @@ links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/
   github: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/funding-rate-radar
 cover:
-  src: /projects/funding-rate-radar/cover-v2.png
+  src: /projects/funding-rate-radar/cover-v3.png
   alt: Funding Rate Radar dashboard showing cross-exchange funding spreads and opportunities table
 accent: teal
 order: 1

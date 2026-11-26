@@ -6,7 +6,7 @@ import random, subprocess, pathlib
 
 W, H = 1280, 720
 OUT = pathlib.Path(__file__).resolve().parent.parent / "public" / "projects"
-GREEN, RED = "#4ade80", "#f87171"
+TEAL, GREEN, RED = "#2dd4bf", "#4ade80", "#f87171"
 
 def sparkline(seed, points=24):
     state = 7
@@ -109,7 +109,7 @@ def funding_radar():
     return frame("FUNDING RATE RADAR", "#2dd4bf", "#10b981", "#5eead4", "\n".join(out))
 
 def discipline_calendar():
-    # Violet gradient with a month grid of green/red/gray days and one selected day.
+    # Site colours: teal-to-sky gradient, zinc cells, muted green/red days, one selected day.
     rnd = random.Random(12)
     out = []
     cols, rows = 7, 5
@@ -122,23 +122,23 @@ def discipline_calendar():
             x, y = x0 + c * (cw + gap), y0 + r * (ch + gap)
             roll = rnd.random()
             if c >= 5:
-                fill, stroke = "#18181b", "#2a2a2f"
+                fill, stroke, op = "#111113", "#2a2a2f", .9
             elif roll < 0.58:
-                fill, stroke = "#14532d", GREEN
+                fill, stroke, op = "#0f3a2c", GREEN, .85
             elif roll < 0.8:
-                fill, stroke = "#7f1d1d", RED
+                fill, stroke, op = "#4a1620", RED, .85
             else:
-                fill, stroke = "#18181b", "#3a3a41"
-            width = 5 if (c, r) == sel else 2
+                fill, stroke, op = "#111113", "#3a3a41", .9
+            width = 2
             if (c, r) == sel:
-                stroke = "#fafafa"
-            out.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" rx="14" fill="{fill}" fill-opacity=".8" stroke="{stroke}" stroke-opacity=".7" stroke-width="{width}"/>')
-    out.append(f'<rect x="64" y="{H-58}" width="18" height="18" rx="5" fill="#14532d" stroke="{GREEN}"/><text x="92" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">By plan</text>')
-    out.append(f'<rect x="230" y="{H-58}" width="18" height="18" rx="5" fill="#7f1d1d" stroke="{RED}"/><text x="258" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">Off plan</text>')
-    return frame("DISCIPLINE CALENDAR", "#a78bfa", "#8b5cf6", "#a78bfa", "\n".join(out))
+                fill, stroke, width = "#111113", TEAL, 5
+            out.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{ch}" rx="14" fill="{fill}" fill-opacity="{op}" stroke="{stroke}" stroke-opacity=".55" stroke-width="{width}"/>')
+    out.append(f'<rect x="64" y="{H-58}" width="18" height="18" rx="5" fill="#0f3a2c" stroke="{GREEN}"/><text x="92" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">By plan</text>')
+    out.append(f'<rect x="230" y="{H-58}" width="18" height="18" rx="5" fill="#4a1620" stroke="{RED}"/><text x="258" y="{H-43}" fill="#fafafa" fill-opacity=".7" font-family="DejaVu Sans, sans-serif" font-size="22">Off plan</text>')
+    return frame("DISCIPLINE CALENDAR", "#38bdf8", "#2dd4bf", TEAL, "\n".join(out))
 
 for slug, svg in (("grid-bot", grid_bot()), ("funding-rate-radar", funding_radar()), ("discipline-calendar", discipline_calendar())):
     d = OUT / slug; d.mkdir(parents=True, exist_ok=True)
     s = d / "cover.svg"; s.write_text(svg, encoding="utf-8")
-    subprocess.run(["rsvg-convert", "-w", str(W), "-h", str(H), str(s), "-o", str(d / "cover-v2.png")], check=True)
-    s.unlink(); print("wrote", d / "cover-v2.png")
+    subprocess.run(["rsvg-convert", "-w", str(W), "-h", str(H), str(s), "-o", str(d / "cover-v3.png")], check=True)
+    s.unlink(); print("wrote", d / "cover-v3.png")

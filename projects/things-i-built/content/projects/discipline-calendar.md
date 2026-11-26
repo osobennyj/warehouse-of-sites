@@ -13,9 +13,9 @@ links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/discipline-calendar/
   github: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/discipline-calendar
 cover:
-  src: /projects/discipline-calendar/cover-v2.png
+  src: /projects/discipline-calendar/cover-v3.png
   alt: Calendar of green and red trading days with a selected day
-accent: violet
+accent: sky
 featured: true
 order: 3
 date: 2026-11-26
