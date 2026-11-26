@@ -6,7 +6,7 @@ solves: "Comparing funding by hand across four exchanges with different symbols,
 decision: "Rank by net USD after taker fees at a chosen size, not by raw APR, which favors illiquid markets."
 status: live
 tags: [Trading, DeFi]
-stack: [Python, TypeScript, Next.js]
+stack: [TypeScript, Next.js]
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/
@@ -53,3 +53,7 @@ flowchart LR
 ## Tests
 
 50 unit tests (Vitest) cover APR conversion, spread ranking, the calculator and the parsing of each exchange response. Responses are recorded as fixtures, so CI does not call the live APIs. A Playwright smoke test and GitHub Actions run on every push.
+
+## Stack
+
+The dashboard is TypeScript and Next.js. My own funding arbitrage scripts are written in Python.
