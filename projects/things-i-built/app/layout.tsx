@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/app/providers";
 import { siteConfig } from "@/shared/config";
 import { absoluteUrl } from "@/shared/lib";
+import { HashScroll } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
 
@@ -57,14 +58,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-bg font-sans text-fg antialiased">
+      <body className="bg-bg text-fg flex min-h-full flex-col font-sans antialiased">
         <ThemeProvider>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-fg focus:px-4 focus:py-2 focus:text-bg"
+            className="focus:bg-fg focus:text-bg sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:px-4 focus:py-2"
           >
             Skip to content
           </a>
+          <HashScroll />
           <SiteHeader />
           <main id="main-content" className="flex flex-1 flex-col">
             {children}
