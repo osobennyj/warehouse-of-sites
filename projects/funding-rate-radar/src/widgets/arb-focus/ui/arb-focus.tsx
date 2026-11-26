@@ -13,10 +13,9 @@ const NEXT_FUNDING_DAYS = 8 / 24;
 type ArbFocusProps = {
   opportunities: FundingOpportunity[];
   selectedAsset: string | null;
-  onSelectAsset: (asset: string) => void;
 };
 
-export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFocusProps) {
+export function ArbFocus({ opportunities, selectedAsset }: ArbFocusProps) {
   const opportunity =
     opportunities.find((o) => o.asset === selectedAsset) ?? opportunities[0] ?? null;
 
@@ -70,23 +69,6 @@ export function ArbFocus({ opportunities, selectedAsset, onSelectAsset }: ArbFoc
           <strong className="font-mono text-lg text-emerald-300">{formatUsd(topNetUsd)}</strong> at the sizes below
         </p>
       ) : null}
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {opportunities.slice(0, 8).map((row) => (
-          <button
-            key={row.asset}
-            type="button"
-            onClick={() => onSelectAsset(row.asset)}
-            className={`rounded-full border px-3 py-1 text-sm ${
-              row.asset === opportunity?.asset
-                ? "border-emerald-400 bg-emerald-950/60 text-emerald-200"
-                : "border-slate-700 text-slate-300 hover:border-slate-500"
-            }`}
-          >
-            {row.asset} · {formatApr(row.spreadApr)}
-          </button>
-        ))}
-      </div>
 
       {!opportunity ? (
         <p className="mt-4 text-sm text-slate-400">Loading spreads…</p>

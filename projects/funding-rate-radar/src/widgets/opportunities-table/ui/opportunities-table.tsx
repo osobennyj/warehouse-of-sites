@@ -26,12 +26,12 @@ export function OpportunitiesTable({ rows, selectedAsset, onSelectAsset }: Oppor
       <table className="min-w-full divide-y divide-slate-800 text-left text-sm">
         <thead className="bg-slate-900/80 text-xs uppercase tracking-wide text-slate-400">
           <tr>
-            <th className="px-4 py-3">Asset</th>
-            <th className="px-4 py-3">Long leg</th>
-            <th className="px-4 py-3">Short leg</th>
-            <th className="px-4 py-3">Spread APR</th>
-            <th className="px-4 py-3">24h vol (min)</th>
-            <th className="px-4 py-3">OI (min)</th>
+            <th className="px-4 py-2.5">Asset</th>
+            <th className="px-4 py-2.5">Long leg</th>
+            <th className="px-4 py-2.5">Short leg</th>
+            <th className="px-4 py-2.5">Spread APR</th>
+            <th className="px-4 py-2.5">24h vol (min)</th>
+            <th className="px-4 py-2.5">OI (min)</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-900 bg-slate-950/50">
@@ -40,24 +40,25 @@ export function OpportunitiesTable({ rows, selectedAsset, onSelectAsset }: Oppor
               key={row.asset}
               className={`hover:bg-slate-900/50 ${selectedAsset === row.asset ? "bg-emerald-950/30" : ""}`}
               onClick={onSelectAsset ? () => onSelectAsset(row.asset) : undefined}
+              style={onSelectAsset ? { cursor: "pointer" } : undefined}
               role={onSelectAsset ? "button" : undefined}
             >
-              <td className="px-4 py-3 font-semibold text-white">
+              <td className="px-4 py-2.5 font-semibold text-white">
                 <Link href={`/asset/${row.asset}/`} className="hover:text-emerald-300">
                   {row.asset}
                 </Link>
               </td>
-              <td className="px-4 py-3 text-slate-300">
+              <td className="px-4 py-2.5 text-slate-300">
                 <div>{exchangeLabel(row.longLeg.exchange)}</div>
                 <div className="text-xs text-slate-500">{formatApr(row.longLeg.fundingApr)} APR</div>
               </td>
-              <td className="px-4 py-3 text-slate-300">
+              <td className="px-4 py-2.5 text-slate-300">
                 <div>{exchangeLabel(row.shortLeg.exchange)}</div>
                 <div className="text-xs text-slate-500">{formatApr(row.shortLeg.fundingApr)} APR</div>
               </td>
-              <td className="px-4 py-3 font-mono text-emerald-300">{formatApr(row.spreadApr)}</td>
-              <td className="px-4 py-3 text-slate-300">{formatCompactUsd(row.minVolume24hUsd)}</td>
-              <td className="px-4 py-3 text-slate-300">{formatCompactUsd(row.minOpenInterestUsd)}</td>
+              <td className="px-4 py-2.5 font-mono text-emerald-300">{formatApr(row.spreadApr)}</td>
+              <td className="px-4 py-2.5 text-slate-300">{formatCompactUsd(row.minVolume24hUsd)}</td>
+              <td className="px-4 py-2.5 text-slate-300">{formatCompactUsd(row.minOpenInterestUsd)}</td>
             </tr>
           ))}
         </tbody>

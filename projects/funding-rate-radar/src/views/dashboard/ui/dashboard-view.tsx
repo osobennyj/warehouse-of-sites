@@ -10,10 +10,13 @@ import { OpportunitiesTable } from "@/widgets/opportunities-table";
 import { OpportunityFiltersPanel } from "@/widgets/opportunity-filters";
 import { useFundingSnapshots } from "@/widgets/funding-snapshots";
 
+const INITIAL_ROWS = 10;
+
 export function DashboardView() {
   const { data, isLoading, isFetching, dataUpdatedAt, error } = useFundingSnapshots();
   const [filters, setFilters] = useState(defaultFilters);
   const [selectedAsset, setSelectedAsset] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const opportunities = useMemo(() => {
     const spreadRanked = rankOpportunities(groupSnapshotsByAsset(data?.snapshots ?? []));
@@ -50,19 +53,36 @@ export function DashboardView() {
         </p>
       ) : null}
 
-      <ArbFocus opportunities={opportunities} selectedAsset={activeAsset} onSelectAsset={setSelectedAsset} />
+      <section aria-labelledby="spreads-title" className="grid gap-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h2 id="spreads-title" className="text-lg font-semibold tracking-tight">
+            Spreads{" "}
+            <span className="text-sm font-normal text-slate-500">
+              {isLoading ? "loading…" : `${opportunities.length} assets, ranked by net USD`}
+            </span>
+          </h2>
+          <p className="text-xs text-slate-500">Click a row to size it below.</p>
+        </div>
+        <OpportunityFiltersPanel filters={filters} onChange={setFilters} />
+        <OpportunitiesTable
+          rows={showAll ? opportunities : opportunities.slice(0, INITIAL_ROWS)}
+          selectedAsset={activeAsset}
+          onSelectAsset={setSelectedAsset}
+        />
+        {opportunities.length > INITIAL_ROWS ? (
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            className="justify-self-center rounded-full border border-slate-700 px-4 py-1.5 text-sm text-slate-300 hover:border-slate-500"
+          >
+            {showAll ? "Show top " + INITIAL_ROWS : `Show all ${opportunities.length}`}
+          </button>
+        ) : null}
+      </section>
+
+      <ArbFocus opportunities={opportunities} selectedAsset={activeAsset} />
 
       <ExchangeStatusBar statuses={data?.statuses ?? []} updatedAt={dataUpdatedAt} />
-
-      <details className="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
-        <summary className="cursor-pointer text-sm font-medium text-slate-200">
-          All spreads ({isLoading ? "…" : opportunities.length})
-        </summary>
-        <div className="mt-4 space-y-4">
-          <OpportunityFiltersPanel filters={filters} onChange={setFilters} />
-          <OpportunitiesTable rows={opportunities} selectedAsset={activeAsset} onSelectAsset={setSelectedAsset} />
-        </div>
-      </details>
 
       <Disclaimer />
     </DashboardShell>

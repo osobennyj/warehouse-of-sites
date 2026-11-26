@@ -13,11 +13,22 @@ export function OpportunityFiltersPanel({
   onChange: (next: OpportunityFilters) => void;
 }) {
   return (
-    <div className="grid gap-3 rounded-xl border border-slate-800 bg-slate-950/60 p-4 md:grid-cols-4">
+    <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
+      <label className="grid gap-1 text-xs text-slate-400" htmlFor="asset-search">
+        Search
+        <Input
+          id="asset-search"
+          className="w-32"
+          value={filters.query}
+          onChange={(e) => onChange({ ...filters, query: e.target.value })}
+          placeholder="BTC"
+        />
+      </label>
       <label className="grid gap-1 text-xs text-slate-400" htmlFor="min-spread-apr">
-        Min spread APR
+        Min spread, %
         <Input
           id="min-spread-apr"
+          className="w-28"
           type="number"
           step="0.01"
           value={filters.minSpreadApr * 100}
@@ -25,26 +36,18 @@ export function OpportunityFiltersPanel({
         />
       </label>
       <label className="grid gap-1 text-xs text-slate-400" htmlFor="min-volume-usd">
-        Min 24h volume (USD)
+        Min 24h volume, USD
         <Input
           id="min-volume-usd"
+          className="w-36"
           type="number"
           step="1000000"
           value={filters.minVolumeUsd}
           onChange={(e) => onChange({ ...filters, minVolumeUsd: Number(e.target.value) || 0 })}
         />
       </label>
-      <label className="grid gap-1 text-xs text-slate-400 md:col-span-2" htmlFor="asset-search">
-        Search asset
-        <Input
-          id="asset-search"
-          value={filters.query}
-          onChange={(e) => onChange({ ...filters, query: e.target.value })}
-          placeholder="BTC"
-        />
-      </label>
-      <fieldset className="col-span-full">
-        <legend className="mb-2 text-xs text-slate-400">Exchanges (both legs must be selected)</legend>
+      <fieldset className="pb-1">
+        <legend className="sr-only">Exchanges (both legs must be selected)</legend>
         <div className="flex flex-wrap gap-2">
           {EXCHANGE_IDS.map((id) => (
             <ToggleChip
