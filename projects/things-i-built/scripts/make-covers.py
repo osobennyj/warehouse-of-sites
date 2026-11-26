@@ -93,5 +93,5 @@ def funding_radar():
 for slug, svg in (("grid-bot", grid_bot()), ("funding-rate-radar", funding_radar())):
     d = OUT / slug; d.mkdir(parents=True, exist_ok=True)
     s = d / "cover.svg"; s.write_text(svg, encoding="utf-8")
-    subprocess.run(["rsvg-convert", "-w", str(W), "-h", str(H), str(s), "-o", str(d / "cover.png")], check=True)
-    s.unlink(); print("wrote", d / "cover.png")
+    subprocess.run(["rsvg-convert", "-w", str(W), "-h", str(H), str(s), "-o", str(d / "cover-v2.png")], check=True)
+    s.unlink(); print("wrote", d / "cover-v2.png")

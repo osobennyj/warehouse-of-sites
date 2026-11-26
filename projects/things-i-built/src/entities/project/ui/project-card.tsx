@@ -30,7 +30,7 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
 
         <dl className="flex items-baseline gap-3 rounded-xl border border-border/70 bg-bg/40 px-4 py-3">
           <dt className="sr-only">Key metric</dt>
-          <dd className="font-mono text-lg font-semibold text-accent">{project.metric.value}</dd>
+          <dd className="shrink-0 font-mono text-lg font-semibold whitespace-nowrap text-accent">{project.metric.value}</dd>
           <dd className="text-sm text-muted">{project.metric.label}</dd>
         </dl>
 

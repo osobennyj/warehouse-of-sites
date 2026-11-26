@@ -7,13 +7,13 @@ tags: [Trading, DeFi]
 stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
 metric:
   value: 4 exchanges
-  label: Binance, Bybit, OKX, Hyperliquid, refreshed every 5 min
+  label: refreshed every 5 min
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/
   github: https://github.com/osobennyj/warehouse-of-sites/tree/master/projects/funding-rate-radar
 cover:
-  src: /projects/funding-rate-radar/cover.png
+  src: /projects/funding-rate-radar/cover-v2.png
   alt: Funding Rate Radar dashboard showing cross-exchange funding spreads and opportunities table
 accent: teal
 order: 1

@@ -121,14 +121,14 @@
           </label>
           <div class="row">
             <label>Seed
-              <input id="seed" type="number" value="7" min="1" step="1" />
+              <input id="seed" type="number" value="7" min="1" step="any" />
             </label>
             <label>Volatility per step
-              <input id="vol" type="number" value="0.004" step="0.001" min="0" />
+              <input id="vol" type="number" value="0.004" step="any" min="0" />
             </label>
           </div>
           <label>Start price, USDT
-            <input id="startPrice" type="number" value="100" step="0.01" />
+            <input id="startPrice" type="number" value="100" step="any" />
           </label>
         </fieldset>
 
@@ -136,18 +136,18 @@
           <legend>Grid</legend>
           <div class="row">
             <label>Lower bound
-              <input id="lower" type="number" value="90" step="0.01" />
+              <input id="lower" type="number" value="90" step="any" />
             </label>
             <label>Upper bound
-              <input id="upper" type="number" value="110" step="0.01" />
+              <input id="upper" type="number" value="110" step="any" />
             </label>
           </div>
           <div class="row">
             <label>Levels
-              <input id="levels" type="number" value="11" min="2" step="1" />
+              <input id="levels" type="number" value="11" min="2" step="any" />
             </label>
             <label>Order size, BTC
-              <input id="qty" type="number" value="0.05" step="0.001" min="0" />
+              <input id="qty" type="number" value="0.05" step="any" min="0" />
             </label>
           </div>
         </fieldset>
@@ -156,21 +156,21 @@
           <legend>Account and risk</legend>
           <div class="row">
             <label>Capital, USDT
-              <input id="capital" type="number" value="1000" step="10" min="1" />
+              <input id="capital" type="number" value="1000" step="any" min="1" />
             </label>
             <label>Leverage
-              <input id="leverage" type="number" value="5" min="1" step="1" />
+              <input id="leverage" type="number" value="5" min="1" step="any" />
             </label>
           </div>
           <label>Funding rate per interval
-            <input id="fundingRate" type="number" value="0.0001" step="0.0001" />
+            <input id="fundingRate" type="number" value="0.0001" step="any" />
           </label>
           <div class="row">
             <label>Stop below
-              <input id="stopLow" type="number" step="0.01" placeholder="e.g. 85" />
+              <input id="stopLow" type="number" step="any" placeholder="e.g. 85" />
             </label>
             <label>Stop above
-              <input id="stopHigh" type="number" step="0.01" placeholder="e.g. 115" />
+              <input id="stopHigh" type="number" step="any" placeholder="e.g. 115" />
             </label>
           </div>
         </fieldset>
