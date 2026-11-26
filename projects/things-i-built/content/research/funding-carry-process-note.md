@@ -1,34 +1,29 @@
 ---
-title: How I use funding carry research in public
-summary: A public Telegram trading diary and Funding Rate Radar for fee-aware carry math. I log process and mechanics, not headline returns.
+title: How I compare funding rates
+summary: "How I compare funding rates across exchanges, and why I rank by net USD instead of APR."
 kind: note
 tags: [Trading, DeFi]
 readingMinutes: 3
 date: 2026-11-18
 ---
 
-I run a public Telegram channel where I document funding and basis trades I am watching or running. The channel is a
-diary of **setup, risks, and what changed**, not a performance leaderboard.
+I run a public Telegram channel where I write down funding and basis trades I am watching or running: the setup, the risks and what changed. It is a diary, not a performance record.
 
-## Short outcome: faster filtering
+## The workflow
 
-Before Funding Rate Radar existed, I tab-switched across four exchange UIs to compare funding intervals and fees. The
-dashboard normalized APR and added a net-yield calculator with taker/maker assumptions visible in the UI. That cut
-time-to-shortlist for ideas I might write about.
+1. Rank spreads across exchanges.
+2. Check liquidity on both legs.
+3. Stress fees and holding period.
+4. Only then decide size.
 
-## What I deliberately do not post
+Funding Rate Radar covers step 1 and part of step 3: it normalizes funding to APR and shows net profit after taker fees. Steps 2 and 4 are judgment calls the tool does not make.
 
-I avoid posting "% up this week" screenshots without context. If I cannot tie a number to a source (exchange API,
-on-chain event, or CV-sourced engineering metric), I describe the idea qualitatively instead.
+## Why net USD, not APR
 
-## Long outcome: repeatable review
+The largest APRs on the dashboard are usually thin markets, where the position cannot be opened or closed at the quoted price. Ranking by net USD at a chosen size pushes those down.
 
-The carry workflow is: rank spreads → check liquidity on both legs → stress fees and holding period → only then
-decide size. Funding Rate Radar encodes the first half; the diary covers judgment calls the UI cannot automate.
+## What I do not post
 
-## Tools used
+Weekly percentage screenshots without context. If I cannot tie a number to a source, I describe the idea without the number.
 
-- **Funding Rate Radar** (this portfolio): live MVP under `/demos/funding-rate-radar/`.
-- **DeFi Strategist MCP** `funding_carry` tool when I want the same math inside an agent session.
-
-_Not financial advice._
+_Not investment advice._

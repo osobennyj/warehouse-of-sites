@@ -1,26 +1,19 @@
 ---
 title: Root-cause work before crypto (P&G packaging)
-summary: "Manufacturing engineering at Procter & Gamble: two cost saves from variation reduction, sourced from my CV. No on-chain tools involved."
+summary: "Two process projects at Procter & Gamble, with the figures from my CV."
 kind: note
 tags: [Operations, Data]
 readingMinutes: 2
 date: 2026-11-10
 ---
 
-Before crypto, I was a manufacturing process engineer at Procter & Gamble on high-volume packaging lines.
+Before crypto I was a manufacturing process engineer at Procter & Gamble, on high-volume packaging lines (2021 to 2022).
 
-## Short outcome
+## Results (from my CV)
 
-Two paper-use reduction projects landed at roughly **3 to 4%** less packaging paper, with about **$10k to $30k**
-saved per year (CV figures). Separately, a root-cause push on product weight variation delivered about **12%** less
-variation and roughly **$60k** saved per year.
+- Two projects reduced packaging paper use by about 3 to 4%, saving roughly $10k to $30k per year.
+- A root-cause analysis of product weight variation cut the variation by about 12%, saving roughly $60k per year.
 
-## Why it is on this site
+## Why it is here
 
-The research tab is not only token charts. Hiring managers also ask whether I can run structured analysis when data is
-messy. This episode predates every project in the portfolio grid; none of the MVPs here were used.
-
-## Link to current work
-
-The same checklist habit shows up in token unlock research and in tool specs: define the metric, trace it to raw
-inputs, only then ship UI.
+The same habit shows up in my token research: define the metric, trace it to raw inputs, then build anything on top of it.

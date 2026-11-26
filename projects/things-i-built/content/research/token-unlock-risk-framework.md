@@ -7,7 +7,7 @@ readingMinutes: 4
 date: 2026-11-25
 ---
 
-Unlock calendars are everywhere, yet most of them answer the wrong question. "1.2% of supply unlocks on Friday"
+Most unlock calendars answer the wrong question. "1.2% of supply unlocks on Friday"
 says nothing about price impact on its own. Before I treat an unlock as a risk, I go through five questions.
 
 ## 1. How big is it relative to what is already trading?
