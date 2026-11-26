@@ -6,10 +6,7 @@ solves: "Grid charts show where orders sit, but not what fees, funding and a one
 decision: "Show the worst-case loss for a one-way move out of the range next to the PnL."
 status: demo
 tags: [Trading, DeFi]
-stack: [JavaScript, Canvas, node:test]
-metric:
-  value: 10 tests
-  label: engine logic, incl. PnL reconciliation on a random path
+stack: [JavaScript]
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/grid-bot/

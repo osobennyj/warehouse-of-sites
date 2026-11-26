@@ -17,7 +17,7 @@ import type { AssetHistorySeries } from "@/entities/funding-rate";
 const COLORS: Record<string, string> = {
   binance: "#f59e0b",
   bybit: "#f97316",
-  okx: "#e2e8f0",
+  okx: "var(--chart-okx)",
   hyperliquid: "#34d399",
 };
 
@@ -46,16 +46,16 @@ export function FundingHistoryChart({ series }: { series: AssetHistorySeries[] }
     <div className="h-80 w-full rounded-xl border border-slate-800 bg-slate-950/50 p-2">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
+          <CartesianGrid stroke="var(--chart-grid)" strokeDasharray="3 3" />
           <XAxis
             dataKey="time"
             tickFormatter={(value) => new Date(value).toLocaleDateString()}
-            stroke="#64748b"
+            stroke="var(--chart-axis)"
             fontSize={11}
           />
-          <YAxis tickFormatter={(value) => `${value.toFixed(2)}%`} stroke="#64748b" fontSize={11} width={48} />
+          <YAxis tickFormatter={(value) => `${value.toFixed(2)}%`} stroke="var(--chart-axis)" fontSize={11} width={48} />
           <Tooltip
-            contentStyle={{ background: "#020617", border: "1px solid #1e293b", borderRadius: 8 }}
+            contentStyle={{ background: "var(--chart-tooltip)", border: "1px solid var(--chart-grid)", borderRadius: 8 }}
             labelFormatter={(value) => new Date(Number(value)).toLocaleString()}
             formatter={(value, name) => {
               const num = typeof value === "number" ? value : Number(value);

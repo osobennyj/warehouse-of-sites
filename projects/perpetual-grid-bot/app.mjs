@@ -100,6 +100,7 @@ function drawChart(index) {
   const x = (i) => padX + (i / Math.max(path.length - 1, 1)) * (width - padX - 12);
   const y = (p) => height - 16 - ((p - min) / (max - min)) * (height - 32);
 
+  const light = document.documentElement.dataset.theme === "light";
   ctx.strokeStyle = "#27272a";
   ctx.fillStyle = "#71717a";
   ctx.font = "11px system-ui";
@@ -110,7 +111,7 @@ function drawChart(index) {
     ctx.beginPath();
     ctx.moveTo(padX, y(level));
     ctx.lineTo(width - 12, y(level));
-    ctx.strokeStyle = "#3f3f46";
+    ctx.strokeStyle = light ? "#d4d4d8" : "#3f3f46";
     ctx.setLineDash([3, 4]);
     ctx.stroke();
     ctx.setLineDash([]);
@@ -120,7 +121,7 @@ function drawChart(index) {
     ctx.beginPath();
     ctx.moveTo(padX, y(bound));
     ctx.lineTo(width - 12, y(bound));
-    ctx.strokeStyle = "#a1a1aa";
+    ctx.strokeStyle = light ? "#71717a" : "#a1a1aa";
     ctx.stroke();
   });
   // Stops
@@ -138,7 +139,7 @@ function drawChart(index) {
   // Price line
   ctx.beginPath();
   shown.forEach((p, i) => (i === 0 ? ctx.moveTo(x(i), y(p)) : ctx.lineTo(x(i), y(p))));
-  ctx.strokeStyle = "#2dd4bf";
+  ctx.strokeStyle = light ? "#0f766e" : "#2dd4bf";
   ctx.lineWidth = 2;
   ctx.lineJoin = "round";
   ctx.stroke();

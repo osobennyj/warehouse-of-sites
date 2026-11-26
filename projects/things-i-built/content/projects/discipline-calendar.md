@@ -6,10 +6,7 @@ solves: "Most journals track profit and loss, not whether the trader followed th
 decision: "The day color depends only on discipline. Profit and loss never changes it."
 status: demo
 tags: [Trading]
-stack: [Next.js, TypeScript, React, Supabase]
-metric:
-  value: 5 off-plan tags
-  label: FOMO, revenge, overtrade, impulse, other
+stack: [TypeScript, Next.js, Supabase]
 role: Product, design, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/discipline-calendar/

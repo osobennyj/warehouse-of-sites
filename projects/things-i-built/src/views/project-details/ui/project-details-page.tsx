@@ -53,12 +53,7 @@ export async function ProjectDetailsPage({ params }: ProjectPageProps) {
           </div>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{project.title}</h1>
           <p className="text-muted mt-4 text-xl leading-relaxed">{project.tagline}</p>
-          <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-3">
-            <div>
-              <dt className="text-muted">Key metric</dt>
-              <dd className="text-accent mt-1 font-mono text-lg">{project.metric.value}</dd>
-              <dd className="text-muted">{project.metric.label}</dd>
-            </div>
+          <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-muted">Role</dt>
               <dd className="mt-1">{project.role}</dd>

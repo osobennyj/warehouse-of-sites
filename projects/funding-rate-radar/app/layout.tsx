@@ -24,10 +24,15 @@ export const metadata: Metadata = {
   },
 };
 
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("theme");var l=t==="light"||(t==="system"&&matchMedia("(prefers-color-scheme: light)").matches);document.documentElement.dataset.theme=l?"light":"dark"}catch(e){}})()`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full bg-zinc-950 pt-16 font-sans text-zinc-100">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
+      <body className="min-h-full bg-background pt-16 font-sans text-foreground">
         <PortfolioTopBar title="Funding Rate Radar" />
         <QueryProvider>
           <div className="mx-auto min-h-[calc(100vh-4rem)] w-full max-w-6xl px-4 pb-12 sm:px-6">{children}</div>

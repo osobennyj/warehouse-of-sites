@@ -5,12 +5,10 @@ import { projectFrontmatterSchema } from "./schema";
 const valid = {
   title: "Test",
   tagline: "Problem to solution in one clear sentence for the portfolio card.",
-  description:
-    "A long enough description for SEO and social previews that explains the project in plain language.",
+  description: "A long enough description for SEO and social previews that explains the project in plain language.",
   status: "in-progress" as const,
   tags: ["Research" as const],
   stack: ["TypeScript", "Next.js"],
-  metric: { value: "4 venues", label: "exchanges connected" },
   date: "2026-11-25",
 };
 

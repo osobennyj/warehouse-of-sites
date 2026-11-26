@@ -68,11 +68,6 @@ export default function HomePage() {
   >(null);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = "graphite";
-    window.localStorage.setItem("tdc_theme", "graphite");
-  }, []);
-
-  useEffect(() => {
     const loadSession = async () => {
       try {
         const currentUser = await getCurrentUser();

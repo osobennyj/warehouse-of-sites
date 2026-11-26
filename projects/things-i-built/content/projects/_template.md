@@ -7,9 +7,6 @@ description: Meta description for search engines and link previews (30–220 cha
 status: in-progress # live | beta | in-progress
 tags: [Research] # 1–3 of: Research, Trading, Bots, AI, DeFi
 stack: [TypeScript, Next.js] # 2–6 items
-metric:
-  value: 4 venues # short headline number (max 24 chars)
-  label: what the number means
 links:
   live: https://example.com # optional
   github: https://github.com/osobennyj/my-project # optional

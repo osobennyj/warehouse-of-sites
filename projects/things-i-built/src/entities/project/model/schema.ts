@@ -21,7 +21,6 @@ export const projectFrontmatterSchema = z
     stack: z.array(z.string().min(1)).min(2).max(6),
     solves: z.string().min(10).max(140).optional(),
     decision: z.string().min(10).max(160).optional(),
-    metric: z.object({ value: z.string().min(1).max(24), label: z.string().min(1).max(60) }).strict(),
     role: z.string().min(3).default("Product, architecture, AI-assisted implementation"),
     links: z.object({ live: z.url().optional(), github: z.url().optional() }).strict().default({}),
     cover: z

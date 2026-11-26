@@ -6,10 +6,7 @@ solves: "Comparing funding by hand across four exchanges with different symbols,
 decision: "Rank by net USD after taker fees at a chosen size, not by raw APR, which favors illiquid markets."
 status: live
 tags: [Trading, DeFi]
-stack: [Next.js, TypeScript, TanStack Query, Recharts, Zod]
-metric:
-  value: 4 exchanges
-  label: 50 markets each, live public APIs, no keys
+stack: [TypeScript, Next.js]
 role: Product, architecture, AI-assisted implementation
 links:
   live: https://osobennyj.github.io/warehouse-of-sites/demos/funding-rate-radar/

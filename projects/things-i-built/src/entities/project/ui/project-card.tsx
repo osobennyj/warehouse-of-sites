@@ -45,14 +45,6 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           </dl>
         )}
 
-        <dl className="border-border/70 bg-bg/40 flex items-baseline gap-3 rounded-xl border px-4 py-3">
-          <dt className="sr-only">Key metric</dt>
-          <dd className="text-accent shrink-0 font-mono text-lg font-semibold whitespace-nowrap">
-            {project.metric.value}
-          </dd>
-          <dd className="text-muted text-sm">{project.metric.label}</dd>
-        </dl>
-
         <ul className="flex flex-wrap gap-1.5" aria-label="Tech stack">
           {project.stack.map((item) => (
             <li key={item} className="bg-fg/[0.06] text-fg/80 rounded-md px-2 py-1 font-mono text-xs">
