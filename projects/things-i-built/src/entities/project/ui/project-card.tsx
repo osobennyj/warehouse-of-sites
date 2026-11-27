@@ -1,5 +1,6 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+
+import { ButtonLink } from "@/shared/ui";
 
 import type { Project } from "../model/types";
 import { ProjectCover } from "./project-cover";
@@ -53,12 +54,11 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           ))}
         </ul>
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
-          <ProjectLinks project={project} className="relative z-10 flex flex-wrap gap-2" />
-          <span className="text-fg/80 group-hover:text-accent inline-flex items-center gap-1 text-sm font-medium transition-colors">
+        <div className="relative z-10 mt-auto flex flex-wrap gap-2 pt-2">
+          <ProjectLinks project={project} className="contents" />
+          <ButtonLink href={href} size="sm" variant="secondary" aria-label={`${project.title}: case study`}>
             Case study
-            <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
-          </span>
+          </ButtonLink>
         </div>
       </div>
     </article>
